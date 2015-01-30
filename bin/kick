@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+process.bin = process.title = 'kick';
+
+"use strict";
+var fs        = require('fs-extra');
+var colors    = require('colors');
+var logger    = require('../lib/logger');
+var commands  = require('../lib/commands/commands');
+var command   = process.argv[2];
+var ROOT      = require('app-root-path');
+
+switch (command) {
+  case '--version':
+  case '-v':
+    console.log(JSON.parse(fs.readFileSync(ROOT + '/package.json'))['version']);
+    break;
+  case 'help':
+  case 'h':
+    commands.help();
+    break;
+  case 'new':
+  case 'n':
+    commands.new();
+    break;
+  case 'generate':
+  case 'g':
+    commands.generate();
+    break;
+  case 'destroy':
+  case 'd':
+    commands.destroy();
+    break;
+  case 'setup':
+    commands.setup();
+    break;
+  case 'server':
+  case 's':
+    commands.server();
+    break;
+  case 'build':
+  case 'b':
+    commands.build();
+    break;
+  case 'test':
+    commands.test();
+    break;
+  default:
+    if (command) {
+      logger.warn("kick did't recognize the ".yellow + command.blue + ' command. Run '.yellow + 'kick help'.blue + ' to see all available commands'.yellow)
+    } else {
+      logger.warn("You didn't specify any command");
+    }
+}

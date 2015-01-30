@@ -1,0 +1,58 @@
+{
+  "name": "angular-kick",
+  "version": "1.0.0-alpha.1",
+  "description": "Kickstarter and generator for AngularJS based on ES6 and best practices",
+  "author": "500Tech <info@500tech.com>",
+  "contributors": [
+    {
+      "name": "Ilya Gelman",
+      "email": "ilyagelman@ilyagelman.com"
+    },
+    {
+      "name": "Adam Klein",
+      "email": "adam@500tech.com"
+    },
+    {
+      "name": "Nir Kaufman",
+      "email": "nir@500tech.com"
+    }
+  ],
+  "bin": {
+    "kick": "./bin/kick"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/500tech/angular-kick.git"
+  },
+  "main": "lib",
+  "keywords": [
+    "angular-kick",
+    "kick",
+    "generate",
+    "generator",
+    "boilerplate",
+    "angular",
+    "angularjs",
+    "kickstart",
+    "es6"
+  ],
+  "license": "MIT",
+  "homepage": "http://angular-kick.com",
+  "dependencies": {
+    "colors": "^1.0.3",
+    "change-case": "^2.2.0",
+    "app-root-path": "^1.0.0",
+    "replace": "^0.3.0",
+    "get-folder-size": "^0.1.1",
+    "readline-sync": "^0.5.0",
+    "exec-sync": "^0.1.6",
+    "fs-extra": "^0.15.0",
+    "ncp": "^1.0.1",
+    "progress": "^1.1.8",
+    "empty-dir": "^0.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "preferGlobal": true
+}
