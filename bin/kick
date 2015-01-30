@@ -7,7 +7,7 @@ var colors    = require('colors');
 var logger    = require('../lib/logger');
 var commands  = require('../lib/commands/commands');
 var command   = process.argv[2];
-var ROOT      = require('app-root-path');
+var ROOT      = __dirname + '/..';
 
 switch (command) {
   case '--version':

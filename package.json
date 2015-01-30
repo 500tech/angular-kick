@@ -1,6 +1,6 @@
 {
   "name": "angular-kick",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Kickstarter and generator for AngularJS based on ES6 and best practices",
   "author": "500Tech <info@500tech.com>",
   "contributors": [
@@ -41,11 +41,9 @@
   "dependencies": {
     "colors": "^1.0.3",
     "change-case": "^2.2.0",
-    "app-root-path": "^1.0.0",
     "replace": "^0.3.0",
     "get-folder-size": "^0.1.1",
     "readline-sync": "^0.5.0",
-    "exec-sync": "^0.1.6",
     "fs-extra": "^0.15.0",
     "ncp": "^1.0.1",
     "progress": "^1.1.8",
