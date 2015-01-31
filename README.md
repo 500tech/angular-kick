@@ -37,7 +37,7 @@ $ cd applicationName
 $ kick setup
 ```
 
-Now you can run the server, which will automatically reload browser when you make changes to files.
+Now you can run the server, which will automatically reload the browser when you make changes to files.
  
 ```sh
 $ kick server
@@ -59,7 +59,7 @@ $ kick destroy [type] [names...]
 $ kick generate state [name] [substates...] <options>
 ```
 
-This will generate a view and a controller for the state under the app/states folder. Each state new root state will create a route file in app/routes folder, nested states will be included in that file. This will also generate unit tests for each controller and a stylesheet for each root state.
+This will generate a view and a controller for the state under the app/states folder. Each state's new root state will create a route file in app/routes folder, nested states will be included in that file. This will also generate unit tests for each controller and a stylesheet for each root state.
 
 To create nested state, just pass slashes between names, for example:
 
@@ -97,7 +97,7 @@ Available options:
 $ kick generate service [names...]
 ```
 
-This will generate services under app/states directory and unit tests for each of them. You can pass as many names as you like. You can also generate services in subdirectories:
+This will generate services under app/services directory and unit tests for each of them. You can pass as many names as you like. You can also generate services in subdirectories:
 
 ```sh
 $ kick generate service auth models/user models/order
@@ -109,7 +109,7 @@ $ kick generate service auth models/user models/order
 $ kick generate directive [names...]
 ```
 
-This will generate a directive under /app/directives folder. It will also generate a unit test. You can pass as many names as you like. You can also generate directives in subdirectories:
+This will generate a directive under app/directives folder. It will also generate a unit test. You can pass as many names as you like. You can also generate directives in subdirectories:
 
 ```sh
 $ kick generate directive pagination users/avatar
@@ -139,7 +139,7 @@ This will generate a partial named _your_partial_name.html in the under specifie
 $ kick generate partial users/index/user-info
 ```
 
-If you don't specify a state name, the partial will be created in /app/states/shared directory.
+If you don't specify a state name, the partial will be created in app/states/shared directory.
 
 Sometimes you want your partials to belong to controller. You can use the --controller option, which will generate a partial along with its controller and also a unit test for it:
 
