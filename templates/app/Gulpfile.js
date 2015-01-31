@@ -43,6 +43,12 @@ gulp.task('default', function () {
   return runSequence('clean', 'dependencies', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'server');
 });
 
+gulp.task('server:tdd', function () {
+  ENV = ENV['development'];
+  destination = destinations.development;
+  return runSequence('clean', 'dependencies', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'server', 'tdd');
+});
+
 gulp.task('build', function () {
   ENV = ENV['production'];
   destination = destinations.production;
@@ -65,6 +71,7 @@ gulp.task('images',         images);
 gulp.task('dependencies',   dependencies);
 gulp.task('scripts',        scripts);
 gulp.task('test',           test);
+gulp.task('tdd',            tdd);
 gulp.task('server',         server);
 gulp.task('reloadScripts',  reloadScripts);
 gulp.task('reloadViews',    reloadViews);
@@ -151,6 +158,13 @@ function scripts () {
     .pipe(plugins.ngAnnotate())
     .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest(destination));
+}
+
+function tdd (done) {
+  return karma.start({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: false
+  }, done);
 }
 
 function test (done) {
