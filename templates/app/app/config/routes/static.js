@@ -1,6 +1,7 @@
 angular.module('%APP_NAME%.config').config(function ($stateProvider) {
   $stateProvider
     .state('static', {
+      template: '<ui-view></ui-view>',
       abstract: true
     })
 
