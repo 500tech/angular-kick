@@ -1,5 +1,7 @@
 # angular-kick
 
+**Disclaimer:** angular-kick is currently in alpha stage and it's only tested on MacOS X. Some functionality might change. Feel free to add issues to our [github](http://github.com/500tech/angular-kick) if you encounter any problems.
+
 Angular-kick is an opinionated kickstarter and generator for AngularJS based on ECMAScript 6 and best practices. It allows you to start a classic single-page application in no time and working with it with ease.
 
 Brought to you by [500Tech](http://500tech.com).
