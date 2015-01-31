@@ -39,12 +39,12 @@ $ cd applicationName
 $ kick setup
 ```
 
-Now you can run the server, which will automatically reload browser when you make changes to files.
+Now you can run the server, which will automatically reload browser when you make changes to files. You can also run it in TDD mode, which will run test suit on every file change.
  
 ```sh
 $ kick server
-``` 
-
+$ kick server:tdd
+```
 
 ### Generators and destroyers
 
@@ -83,7 +83,7 @@ All of them will appear in app/routes/emails.js file.
 When you pass crud as a substate, it will automatically create 4 substates:
 
 ```sh
-$kick generate users crud
+$ kick generate users crud
 ```
 
 generates 'users', 'users.list', 'users.new', 'users.show', 'users.edit'
@@ -179,11 +179,19 @@ $ kick generate style top-bar base/buttons base/forms
 
 ### Testing
 
+The tests files are located in /tests directory. When you use kick generators, unit tests are automatically created for you in that directory. The tests run with Karma in Chrome browser.
+
+You can run test suit once:
+
 ```sh
 $ kick test
 ```
 
-This will run your test suit once. The tests files are located in /tests directory. When you use kick generators, unit tests are automatically created for you in that directory. The tests run with Karma in Chrome browser.
+Or continously watch files and run test suit on every file change:
+
+```sh
+$ kick server:tdd
+```
 
 
 ### Building for production
