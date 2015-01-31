@@ -1,6 +1,6 @@
 {
   "name": "angular-kick",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Kickstarter and generator for AngularJS based on ES6 and best practices",
   "author": "500Tech <info@500tech.com>",
   "contributors": [
