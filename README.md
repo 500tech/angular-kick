@@ -206,7 +206,7 @@ When your application is ready for production, you run this command and all your
 
 MIT Licensed
 
-Copyright (c) 2014, [500Tech](http://500tech.com)
+Copyright (c) 2015, [500Tech](http://500tech.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
