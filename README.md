@@ -83,7 +83,7 @@ All of them will appear in app/routes/emails.js file.
 When you pass crud as a substate, it will automatically create 4 substates:
 
 ```sh
-$ kick generate users crud
+$ kick generate state users crud
 ```
 
 generates 'users', 'users.list', 'users.new', 'users.show', 'users.edit'
