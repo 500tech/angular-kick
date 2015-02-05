@@ -1,4 +1,4 @@
-class %SERVICE_NAME% {
+export class %SERVICE_NAME% {
   constructor () {
     this.message = '%SERVICE_NAME%';
   }

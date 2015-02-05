@@ -1,4 +1,4 @@
-class %CONTROLLER_NAME% {
+export class %CONTROLLER_NAME% {
   constructor () {
     this.controllerName = '%CONTROLLER_NAME%'
   }

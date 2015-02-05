@@ -154,7 +154,7 @@ function scripts () {
     .pipe(plugins.plumber({ errorHandler: catchError }))
     .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.traceur())
+    .pipe(plugins.traceur({ modules: 'register' }))
     .pipe(plugins.ngAnnotate())
     .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest(destination));
