@@ -21,12 +21,16 @@ module.exports = function(config) {
       ".tmp/app/assets/**",
       ".tmp/app/config/**"
     ],
-    reporters: ['progress'],
+    reporters: ['progress', 'html'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: false,
+    htmlReporter: {
+      outputDir: 'test/results',
+      namedFiles: true
+    }
   });
 };
