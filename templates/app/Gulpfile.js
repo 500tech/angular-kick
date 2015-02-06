@@ -11,7 +11,7 @@ var modRewrite      = require('connect-modrewrite');
 var browserSync     = require('browser-sync');
 var karma           = require('karma').server;
 var production      = require('./production_tasks');
-var ENV             = JSON.parse(fs.readFileSync(__dirname + '/environments.json', "utf8"));
+var setENV          = JSON.parse(fs.readFileSync(__dirname + '/environments.json', "utf8"));
 
 var sources = {
   app:          'app',
@@ -26,9 +26,11 @@ var sources = {
   index:        'app/app.html'
 };
 
+var ENV;
 var destination;
 var destinations = {
   development: '.tmp',
+  test: '.test',
   production: 'public'
 };
 
@@ -38,19 +40,19 @@ var catchError = function (err) {
 };
 
 gulp.task('default', function () {
-  ENV = ENV['development'];
+  ENV = ENV || setENV['development'];
   destination = destinations.development;
   return runSequence('clean', 'dependencies', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'server');
 });
 
 gulp.task('server:tdd', function () {
-  ENV = ENV['development'];
+  ENV = ENV || setENV['development'];
   destination = destinations.development;
-  return runSequence('clean', 'dependencies', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'server', 'tdd');
+  return runSequence('default', 'tdd');
 });
 
 gulp.task('build', function () {
-  ENV = ENV['production'];
+  ENV = ENV || setENV['production'];
   destination = destinations.production;
   return runSequence('clean',
     'productionDependencies',
@@ -60,6 +62,28 @@ gulp.task('build', function () {
     'productionViews',
     'productionIndex',
     'productionFonts');
+});
+
+gulp.task('setEnvironment', function () {
+  var environment = process.argv[3].replace(/^--/, '');
+  if (setENV[environment]) {
+    console.log('Setting ENV to ' + environment);
+    ENV = setENV[environment];
+  } else {
+    throw 'Environment "' + environment + '" was not found in environments.js file';
+  }
+});
+
+gulp.task('server:env', function () {
+  return runSequence('setEnvironment', 'default');
+});
+
+gulp.task('server:tdd:env', function () {
+  return runSequence('setEnvironment', 'server:tdd');
+});
+
+gulp.task('build:env', function () {
+  return runSequence('productionSetEnvironment', 'build');
 });
 
 gulp.task('clean',          clean);
@@ -77,13 +101,14 @@ gulp.task('reloadScripts',  reloadScripts);
 gulp.task('reloadViews',    reloadViews);
 gulp.task('reloadStyles',   reloadStyles);
 
-gulp.task('productionDependencies', production.dependencies);
-gulp.task('productionScripts',      production.scripts);
-gulp.task('productionStyles',       production.styles);
-gulp.task('productionImages',       production.images);
-gulp.task('productionViews',        production.views);
-gulp.task('productionIndex',        production.index);
-gulp.task('productionFonts',        production.fonts);
+gulp.task('productionSetEnvironment', production.setEnvironment);
+gulp.task('productionDependencies',   production.dependencies);
+gulp.task('productionScripts',        production.scripts);
+gulp.task('productionStyles',         production.styles);
+gulp.task('productionImages',         production.images);
+gulp.task('productionViews',          production.views);
+gulp.task('productionIndex',          production.index);
+gulp.task('productionFonts',          production.fonts);
 
 
 function clean () {

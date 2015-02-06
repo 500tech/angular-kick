@@ -4,7 +4,7 @@ var gulp            = require('gulp');
 var gulpLoadPlugins = require('gulp-load-plugins');
 var plugins         = gulpLoadPlugins();
 var fs              = require('fs-extra');
-var ENV             = JSON.parse(fs.readFileSync(__dirname + '/environments.json', "utf8"));
+var setENV          = JSON.parse(fs.readFileSync(__dirname + '/environments.json', "utf8"));
 
 var sources = {
   app:          'app',
@@ -19,6 +19,7 @@ var sources = {
   index:        'app/app.html'
 };
 
+var ENV;
 var destination = 'public';
 
 var catchError = function (err) {
@@ -27,6 +28,16 @@ var catchError = function (err) {
 };
 
 module.exports = {
+  setEnvironment: function () {
+    var environment = process.argv[3].replace(/^--/, '');
+    if (setENV[environment]) {
+      console.log('Setting ENV to ' + environment);
+      ENV = setENV[environment];
+    } else {
+      throw 'Environment "' + environment + '" was not found in environments.js file';
+    }
+  },
+
   fonts: function () {
     return gulp.src(sources.fonts, { base: sources.app })
       .pipe(plugins.plumber({ errorHandler: catchError }))
@@ -111,10 +122,10 @@ module.exports = {
     return gulp.src(sources.appScript)
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(plugins.include({ extensions: ['js'] }))
-      .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
-      .pipe(plugins.traceur())
+      .pipe(plugins.traceur({ modules: 'register' }))
       .pipe(plugins.ngAnnotate())
       .pipe(plugins.uglify())
+      .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
       .pipe(plugins.rev())
       .pipe(gulp.dest(destination))
       .pipe(plugins.rev.manifest({ path: 'manifests/scripts.json' }))
