@@ -52,6 +52,12 @@ Additionally, you can server under specific environment:
 $ kick server --production
 ```
 
+To display useful information about an application, such as its name, AngularJS version and included bower components:
+
+```sh
+$ kick about
+```
+
 ### Generators and destroyers
 
 Kick will generate angular entities for you.  Running ```destroy``` will do the opposite, deleting the generated files and folders.
