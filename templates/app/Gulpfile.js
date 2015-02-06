@@ -27,12 +27,7 @@ var sources = {
 };
 
 var ENV;
-var destination;
-var destinations = {
-  development: '.tmp',
-  test: '.test',
-  production: 'public'
-};
+var destination = '.tmp';
 
 var catchError = function (err) {
   plugins.util.beep();
@@ -40,20 +35,28 @@ var catchError = function (err) {
 };
 
 gulp.task('default', function () {
+  return runSequence('server');
+});
+
+gulp.task('server', function () {
   ENV = ENV || setENV['development'];
-  destination = destinations.development;
-  return runSequence('clean', 'dependencies', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'server');
+  return runSequence('clean', 'dependencies', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'serve');
 });
 
 gulp.task('server:tdd', function () {
   ENV = ENV || setENV['development'];
-  destination = destinations.development;
-  return runSequence('default', 'tdd');
+  return runSequence('serve', 'tdd');
+});
+
+gulp.task('test', function () {
+  ENV = ENV || setENV['development'];
+  destination = '.test';
+  return runSequence('clean', 'dependencies', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'testOnce', 'clean');
 });
 
 gulp.task('build', function () {
   ENV = ENV || setENV['production'];
-  destination = destinations.production;
+  destination = 'public';
   return runSequence('clean',
     'productionDependencies',
     'productionScripts',
@@ -75,7 +78,7 @@ gulp.task('setEnvironment', function () {
 });
 
 gulp.task('server:env', function () {
-  return runSequence('setEnvironment', 'default');
+  return runSequence('setEnvironment', 'server');
 });
 
 gulp.task('server:tdd:env', function () {
@@ -86,6 +89,10 @@ gulp.task('build:env', function () {
   return runSequence('productionSetEnvironment', 'build');
 });
 
+gulp.task('test:env', function () {
+  return runSequence('setEnvironment', 'test');
+});
+
 gulp.task('clean',          clean);
 gulp.task('fonts',          fonts);
 gulp.task('styles',         styles);
@@ -94,9 +101,9 @@ gulp.task('views',          views);
 gulp.task('images',         images);
 gulp.task('dependencies',   dependencies);
 gulp.task('scripts',        scripts);
-gulp.task('test',           test);
+gulp.task('testOnce',       testOnce);
 gulp.task('tdd',            tdd);
-gulp.task('server',         server);
+gulp.task('serve',         serve);
 gulp.task('reloadScripts',  reloadScripts);
 gulp.task('reloadViews',    reloadViews);
 gulp.task('reloadStyles',   reloadStyles);
@@ -192,9 +199,9 @@ function tdd (done) {
   }, done);
 }
 
-function test (done) {
+function testOnce (done) {
   return karma.start({
-    configFile: __dirname + '/karma.conf.js',
+    configFile: __dirname + '/karma-once.conf.js',
     singleRun: true
   }, done);
 }
@@ -203,7 +210,7 @@ function reloadScripts () { return runSequence('scripts', 'views', 'index'); }
 function reloadViews  ()  { return runSequence('views', 'index'); }
 function reloadStyles ()  { return runSequence('styles', 'index'); }
 
-function server () {
+function serve () {
   var proxyOptions;
   proxyOptions = url.parse(ENV['API_URL']);
   proxyOptions.route = '/api';
