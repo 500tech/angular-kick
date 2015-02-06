@@ -39,6 +39,7 @@ switch (command) {
     break;
   case 'server:tdd':
   case 's:tdd':
+  case 'ass':
     commands.serverTdd();
     break;
   case 'build':
