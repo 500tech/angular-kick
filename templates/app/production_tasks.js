@@ -122,7 +122,7 @@ module.exports = {
     return gulp.src(sources.appScript)
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(plugins.include({ extensions: ['js'] }))
-      .pipe(plugins.traceur())
+      .pipe(plugins.traceur({ modules: 'register' }))
       .pipe(plugins.ngAnnotate())
       .pipe(plugins.uglify())
       .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
