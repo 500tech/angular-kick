@@ -1,15 +1,13 @@
 describe('HomeController', function () {
-  var homeTrueController, createController;
+  var HomeController = null;
 
   beforeEach(module('%APP_NAME%.controllers'));
+
   beforeEach(inject(function ($controller) {
-    createController = function () {
-      homeTrueController = $controller('HomeController');
-    };
+      HomeController = $controller('HomeController');
   }));
 
-  it('should be true', function () {
-    createController();
-    expect(true).toBeTruthy();
+  it('should init a name property on the controller instance', function () {
+      expect(HomeController.name).toBe('HomeController');
   });
 });
