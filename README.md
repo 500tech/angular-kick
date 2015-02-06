@@ -46,6 +46,12 @@ $ kick server
 $ kick server:tdd
 ```
 
+Additionally, you can server under specific environment:
+
+```sh
+$ kick server --production
+```
+
 ### Generators and destroyers
 
 Kick will generate angular entities for you.  Running ```destroy``` will do the opposite, deleting the generated files and folders.
@@ -193,6 +199,12 @@ Or continously watch files and run test suit on every file change:
 $ kick server:tdd
 ```
 
+Additionally, you can run tests for specific environment:
+
+```sh
+$ kick test --production
+```
+
 
 ### Building for production
 
@@ -201,6 +213,12 @@ $ kick build
 ```
 
 When your application is ready for production, you run this command and all your files will be concatenated, minified and outputted into /public directory.
+
+Additionally, you can build application for specific environment:
+
+```sh
+$ kick build --development
+```
 
 ## License
 
