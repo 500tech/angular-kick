@@ -39,15 +39,15 @@
   "license": "MIT",
   "homepage": "http://angular-kick.com",
   "dependencies": {
-    "colors": "^1.0.3",
-    "change-case": "^2.2.0",
-    "replace": "^0.3.0",
-    "get-folder-size": "^0.1.1",
-    "readline-sync": "^0.5.0",
-    "fs-extra": "^0.15.0",
-    "ncp": "^1.0.1",
-    "progress": "^1.1.8",
-    "empty-dir": "^0.1.0"
+    "colors": "1.0.3",
+    "change-case": "2.2.0",
+    "replace": "0.3.0",
+    "get-folder-size": "0.1.1",
+    "readline-sync": "0.5.2",
+    "fs-extra": "0.16.3",
+    "ncp": "1.0.1",
+    "progress": "1.1.8",
+    "empty-dir": "0.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
