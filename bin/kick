@@ -18,6 +18,9 @@ switch (command) {
   case 'h':
     commands.help();
     break;
+  case 'about':
+    commands.about();
+    break;
   case 'new':
   case 'n':
     commands.new();
