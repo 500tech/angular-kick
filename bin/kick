@@ -2,17 +2,18 @@
 process.bin = process.title = 'kick';
 
 "use strict";
-var fs        = require('fs-extra');
-var colors    = require('colors');
-var logger    = require('../lib/logger');
-var commands  = require('../lib/commands/commands');
-var command   = process.argv[2];
-var ROOT      = __dirname + '/..';
+var fs          = require('fs-extra');
+var colors      = require('colors');
+var logger      = require('../lib/logger');
+var commands    = require('../lib/commands/commands');
+var command     = process.argv[2];
+var ROOT        = __dirname + '/..';
+var kickVersion = JSON.parse(fs.readFileSync(ROOT + '/package.json'))['version'];
 
 switch (command) {
   case '--version':
   case '-v':
-    console.log(JSON.parse(fs.readFileSync(ROOT + '/package.json'))['version']);
+    console.log(kickVersion);
     break;
   case 'help':
   case 'h':
@@ -50,11 +51,16 @@ switch (command) {
     commands.build();
     break;
   case 'test':
+  case 't':
     commands.test();
+    break;
+  case 'update':
+  case 'u':
+    commands.update();
     break;
   default:
     if (command) {
-      logger.warn("kick did't recognize the ".yellow + command.blue + ' command. Run '.yellow + 'kick help'.blue + ' to see all available commands'.yellow)
+      logger.warn("kick didn't recognize the ".yellow + command.blue + ' command. Run '.yellow + 'kick help'.blue + ' to see all available commands'.yellow)
     } else {
       logger.warn("You didn't specify any command");
     }

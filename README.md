@@ -226,6 +226,18 @@ Additionally, you can build application for specific environment:
 $ kick build --development
 ```
 
+### Updating angular-kick
+
+Checking for updates on each command slows down cli apps a lot. Hence, angular-kick won't check for updates automatically.
+You can check for a new version by running:
+
+```sh
+$ kick update
+```
+
+This will ask you if you want to update when there is a new version available.
+
+
 ## License
 
 MIT Licensed
