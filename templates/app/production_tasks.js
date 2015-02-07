@@ -105,6 +105,7 @@ module.exports = {
   images: function () {
     return gulp.src(sources.images, { base: sources.app })
       .pipe(plugins.plumber({ errorHandler: catchError }))
+      .pipe(plugins.imagemin({ progressive: true }))
       .pipe(gulp.dest(destination));
   },
 
