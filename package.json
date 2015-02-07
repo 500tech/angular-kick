@@ -49,8 +49,13 @@
     "progress": "1.1.8",
     "empty-dir": "0.1.0"
   },
+  "devDependencies": {
+    "karma": "0.12.31",
+    "karma-jasmine": "0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start"
   },
   "preferGlobal": true
 }
