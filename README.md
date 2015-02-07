@@ -160,7 +160,14 @@ This will generate a partial named _your_partial_name.html in the under specifie
 $ kick generate partial users/index/user-info
 ```
 
-If you don't specify a state name, the partial will be created in app/states/shared directory.
+By default, if you don't specify a state name, the partial will be created in app/layouts/shared directory.
+If you specify a state before partial name, the partial will be put inside that state folder.
+If you want to create partial inside subfolder in layouts, you are able to do that as well:
+
+```sh
+$ kick generate partial home/welcome_message
+$ kick generate partial layouts/helpers/user_info
+```
 
 Sometimes you want your partials to belong to controller. You can use the --controller option, which will generate a partial along with its controller and also a unit test for it:
 
@@ -232,6 +239,21 @@ Additionally, you can build application for specific environment:
 ```sh
 $ kick build --development
 ```
+
+
+### Layouts
+
+You often want to create different layouts for your application, for example not showing header and footer on 404 page.
+To simplify it, we have created a layouts system. Put your layouts inside layouts folder, and you can easily change them by calling
+
+```javascript
+Layout.setLayout('layoutName');
+```
+
+You can see example of doing that in app.js
+
+Be aware, that in order for layout system to work, both $state and Layout services should be injected to your application on run state.
+
 
 ### Updating angular-kick
 
