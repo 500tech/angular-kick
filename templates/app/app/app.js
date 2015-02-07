@@ -10,7 +10,7 @@ angular.module('%APP_NAME%', [
   '%APP_NAME%.templates'
 ]);
 
-angular.module('%APP_NAME%').run(function ($rootScope, $analytics, $log) {
+angular.module('%APP_NAME%').run(function ($rootScope, $analytics, $log, $state, Layout) {
   $rootScope.$log = $log;
 
   $rootScope.$on('$stateChangeSuccess', function (event, toState) {
@@ -18,6 +18,8 @@ angular.module('%APP_NAME%').run(function ($rootScope, $analytics, $log) {
     if (toState.name == 'home') { url = '/'; }
     $analytics.pageTrack(url);
   });
+
+  Layout.setLayout('application');
 });
 
 //= require_tree services
