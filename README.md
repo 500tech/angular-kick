@@ -129,6 +129,13 @@ This will generate a directive under app/directives folder. It will also generat
 $ kick generate directive pagination users/avatar
 ```
 
+By default, directives will be created without a template file. If you want to generate a directive with a template connected to it, you can pass --template parameter:
+
+```sh
+$ kick generate directive pagination --template
+```
+
+
 #### Filter
 
 ```sh
