@@ -20,6 +20,7 @@ switch (command) {
     commands.help();
     break;
   case 'about':
+  case 'a':
     commands.about();
     break;
   case 'new':
