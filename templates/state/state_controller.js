@@ -1,7 +1,8 @@
 export class %STATE_CONTROLLER_NAME%Controller {
   constructor () {
-    this.stateUrl = '/%STATE_NAME%';
-    this.controllerName = '%STATE_CONTROLLER_NAME%Controller'
+    var %STATE_CONTROLLER_NAME% = this;
+    %STATE_CONTROLLER_NAME%.stateUrl = '/%STATE_NAME%';
+    %STATE_CONTROLLER_NAME%.controllerName = '%STATE_CONTROLLER_NAME%Controller'
   }
 }
 

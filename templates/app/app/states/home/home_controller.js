@@ -1,8 +1,9 @@
 export class HomeController {
 
   constructor () {
-    this.stateUrl = '/';
-    this.controllerName = 'HomeController';
+    var Home = this;
+    Home.stateUrl = '/';
+    Home.controllerName = 'HomeController';
   }
 
 }

@@ -1,6 +1,7 @@
 export class %CONTROLLER_NAME% {
   constructor () {
-    this.controllerName = '%CONTROLLER_NAME%'
+    var %CONTROLLER_VARIABLE% = this;
+    %CONTROLLER_VARIABLE%.controllerName = '%CONTROLLER_NAME%'
   }
 }
 
