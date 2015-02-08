@@ -3,6 +3,8 @@
 //= require modules.js
 
 angular.module('%APP_NAME%', [
+  'ui.router',
+
   '%APP_NAME%.config',
   '%APP_NAME%.services',
   '%APP_NAME%.directives',
@@ -10,12 +12,8 @@ angular.module('%APP_NAME%', [
   '%APP_NAME%.templates'
 ]);
 
-angular.module('%APP_NAME%').run(function ($rootScope, $analytics) {
-  $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-    var url = '/' + toState.name.replace('.', '/').replace('static/', '');
-    if (toState.name == 'home') { url = '/'; }
-    $analytics.pageTrack(url);
-  });
+angular.module('%APP_NAME%').run(function ($rootScope) {
+
 });
 
 //= require_tree services
