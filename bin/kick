@@ -8,7 +8,7 @@ var logger      = require('../lib/logger');
 var commands    = require('../lib/commands/commands');
 var command     = process.argv[2];
 var ROOT        = __dirname + '/..';
-var kickVersion = JSON.parse(fs.readFileSync(ROOT + '/package.json'))['version'];
+var kickVersion = fs.readJSONSync(ROOT + '/package.json')['version'];
 
 switch (command) {
   case '--version':
@@ -20,6 +20,7 @@ switch (command) {
     commands.help();
     break;
   case 'about':
+  case 'a':
     commands.about();
     break;
   case 'new':
