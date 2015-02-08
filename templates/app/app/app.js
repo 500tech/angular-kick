@@ -10,9 +10,7 @@ angular.module('%APP_NAME%', [
   '%APP_NAME%.templates'
 ]);
 
-angular.module('%APP_NAME%').run(function ($rootScope, $analytics, $log) {
-  $rootScope.$log = $log;
-
+angular.module('%APP_NAME%').run(function ($rootScope, $analytics) {
   $rootScope.$on('$stateChangeSuccess', function (event, toState) {
     var url = '/' + toState.name.replace('.', '/').replace('static/', '');
     if (toState.name == 'home') { url = '/'; }
