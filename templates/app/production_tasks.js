@@ -29,7 +29,7 @@ var catchError = function (err) {
 
 module.exports = {
   setEnvironment: function () {
-    var environment = process.argv[3].replace(/^--/, '');
+    var environment = process.argv[3];
     if (setENV[environment]) {
       console.log('Setting ENV to ' + environment);
       ENV = setENV[environment];
