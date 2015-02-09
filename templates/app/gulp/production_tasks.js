@@ -4,23 +4,13 @@ var gulp            = require('gulp');
 var gulpLoadPlugins = require('gulp-load-plugins');
 var plugins         = gulpLoadPlugins();
 var fs              = require('fs-extra');
-var setENV          = JSON.parse(fs.readFileSync(__dirname + '/environments.json', "utf8"));
 
-var sources = {
-  app:          'app',
-  dependencies: 'dependencies.js',
-  appScript:    'app/app.js',
-  scripts:      'app/**/*.js',
-  styles:       'app/assets/stylesheets/**/*.scss',
-  mainStyle:    'app/assets/stylesheets/application.scss',
-  images:       'app/assets/images/**',
-  fonts:        'app/assets/fonts/**',
-  views:        ['app/**/*.html', '!app/app.html'],
-  index:        'app/app.html'
-};
+var common      = require('./common');
+var sources     = common.sources;
+var setENV      = common.setENV;
+var destination = common.destinations.production;
 
 var ENV = setENV['production'];
-var destination = 'public';
 
 var catchError = function (err) {
   plugins.util.beep();
@@ -39,13 +29,13 @@ module.exports = {
   },
 
   fonts: function () {
-    return gulp.src(sources.fonts, { base: sources.app })
+    return gulp.src(sources.fonts, { base: sources.base })
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(gulp.dest(destination));
   },
 
   styles: function () {
-    return gulp.src(sources.mainStyle, { base: sources.app })
+    return gulp.src(sources.mainStyle, { base: sources.base })
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(plugins.sass())
       .pipe(plugins.autoprefixer({ browsers: ['last 2 versions'] }))
@@ -65,7 +55,7 @@ module.exports = {
     return gulp.src(sources.index)
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(plugins.replace('app.js', manifest['app.js']))
-      .pipe(plugins.replace('dependencies.js', configManifest['dependencies.js']))
+      .pipe(plugins.replace('vendor.js', configManifest['vendor.js']))
       .pipe(plugins.replace('templates.js', templateManifest['templates.js']))
       .pipe(plugins.replace('application.css', applicationSCSS))
       .pipe(plugins.minifyHtml({
@@ -79,8 +69,8 @@ module.exports = {
   },
 
   views: function () {
-    var appName = JSON.parse(fs.readFileSync(__dirname + '/package.json', "utf8"))['name'];
-    return gulp.src(sources.views, { base: sources.app })
+    var appName = JSON.parse(fs.readFileSync(__dirname + '/../package.json', "utf8"))['name'];
+    return gulp.src(sources.views, { base: sources.base })
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(plugins.minifyHtml({
         empty: true,
@@ -103,15 +93,14 @@ module.exports = {
   },
 
   images: function () {
-    return gulp.src(sources.images, { base: sources.app })
+    return gulp.src(sources.images, { base: sources.base })
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(plugins.imagemin({ progressive: true }))
       .pipe(gulp.dest(destination));
   },
 
-  dependencies: function () {
-    return gulp.src(sources.dependencies)
-      .pipe(plugins.plumber({ errorHandler: catchError }))
+  vendor: function () {
+    return gulp.src(sources.vendor)
       .pipe(plugins.include({ extensions: ['js'] }))
       .pipe(plugins.rev())
       .pipe(gulp.dest(destination))
@@ -120,7 +109,7 @@ module.exports = {
   },
 
   scripts: function () {
-    return gulp.src(sources.appScript)
+    return gulp.src(sources.app)
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(plugins.include({ extensions: ['js'] }))
       .pipe(plugins.traceur({ modules: 'register' }))

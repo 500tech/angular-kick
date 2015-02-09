@@ -3,8 +3,7 @@ module.exports = function(config) {
     basePath: '.',
     frameworks: ['jasmine'],
     files: [
-      'bower_components/traceur-runtime/traceur-runtime.js',
-      '.tmp/dependencies.js',
+      '.tmp/vendor.js',
       '.tmp/templates.js',
       'bower_components/angular-mocks/angular-mocks.js',
       '.tmp/modules.js',
