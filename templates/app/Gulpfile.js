@@ -180,7 +180,7 @@ function vendorConcat () {
 }
 
 function scripts () {
-  return gulp.src([sources.scripts, sources.app])
+  return gulp.src(sources.scripts)
     .pipe(plugins.changed(destination, {
       hasChanged: plugins.changed.compareSha1Digest
     }))

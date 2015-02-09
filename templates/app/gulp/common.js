@@ -2,7 +2,7 @@
 
 var fs              = require('fs-extra');
 
-var strings = fs.readFileSync(__dirname + '/../vendor.js').toString().match(/\/\/=.*require\s(.*)\n*/g);
+var strings = fs.readFileSync(__dirname + '/../app/vendor.js').toString().match(/\/\/=.*require\s(.*)\n*/g);
 var vendorFilesArray = [];
 strings.forEach(function (string) {
   vendorFilesArray.push(string.match(/\/\/=.*require\s(.*)/)[1]);
@@ -11,7 +11,7 @@ strings.forEach(function (string) {
 module.exports = {
   sources: {
     base:         'app',
-    vendor:       'vendor.js',
+    vendor:       'app/vendor.js',
     vendorFiles:  vendorFilesArray,
 
     app:          'app/app.js',
@@ -22,7 +22,7 @@ module.exports = {
     services:     'app/services/**/*.js',
     controllers:  'app/states/**/*.js',
 
-    scripts:      'app/**/*.js',
+    scripts:      ['app/**/*.js', '!app/vendor.js'],
     styles:       'app/assets/stylesheets/**/*.scss',
     mainStyle:    'app/assets/stylesheets/application.scss',
 
