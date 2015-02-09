@@ -60,7 +60,7 @@ $ kick about
 
 ### Documentation
 
-Check out our [documentation](http://angular-kick.com).
+Check out our [documentation](http://www.angular-kick.com).
 
 You can find there documentation on using other angular-kick features as generators, destroyers, running local server, testing and building for production.
 
