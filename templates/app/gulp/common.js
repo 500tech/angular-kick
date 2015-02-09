@@ -5,7 +5,7 @@ var fs              = require('fs-extra');
 var strings = fs.readFileSync(__dirname + '/../app/vendor.js').toString().match(/\/\/=.*require\s(.*)\n*/g);
 var vendorFilesArray = [];
 strings.forEach(function (string) {
-  vendorFilesArray.push(string.match(/\/\/=.*require\s(.*)/)[1]);
+  vendorFilesArray.push(string.match(/\/\/=.*require\s(.*)/)[1].replace('../', ''));
 });
 
 module.exports = {
