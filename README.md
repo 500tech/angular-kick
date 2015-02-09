@@ -46,13 +46,13 @@ $ kick server
 $ kick server:tdd
 ```
 
-Additionally, you can server under specific environment:
+Additionally, you can run the server under a specific environment:
 
 ```sh
 $ kick server --production
 ```
 
-To display useful information about an application, such as its name, AngularJS version and included bower components:
+To display useful information about the application, such as its name, AngularJS version and included bower components:
 
 ```sh
 $ kick about
