@@ -49,6 +49,7 @@ module.exports = {
         hasChanged: plugins.changed.compareSha1Digest
       }))
       .pipe(plugins.plumber({ errorHandler: catchError }))
+      .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
       .pipe(plugins.sourcemaps.init())
       .pipe(plugins.sass())
       .pipe(plugins.autoprefixer({ browsers: ['last 2 versions'] }))
@@ -80,6 +81,7 @@ module.exports = {
         hasChanged: plugins.changed.compareSha1Digest
       }))
       .pipe(plugins.plumber({ errorHandler: catchError }))
+      .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
       .pipe(gulp.dest(destination))
   },
 

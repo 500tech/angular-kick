@@ -42,6 +42,7 @@ module.exports = {
   styles: function () {
     return gulp.src(sources.mainStyle, { base: sources.base })
       .pipe(plugins.plumber({ errorHandler: catchError }))
+      .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
       .pipe(plugins.sass())
       .pipe(plugins.autoprefixer({ browsers: ['last 2 versions'] }))
       .pipe(plugins.cssmin())
@@ -77,6 +78,7 @@ module.exports = {
     var appName = JSON.parse(fs.readFileSync(__dirname + '/../package.json', "utf8"))['name'];
     return gulp.src(sources.views, { base: sources.base })
       .pipe(plugins.plumber({ errorHandler: catchError }))
+      .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
       .pipe(plugins.minifyHtml({
         empty: true,
         comments: true,
