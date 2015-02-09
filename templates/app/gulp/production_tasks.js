@@ -1,9 +1,9 @@
 "use strict";
 
-var gulp            = require('gulp');
-var gulpLoadPlugins = require('gulp-load-plugins');
-var plugins         = gulpLoadPlugins();
-var fs              = require('fs-extra');
+var gulp    = require('gulp');
+var plugins = require('gulp-load-plugins')();
+var fs      = require('fs-extra');
+var run     = require('run-sequence');
 
 var common      = require('./common');
 var sources     = common.sources;
@@ -18,6 +18,11 @@ var catchError = function (err) {
 };
 
 module.exports = {
+  clean: function () {
+    return gulp.src(destination, { read: false })
+      .pipe(plugins.rimraf());
+  },
+
   setEnvironment: function () {
     var environment = process.argv[3].replace(/^--/, '');
     if (setENV[environment]) {
@@ -120,5 +125,22 @@ module.exports = {
       .pipe(gulp.dest(destination))
       .pipe(plugins.rev.manifest({ path: 'manifests/scripts.json' }))
       .pipe(gulp.dest(destination));
+  },
+
+  build: function () {
+    return run(
+      'productionClean',
+      'productionVendor',
+      'productionScripts',
+      'productionStyles',
+      'productionImages',
+      'productionViews',
+      'productionIndex',
+      'productionFonts'
+    );
+  },
+
+  buildEnv: function () {
+    return run('productionSetEnvironment', 'build');
   }
 };
