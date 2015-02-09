@@ -58,7 +58,7 @@ gulp.task('build', function () {
 });
 
 gulp.task('setEnvironment', function () {
-  var environment = process.argv[3];
+  var environment = process.argv[3].replace(/^--/, '');
   if (setENV[environment]) {
     console.log('Setting ENV to ' + environment);
     ENV = setENV[environment];
