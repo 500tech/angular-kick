@@ -94,7 +94,7 @@ gulp.task('vendorConcat',   vendorConcat);
 gulp.task('scripts',        scripts);
 gulp.task('testOnce',       testOnce);
 gulp.task('tdd',            tdd);
-gulp.task('serve',         serve);
+gulp.task('serve',          serve);
 gulp.task('reloadScripts',  reloadScripts);
 gulp.task('reloadViews',    reloadViews);
 gulp.task('reloadStyles',   reloadStyles);
