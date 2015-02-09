@@ -2,6 +2,7 @@ describe('ifEnv Directive', function () {
   var element, $scope, createDirective;
 
   beforeEach(module('%APP_NAME%.config', '%APP_NAME%.directives'));
+
   beforeEach(inject(function ($rootScope, $compile) {
     createDirective = function (scopeAttrs) {
       $scope = angular.extend($rootScope.$new(), scopeAttrs);
