@@ -46,6 +46,7 @@
     "gulp-html2js": "0.2.0",
     "gulp-traceur": "0.16.0",
     "gulp-inject": "1.1.1",
+    "stream-series": "0.1.1",
     "karma": "0.12.31",
     "karma-jasmine": "0.3.5",
     "karma-chrome-launcher": "0.1.7",

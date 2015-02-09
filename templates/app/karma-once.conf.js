@@ -3,10 +3,9 @@ module.exports = function(config) {
     basePath: '.',
     frameworks: ['jasmine'],
     files: [
-      'components/traceur-runtime/traceur-runtime.js',
-      '.test/dependencies.js',
+      '.test/vendor.js',
       '.test/templates.js',
-      'components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-mocks/angular-mocks.js',
       '.test/modules.js',
       '.test/app.js',
       '.test/services/**/*.js',
@@ -25,7 +24,7 @@ module.exports = function(config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
+    autoWatch: false,
     browsers: ['Chrome'],
     singleRun: true,
     htmlReporter: {

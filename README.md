@@ -46,213 +46,23 @@ $ kick server
 $ kick server:tdd
 ```
 
-Additionally, you can server under specific environment:
+Additionally, you can run the server under a specific environment:
 
 ```sh
 $ kick server --production
 ```
 
-To display useful information about an application, such as its name, AngularJS version and included bower components:
+To display useful information about the application, such as its name, AngularJS version and included bower components:
 
 ```sh
 $ kick about
 ```
 
-### Generators and destroyers
+### Documentation
 
-Kick will generate angular entities for you.  Running ```destroy``` will do the opposite, deleting the generated files and folders.
+Check out our [documentation](http://www.angular-kick.com).
 
-```sh
-$ kick generate [type] [names...] <options>
-$ kick destroy [type] [names...]
-```
-
-#### State
-
-```sh
-$ kick generate state [name] [substates...] <options>
-```
-
-This will generate a view and a controller for the state under the app/states folder. Each state's new root state will create a route file in app/routes folder, nested states will be included in that file. This will also generate unit tests for each controller and a stylesheet for each root state.
-
-To create nested state, just pass slashes between names, for example:
-
-```sh
-$ kick generate state orders/new
-```
-
-You can pass as many substates as you like, for example:
-
-```sh
-$ kick generate state emails inbox sent archive
-```
-
-will create 4 states: 'emails', 'emails.inbox', 'emails.sent' and 'emails.archive'.
-All of them will appear in app/routes/emails.js file.
-
-##### CRUD states
-
-When you pass crud as a substate, it will automatically create 4 substates:
-
-```sh
-$ kick generate state users crud
-```
-
-generates 'users', 'users.list', 'users.new', 'users.show', 'users.edit'
-
-Available options:
-
-* --abstract (-a)
-* --no-controller (-nc)
-
-#### Service
-
-```sh
-$ kick generate service [names...]
-```
-
-This will generate services under app/services directory and unit tests for each of them. You can pass as many names as you like. You can also generate services in subdirectories:
-
-```sh
-$ kick generate service auth models/user models/order
-```
-
-#### Directive
-
-```sh
-$ kick generate directive [names...]
-```
-
-This will generate a directive under app/directives folder. It will also generate a unit test. You can pass as many names as you like. You can also generate directives in subdirectories:
-
-```sh
-$ kick generate directive pagination users/avatar
-```
-
-By default, directives will be created without a template file. If you want to generate a directive with a template connected to it, you can pass --template parameter:
-
-```sh
-$ kick generate directive pagination --template
-```
-
-
-#### Filter
-
-```sh
-$ kick generate filter [names...]
-```
-
-This will generate filters under app/filters directory and unit tests for each of them. You can pass as many names as you like. You can also generate filters in subdirectories:
-
-```sh
-$ kick generate filter uppercase inputs/url
-```
-
-#### Partial
-
-```sh
-$ kick generate partial [names...] <options>
-```
-
-This will generate a partial named _your_partial_name.html in the under specified state:
-
-```sh
-$ kick generate partial users/index/user-info
-```
-
-By default, if you don't specify a state name, the partial will be created in app/layouts/shared directory.
-If you specify a state before partial name, the partial will be put inside that state folder.
-If you want to create partial inside subfolder in layouts, you are able to do that as well:
-
-```sh
-$ kick generate partial home/welcome_message
-$ kick generate partial layouts/helpers/user_info
-```
-
-Sometimes you want your partials to belong to controller. You can use the --controller option, which will generate a partial along with its controller and also a unit test for it:
-
-```sh
-$ kick generate partial top_bar --controller
-```
-
-Available options:
-
-* --controller (-c)
-
-#### Config
-
-```sh
-$ kick generate config [names...]
-```
-
-This will generate config files under app/configs directory. You can pass as many names as you like. You can also generate config files in subdirectories:
-
-```sh
-$ kick generate config interceptors api/endpoints
-```
-
-#### Style
-
-```sh
-$ kick generate style [names...]
-```
-
-This will generate stylesheets under app/assets/stylesheets directory and automatically include them in application.scss file. Remember that a new stylesheet is automatically generated for each root state. You can pass as many names as you like. You can also generate stylesheets in subdirectories:
-
-```sh
-$ kick generate style top-bar base/buttons base/forms
-```
-
-### Testing
-
-The tests files are located in /tests directory. When you use kick generators, unit tests are automatically created for you in that directory. The tests run with Karma in Chrome browser.
-
-You can run test suit once:
-
-```sh
-$ kick test
-```
-
-Or continously watch files and run test suit on every file change:
-
-```sh
-$ kick server:tdd
-```
-
-Additionally, you can run tests for specific environment:
-
-```sh
-$ kick test --production
-```
-
-
-### Building for production
-
-```sh
-$ kick build
-```
-
-When your application is ready for production, you run this command and all your files will be concatenated, minified and outputted into /public directory.
-
-Additionally, you can build application for specific environment:
-
-```sh
-$ kick build --development
-```
-
-
-### Layouts
-
-You often want to create different layouts for your application, for example not showing header and footer on 404 page.
-To simplify it, we have created a layouts system. Put your layouts inside layouts folder, and you can easily change them by calling
-
-```javascript
-Layout.setLayout('layoutName');
-```
-
-You can see example of doing that in app.js
-
-Be aware, that in order for layout system to work, both $state and Layout services should be injected to your application on run state.
+You can find there documentation on using other angular-kick features as generators, destroyers, running local server, testing and building for production.
 
 
 ### Updating angular-kick

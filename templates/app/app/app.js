@@ -3,8 +3,6 @@
 //= require modules.js
 
 angular.module('%APP_NAME%', [
-  'ui.router',
-
   '%APP_NAME%.config',
   '%APP_NAME%.services',
   '%APP_NAME%.directives',

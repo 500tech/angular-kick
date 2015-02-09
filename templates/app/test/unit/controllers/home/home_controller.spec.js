@@ -1,15 +1,17 @@
 describe('HomeController', function () {
-  var homeTrueController, createController;
+  var homeController, createController;
 
   beforeEach(module('%APP_NAME%.controllers'));
+
   beforeEach(inject(function ($controller) {
     createController = function () {
-      homeTrueController = $controller('HomeController');
+      homeController = $controller('HomeController');
     };
   }));
 
+  beforeEach(createController);
+
   it('should be true', function () {
-    createController();
-    expect(true).toBeTruthy();
+    expect(homeController.controllerName).toBe('HomeController');
   });
 });
