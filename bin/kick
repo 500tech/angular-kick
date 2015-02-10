@@ -16,7 +16,9 @@ switch (command) {
     console.log(kickVersion);
     break;
   case 'help':
+  case '--help':
   case 'h':
+  case '-h':
     commands.help();
     break;
   case 'about':
