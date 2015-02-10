@@ -9,7 +9,9 @@ describe('HomeController', function () {
     };
   }));
 
-  beforeEach(createController);
+  beforeEach(function () {
+    createController()
+  });
 
   it('should be true', function () {
     expect(homeController.controllerName).toBe('HomeController');

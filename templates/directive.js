@@ -1,4 +1,4 @@
-export class %DIRECTIVE_NAME%Controller {
+class %DIRECTIVE_NAME%Controller {
   constructor($element) {
     console.log($element);
   }

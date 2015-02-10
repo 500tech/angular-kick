@@ -1,4 +1,4 @@
-export class ifEnvController {
+class ifEnvController {
   constructor(ENV, $element, $attrs) {
     if (ENV !== $attrs.ifEnv) {
       $element.remove();

@@ -9,7 +9,9 @@ describe('%CONTROLLER_NAME%', function () {
     };
   }));
 
-  beforeEach(createController);
+  beforeEach(function () {
+    createController()
+  });
 
   it('should be true', function () {
     expect(%CONTROLLER_VAR_NAME%.controllerName).toBe('%CONTROLLER_NAME%');

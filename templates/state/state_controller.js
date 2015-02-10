@@ -1,4 +1,4 @@
-export class %STATE_CONTROLLER_NAME%Controller {
+class %STATE_CONTROLLER_NAME%Controller {
   constructor () {
     var %STATE_CONTROLLER_NAME% = this;
     %STATE_CONTROLLER_NAME%.stateUrl = '/%STATE_NAME%';

@@ -1,4 +1,4 @@
-export class Layout {
+class Layout {
   constructor ($rootScope) {
     this.$rootScope = $rootScope;
   }

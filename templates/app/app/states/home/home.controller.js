@@ -1,4 +1,4 @@
-export class HomeController {
+class HomeController {
 
   constructor () {
     var Home = this;
