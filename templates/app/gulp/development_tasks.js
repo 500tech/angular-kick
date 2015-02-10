@@ -39,6 +39,9 @@ module.exports = {
 
   fonts: function () {
     return gulp.src(sources.fonts, { base: sources.base })
+      .pipe(plugins.changed(destination, {
+        hasChanged: plugins.changed.compareSha1Digest
+      }))
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(gulp.dest(destination));
   },
@@ -87,6 +90,9 @@ module.exports = {
 
   images: function () {
     return gulp.src(sources.images, { base: sources.base })
+      .pipe(plugins.changed(destination, {
+        hasChanged: plugins.changed.compareSha1Digest
+      }))
       .pipe(plugins.plumber({ errorHandler: catchError }))
       .pipe(gulp.dest(destination));
   },
@@ -178,5 +184,7 @@ module.exports = {
     gulp.watch(sources.views,   ['reloadViews',   browserSync.reload]);
     gulp.watch(sources.index,   ['reloadViews',   browserSync.reload]);
     gulp.watch(sources.styles,  ['reloadStyles',  browserSync.reload]);
+    gulp.watch(sources.images,  ['images',        browserSync.reload]);
+    gulp.watch(sources.fonts,   ['fonts',         browserSync.reload]);
   }
 };
