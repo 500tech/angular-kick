@@ -1,5 +1,5 @@
 /.idea
 /.tmp
-/components
+/bower_components
 /node_modules
 /.sass-cache
