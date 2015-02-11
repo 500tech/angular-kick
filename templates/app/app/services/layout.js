@@ -2,10 +2,11 @@ class Layout {
   constructor ($rootScope, $state) {
     let self = this;
 
-    this.current = 'application';
+    self.current = 'application';
+    self.$state = $state;
 
     $rootScope.currentLayout = function() {
-      return self.getLayout($state);
+      return self.getLayout();
     }
   }
 
@@ -13,12 +14,12 @@ class Layout {
     this.current = name;
   }
 
-  getLayout ($state) {
+  getLayout () {
     let layout = this.current;
 
     // If layout is defined in the state's data - use that instead
-    if ($state.current.data && $state.current.data.layout) {
-      layout = $state.current.data.layout;
+    if (this.$state.current.data && this.$state.current.data.layout) {
+      layout = this.$state.current.data.layout;
     }
 
     return 'layouts/' + layout + '.html';
