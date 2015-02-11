@@ -10,6 +10,8 @@ strings.forEach(function (string) {
 
 module.exports = {
   sources: {
+    error:         __dirname + '/error.html',
+
     base:         'app',
     vendor:       'app/vendor.js',
     vendorFiles:  vendorFilesArray,

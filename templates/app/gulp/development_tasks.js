@@ -15,10 +15,25 @@ var sources     = common.sources;
 var setENV      = common.setENV;
 var destination = common.destinations.development;
 var ENV = ENV || setENV['development'];
+var errorRaised = false;
 
 var catchError = function (err) {
   plugins.util.beep();
-  return console.log(err);
+  console.log(err);
+  errorRaised = true;
+
+  return gulp.src(sources.index)
+    .pipe(plugins.inject(gulp.src(sources.error), {
+      starttag: '<body>',
+      endtag: '</body>',
+      transform: function (filename, file) {
+        return file.contents.toString('utf8')
+          .replace('%%MESSAGE%%', err.message)
+          .replace('%%FILENAME%%', err.fileName)
+          .replace('%%PLUGIN%%', err.plugin);
+      }
+    }))
+    .pipe(gulp.dest(destination));
 };
 
 module.exports = {
@@ -61,6 +76,11 @@ module.exports = {
   },
 
   index: function () {
+    if (errorRaised) {
+      errorRaised = false;
+      return;
+    }
+
     var app         = gulp.src(sources.app, { read: false });
     var modules     = gulp.src(sources.modules, { read: false });
     var configs     = gulp.src(sources.configs, { read: false });
