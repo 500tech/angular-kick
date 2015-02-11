@@ -46,8 +46,7 @@
     "readline-sync": "0.5.2",
     "fs-extra": "0.16.3",
     "ncp": "1.0.1",
-    "progress": "1.1.8",
-    "empty-dir": "0.1.0"
+    "progress": "1.1.8"
   },
   "devDependencies": {
     "jasmine-node": "1.14.5"
