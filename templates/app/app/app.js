@@ -10,8 +10,7 @@ angular.module('%APP_NAME%', [
   '%APP_NAME%.templates'
 ]);
 
-angular.module('%APP_NAME%').run(function ($rootScope, $state, Layout) {
-  Layout.setLayout('application');
+angular.module('%APP_NAME%').run(function ($rootScope, $state) {
 });
 
 //= require_tree services
