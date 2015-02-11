@@ -1,6 +1,7 @@
 # Is Upper Case
 
 [![NPM version][npm-image]][npm-url]
+[![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
@@ -28,6 +29,8 @@ MIT
 
 [npm-image]: https://img.shields.io/npm/v/is-upper-case.svg?style=flat
 [npm-url]: https://npmjs.org/package/is-upper-case
+[downloads-image]: https://img.shields.io/npm/dm/is-upper-case.svg?style=flat
+[downloads-url]: https://npmjs.org/package/is-upper-case
 [travis-image]: https://img.shields.io/travis/blakeembrey/is-upper-case.svg?style=flat
 [travis-url]: https://travis-ci.org/blakeembrey/is-upper-case
 [coveralls-image]: https://img.shields.io/coveralls/blakeembrey/is-upper-case.svg?style=flat

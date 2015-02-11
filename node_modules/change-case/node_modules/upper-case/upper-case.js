@@ -5,7 +5,7 @@
  *
  * @type {Object}
  */
-var languages = {
+var LANGUAGES = {
   tr: {
     regexp: /[\u0069]/g,
     map: {
@@ -29,7 +29,7 @@ var languages = {
       '\u0069\u0307\u0303': '\u0128'
     }
   }
-};
+}
 
 /**
  * Upper case a string.
@@ -38,13 +38,13 @@ var languages = {
  * @return {String}
  */
 module.exports = function (str, locale) {
-  var lang = languages[locale];
+  var lang = LANGUAGES[locale]
 
-  str = str == null ? '' : String(str);
+  str = str == null ? '' : String(str)
 
   if (lang) {
-    str = str.replace(lang.regexp, function (m) { return lang.map[m]; });
+    str = str.replace(lang.regexp, function (m) { return lang.map[m] })
   }
 
-  return str.toUpperCase();
-};
+  return str.toUpperCase()
+}

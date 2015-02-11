@@ -1,6 +1,7 @@
 # Dot Case
 
 [![NPM version][npm-image]][npm-url]
+[![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
@@ -32,6 +33,8 @@ MIT
 
 [npm-image]: https://img.shields.io/npm/v/dot-case.svg?style=flat
 [npm-url]: https://npmjs.org/package/dot-case
+[downloads-image]: https://img.shields.io/npm/dm/dot-case.svg?style=flat
+[downloads-url]: https://npmjs.org/package/dot-case
 [travis-image]: https://img.shields.io/travis/blakeembrey/dot-case.svg?style=flat
 [travis-url]: https://travis-ci.org/blakeembrey/dot-case
 [coveralls-image]: https://img.shields.io/coveralls/blakeembrey/dot-case.svg?style=flat
