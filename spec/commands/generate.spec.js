@@ -79,7 +79,7 @@ describe('$ kick generate', function () {
     child_process.execSync('kick generate partial example_2 --controller');
     var controller = fs.readFileSync('app/layouts/shared/_example_2.controller.js').toString();
 
-    expect(controller).toMatch("class NewsController");
+    expect(controller).toMatch("class Example2Controller");
   });
 
   it('should generate service', function () {
