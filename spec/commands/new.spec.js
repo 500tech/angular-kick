@@ -1,5 +1,18 @@
+var fs            = require('fs-extra');
+var child_process = require('child_process');
+
 describe('$ kick new', function () {
-  it('should be true', function () {
-    expect(true).toBeTruthy();
+  it('should create new application without setup', function () {
+    fs.deleteSync('npm_test');
+    child_process.execSync('kick new npmTest -ns');
+    process.chdir('npm_test');
+    var file = fs.readFileSync('package.json').toString();
+
+    expect(file).toMatch('"name": "NpmTest"');
+  });
+
+  it('TEARDOWN', function () {
+    process.chdir('..');
+    fs.deleteSync('npm_test');
   });
 });
