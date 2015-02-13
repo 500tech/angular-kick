@@ -1,5 +1,30 @@
+var fs            = require('fs-extra');
+var child_process = require('child_process');
+
 describe('$ kick server', function () {
-  it('should be true', function () {
-    expect(true).toBeTruthy();
+
+  it('SETUP', function () {
+    fs.deleteSync('npm_test');
+    child_process.execSync('kick new npmTest -ns');
+    process.chdir('npm_test');
+  });
+
+  it('should not run without packages', function () {
+    var output = child_process.execSync('kick server').toString();
+
+    expect(output).toMatch("Can't start server with missing packages");
+  });
+
+  it('should run gulp server task', function () {
+    fs.mkdir('node_modules');
+    fs.mkdir('bower_components');
+    var output = child_process.execSync('kick server').toString();
+
+    expect(output).toMatch("Running browserSync server");
+  });
+
+  it('TEARDOWN', function () {
+    process.chdir('..');
+    fs.deleteSync('npm_test');
   });
 });
