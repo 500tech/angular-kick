@@ -1,11 +1,8 @@
-describe('$ kick unknown', function () {
-  it('should warn about unrecognized command', function (done) {
-    var spawn = require('child_process').spawn;
-    var process = spawn('kick', ['unknown']);
+var child_process = require('child_process');
 
-    process.stdout.on('data', function (output) {
-      expect(output.toString()).toMatch("kick didn't recognize");
-      done();
-    });
+describe('$ kick unknown', function () {
+  it('should warn about unrecognized command', function () {
+    var process = child_process.execSync('kick unknown');
+    expect(process).toMatch("kick didn't recognize");
   });
 });
