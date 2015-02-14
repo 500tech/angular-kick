@@ -17,8 +17,8 @@ describe('$ kick server', function () {
   });
 
   it('should run gulp server task', function () {
-    fs.mkdir('node_modules');
-    fs.mkdir('bower_components');
+    fs.ensureDirSync('node_modules');
+    fs.ensureDirSync('bower_components');
     var output = child_process.execSync(kick + 'server').toString();
 
     expect(output).toMatch("Running browserSync server");
