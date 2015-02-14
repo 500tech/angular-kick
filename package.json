@@ -20,6 +20,9 @@
   "bin": {
     "kick": "./bin/kick"
   },
+  "engines": {
+    "node": ">=0.12.0"
+  },
   "repository": {
     "type": "git",
     "url": "http://github.com/500tech/angular-kick.git"
@@ -52,7 +55,7 @@
     "jasmine-node": "1.14.5"
   },
   "scripts": {
-    "test": "jasmine-node spec"
+    "test": "jasmine-node spec --captureExceptions"
   },
   "preferGlobal": true
 }
