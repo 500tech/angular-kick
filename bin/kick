@@ -38,6 +38,7 @@ switch (command) {
     commands.destroy();
     break;
   case 'setup':
+  case 'set':
     commands.setup();
     break;
   case 'server':
