@@ -176,7 +176,7 @@ function scripts() {
 
 function test() {
   destination = common.destinations.test;
-  return run('clean', 'vendorConcat', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'testOnce', 'clean');
+  return run('clean', ['vendorConcat', 'scripts', 'styles', 'images', 'views', 'fonts'], 'index', 'testOnce', 'clean');
 }
 
 function testEnv() {
@@ -184,7 +184,7 @@ function testEnv() {
 }
 
 function server() {
-  return run('clean', 'vendorConcat', 'vendor', 'scripts', 'styles', 'images', 'views', 'index', 'fonts', 'serve');
+  return run('clean', ['vendorConcat', 'vendor', 'scripts', 'styles', 'images', 'views', 'fonts'], 'index', 'serve');
 }
 
 function serverTdd() {
