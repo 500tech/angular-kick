@@ -10,7 +10,15 @@ describe('$ kick build', function () {
     process.chdir('npm_test');
   });
 
+  it('should not run without packages', function () {
+    var output = child_process.execSync(kick + 'build').toString();
+
+    expect(output).toMatch("Can't start server with missing packages");
+  });
+
   it('should run gulp build task', function () {
+    fs.ensureDirSync('node_modules');
+    fs.ensureDirSync('bower_components');
     var output = child_process.execSync(kick + 'build').toString();
 
     expect(output).toMatch("Building application");
