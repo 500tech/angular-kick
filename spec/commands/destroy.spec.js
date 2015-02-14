@@ -77,6 +77,7 @@ describe('$ kick destroy', function () {
 
     expect(fs.existsSync('app/layouts/shared/_example_2.html')).toBeFalsy();
     expect(fs.existsSync('app/layouts/shared/_example_2.controller.js')).toBeFalsy();
+    expect(fs.existsSync('test/units/controllers/shared/_example_2.controller.spec.js')).toBeFalsy();
   });
 
   it('should destroy service', function () {
