@@ -1,16 +1,17 @@
 var fs            = require('fs-extra');
 var child_process = require('child_process');
+var kick          = __dirname + '/../../bin/kick ';
 
 describe('$ kick build', function () {
 
   it('SETUP', function () {
     fs.deleteSync('npm_test');
-    child_process.execSync('kick new npmTest -ns');
+    child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
   });
 
   it('should run gulp build task', function () {
-    var output = child_process.execSync('kick build').toString();
+    var output = child_process.execSync(kick + 'build').toString();
 
     expect(output).toMatch("Building application");
   });
