@@ -21,7 +21,7 @@
     "fs-extra": "0.16.3",
     "run-sequence": "1.0.2",
     "connect-modrewrite": "0.7.9",
-    "browser-sync": "1.9.1",
+    "browser-sync": "2.0.1",
     "proxy-middleware": "0.11.0",
     "gulp": "3.8.10",
     "gulp-autoprefixer": "2.1.0",
