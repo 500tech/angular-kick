@@ -57,9 +57,9 @@ switch (command) {
   case 't':
     commands.test();
     break;
-  case 'update':
+  case 'upgrade':
   case 'u':
-    commands.update();
+    commands.upgrade();
     break;
   default:
     if (command) {

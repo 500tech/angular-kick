@@ -2,7 +2,7 @@ var fs            = require('fs-extra');
 var kick          = __dirname + '/../../bin/kick ';
 var child_process = require('child_process');
 
-describe('$ kick update', function () {
+describe('$ kick upgrade', function () {
   it('SETUP', function () {
     fs.deleteSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
@@ -10,7 +10,7 @@ describe('$ kick update', function () {
   });
 
   it('should check for updates', function () {
-    var output = child_process.execSync(kick + 'update').toString();
+    var output = child_process.execSync(kick + 'upgrade').toString();
 
     expect(output).toMatch("Checking for updates")
   });

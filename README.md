@@ -85,7 +85,7 @@ Checking for updates on each command slows down cli apps a lot. Hence, angular-k
 You can check for a new version by running:
 
 ```sh
-$ kick update
+$ kick upgrade
 ```
 
 This will ask you if you want to update when there is a new version available.
