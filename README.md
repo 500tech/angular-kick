@@ -10,13 +10,23 @@ Angular-kick is an opinionated kickstarter and generator for AngularJS based on 
 
 Brought to you by [500Tech](http://500tech.com).
 
+
 ## Best practices
 
 There are too many conventions for writing AngularJS applications, and after trying all the generators and conventions outside in tens of projects, we have put all of our experience to angular-kick, to make your development as fast and easy as possible.
 
 We strongly recommend you to follow [AngularJS Style Guide](https://github.com/johnpapa/angularjs-styleguide) by John Papa.
 
+
 ## Install
+
+In order to use `angular-kick`, make sure you have node.js and npm installed:
+
+https://docs.npmjs.com/getting-started/installing-node
+
+**Note:** You need node >=0.12 in order to use angular-kick
+
+Then, install angular-kick by running:
 
 ```sh
 $ npm install -g angular-kick
