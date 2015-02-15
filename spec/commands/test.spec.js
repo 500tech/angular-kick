@@ -18,9 +18,9 @@ describe('$ kick test', function () {
   it('should run gulp test', function () {
     fs.ensureDirSync('node_modules');
     fs.ensureDirSync('bower_components');
-    var output = child_process.spawnSync('kick', ['test']);
+    var output = child_process.execSync(kick + 'test');
 
-    expect(output.stdout.toString()).toMatch("Starting tests...");
+    expect(output.toString()).toMatch("Starting tests...");
   });
 
   it('TEARDOWN', function () {
