@@ -1,13 +1,11 @@
 class Layout {
   constructor ($rootScope, $state) {
-    let self = this;
 
-    self.current = 'application';
-    self.$state = $state;
+    this.current = 'application';
+    this.$state = $state;
 
-    $rootScope.currentLayout = function() {
-      return self.getLayout();
-    }
+    $rootScope.currentLayout = () => this.getLayout();
+
   }
 
   setLayout (name) {
