@@ -184,27 +184,27 @@ function scripts() {
 
 function test() {
   destination = common.destinations.test;
-  return run('clean', ['vendorJSConcat', 'scripts', 'styles', 'images', 'views', 'fonts'], 'index', 'testOnce', 'clean');
+  return run('dev:clean', ['dev:vendorJSConcat', 'dev:scripts', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:testOnce', 'dev:clean');
 }
 
 function testEnv() {
-  return run('setEnvironment', 'test');
+  return run('dev:setEnvironment', 'dev:test');
 }
 
 function server() {
-  return run('clean', ['vendorJSConcat', 'vendorJS', 'scripts', 'styles', 'images', 'views', 'fonts'], 'index', 'serve');
+  return run('dev:clean', ['dev:vendorJSConcat', 'dev:vendorJS', 'dev:scripts', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:serve');
 }
 
 function serverTdd() {
-  return run('server', 'tdd');
+  return run('dev:server', 'dev:tdd');
 }
 
 function serverEnv() {
-  return run('setEnvironment', 'server');
+  return run('dev:setEnvironment', 'dev:server');
 }
 
 function serverEnvTdd() {
-  return run('setEnvironment', 'server:tdd');
+  return run('dev:setEnvironment', 'dev:server:tdd');
 }
 
 function tdd(done) {
@@ -222,15 +222,15 @@ function testOnce(done) {
 }
 
 function reloadScripts() {
-  return run('scripts', 'views', 'index');
+  return run('dev:scripts', 'dev:views', 'dev:index');
 }
 
 function reloadViews() {
-  return run('views', 'index');
+  return run('dev:views', 'dev:index');
 }
 
 function reloadStyles() {
-  return run('styles', 'index');
+  return run('dev:styles', 'dev:index');
 }
 
 function serve() {
@@ -246,10 +246,10 @@ function serve() {
       middleware: [proxy(proxyOptions), modRewrite(['!\\.\\w+$ /app.html [L]'])]
     }
   });
-  gulp.watch(sources.scripts, ['reloadScripts', browserSync.reload]);
-  gulp.watch(sources.views,   ['reloadViews',   browserSync.reload]);
-  gulp.watch(sources.index,   ['reloadViews',   browserSync.reload]);
-  gulp.watch(sources.styles,  ['reloadStyles',  browserSync.reload]);
-  gulp.watch(sources.images,  ['images',        browserSync.reload]);
-  gulp.watch(sources.fonts,   ['fonts',         browserSync.reload]);
+  gulp.watch(sources.scripts, ['dev:reloadScripts', browserSync.reload]);
+  gulp.watch(sources.views,   ['dev:reloadViews',   browserSync.reload]);
+  gulp.watch(sources.index,   ['dev:reloadViews',   browserSync.reload]);
+  gulp.watch(sources.styles,  ['dev:reloadStyles',  browserSync.reload]);
+  gulp.watch(sources.images,  ['dev:images',        browserSync.reload]);
+  gulp.watch(sources.fonts,   ['dev:fonts',         browserSync.reload]);
 }

@@ -143,17 +143,17 @@ function scripts() {
 
 function build() {
   return run(
-    'productionClean',
-    'productionVendorJS',
-    'productionScripts',
-    'productionStyles',
-    'productionImages',
-    'productionViews',
-    'productionIndex',
-    'productionFonts'
+    'build:clean',
+    'build:vendorJS',
+    'build:scripts',
+    'build:styles',
+    'build:images',
+    'build:views',
+    'build:index',
+    'build:fonts'
   );
 }
 
 function buildEnv() {
-  return run('productionSetEnvironment', 'build');
+  return run('build:setEnvironment', 'build');
 }
