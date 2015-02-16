@@ -24,8 +24,8 @@ module.exports = {
   index:          index,
   views:          views,
   images:         images,
-  vendor:         vendor,
-  vendorConcat:   vendorConcat,
+  vendorJS:       vendorJS,
+  vendorJSConcat: vendorJSConcat,
   scripts:        scripts,
   test:           test,
   testEnv:        testEnv,
@@ -92,11 +92,13 @@ function fonts() {
 }
 
 function styles() {
-  return gulp.src(sources.mainStyle, {base: sources.base})
+  return gulp.src(sources.styleFiles, {base: sources.base})
     .pipe(plugins.changed(destination, {
       hasChanged: plugins.changed.compareSha1Digest
     }))
     .pipe(plugins.plumber({errorHandler: catchError}))
+    .pipe(plugins.include({ extensions: ['scss', 'css'] }))
+    .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass({
       onError: catchError
@@ -120,12 +122,17 @@ function index() {
   var services = gulp.src(sources.services, {read: false});
   var controllers = gulp.src(sources.controllers, {read: false});
   var vendorFiles = gulp.src(sources.vendorFiles, {read: false});
+  var styleFiles = sources.styleFiles.map(function (file) {
+    return destination + '/' + file.replace('app/', '').replace('scss', 'css');
+  });
+  styleFiles = gulp.src(styleFiles, {read: false});
 
   return gulp.src(sources.index)
     .pipe(plugins.plumber({errorHandler: catchError}))
-    .pipe(plugins.inject(streams(vendorFiles, modules, app, configs, directives, filters, services, controllers), {relative: true}))
+    .pipe(plugins.inject(streams(styleFiles, vendorFiles, modules, app, configs, directives, filters, services, controllers), {relative: true}))
     .pipe(plugins.replace(/\.\.\//g, ''))
     .pipe(plugins.replace('app/', ''))
+    .pipe(plugins.replace(destination + '/', ''))
     .pipe(gulp.dest(destination));
 }
 
@@ -135,6 +142,7 @@ function views() {
       hasChanged: plugins.changed.compareSha1Digest
     }))
     .pipe(plugins.plumber({errorHandler: catchError}))
+    .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
     .pipe(gulp.dest(destination))
 }
 
@@ -147,13 +155,13 @@ function images() {
     .pipe(gulp.dest(destination));
 }
 
-function vendor() {
+function vendorJS() {
   return gulp.src(sources.vendorFiles, {base: sources.base})
     .pipe(plugins.plumber({errorHandler: catchError}))
     .pipe(gulp.dest(destination + '/vendor'));
 }
 
-function vendorConcat() {
+function vendorJSConcat() {
   return gulp.src(sources.vendor)
     .pipe(plugins.plumber({errorHandler: catchError}))
     .pipe(plugins.include({extensions: ['js']}))
@@ -176,7 +184,7 @@ function scripts() {
 
 function test() {
   destination = common.destinations.test;
-  return run('clean', ['vendorConcat', 'scripts', 'styles', 'images', 'views', 'fonts'], 'index', 'testOnce', 'clean');
+  return run('clean', ['vendorJSConcat', 'scripts', 'styles', 'images', 'views', 'fonts'], 'index', 'testOnce', 'clean');
 }
 
 function testEnv() {
@@ -184,7 +192,7 @@ function testEnv() {
 }
 
 function server() {
-  return run('clean', ['vendorConcat', 'vendor', 'scripts', 'styles', 'images', 'views', 'fonts'], 'index', 'serve');
+  return run('clean', ['vendorJSConcat', 'vendorJS', 'scripts', 'styles', 'images', 'views', 'fonts'], 'index', 'serve');
 }
 
 function serverTdd() {
@@ -239,9 +247,9 @@ function serve() {
     }
   });
   gulp.watch(sources.scripts, ['reloadScripts', browserSync.reload]);
-  gulp.watch(sources.views, ['reloadViews', browserSync.reload]);
-  gulp.watch(sources.index, ['reloadViews', browserSync.reload]);
-  gulp.watch(sources.styles, ['reloadStyles', browserSync.reload]);
-  gulp.watch(sources.images, ['images', browserSync.reload]);
-  gulp.watch(sources.fonts, ['fonts', browserSync.reload]);
+  gulp.watch(sources.views,   ['reloadViews',   browserSync.reload]);
+  gulp.watch(sources.index,   ['reloadViews',   browserSync.reload]);
+  gulp.watch(sources.styles,  ['reloadStyles',  browserSync.reload]);
+  gulp.watch(sources.images,  ['images',        browserSync.reload]);
+  gulp.watch(sources.fonts,   ['fonts',         browserSync.reload]);
 }
