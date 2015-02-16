@@ -103,7 +103,7 @@ describe('$ kick generate', function () {
 
     expect(route).toMatch("controller: 'ExampleController as Example'");
     expect(style).toBeTruthy();
-    expect(mainStyle).toMatch('@import "example";');
+    expect(mainStyle).toMatch('//= include example.scss');
     expect(view).toMatch("<ui-view></ui-view>");
     expect(controller).toMatch("class ExampleController");
     expect(spec).toMatch("describe\\('ExampleController'");
@@ -129,7 +129,7 @@ describe('$ kick generate', function () {
     var mainFile = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
 
     expect(file).toBeTruthy();
-    expect(mainFile).toMatch('@import "example";');
+    expect(mainFile).toMatch('//= include example.scss');
   });
 
   it('TEARDOWN', function () {
