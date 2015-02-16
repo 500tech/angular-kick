@@ -18,7 +18,7 @@ module.exports = {
   index:          index,
   views:          views,
   images:         images,
-  vendor:         vendor,
+  vendorJS:       vendorJS,
   scripts:        scripts,
   build:          build,
   buildEnv:       buildEnv
@@ -53,6 +53,7 @@ function fonts() {
 function styles() {
   return gulp.src(sources.mainStyle, { base: sources.base })
     .pipe(plugins.plumber({ errorHandler: catchError }))
+    .pipe(plugins.include({ extensions: ['scss', 'css'] }))
     .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
     .pipe(plugins.sass())
     .pipe(plugins.autoprefixer({ browsers: ['last 2 versions'] }))
@@ -117,7 +118,7 @@ function images() {
     .pipe(gulp.dest(destination));
 }
 
-function vendor() {
+function vendorJS() {
   return gulp.src(sources.vendor)
     .pipe(plugins.include({ extensions: ['js'] }))
     .pipe(plugins.rev())
@@ -143,7 +144,7 @@ function scripts() {
 function build() {
   return run(
     'productionClean',
-    'productionVendor',
+    'productionVendorJS',
     'productionScripts',
     'productionStyles',
     'productionImages',
