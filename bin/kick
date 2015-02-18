@@ -5,10 +5,13 @@ process.bin = process.title = 'kick';
 var fs          = require('fs-extra');
 var colors      = require('colors');
 var logger      = require('../lib/logger');
+var utils       = require('../lib/utils');
 var commands    = require('../lib/commands/commands');
 var command     = process.argv[2];
 var ROOT        = __dirname + '/..';
 var kickVersion = fs.readJSONSync(ROOT + '/package.json')['version'];
+
+utils.ensureNodeVersion();
 
 switch (command) {
   case '--version':
