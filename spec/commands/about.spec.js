@@ -13,9 +13,9 @@ describe('$ kick about', function () {
   it('should output information about application', function () {
     var output = child_process.execSync(kick + 'about').toString();
 
-    expect(output).toMatch("NpmTest".blue);
-    expect(output).toMatch("1.0.0".blue);
-    expect(output).toMatch("1.3.12".blue);
+    expect(output).toMatch("NpmTest");
+    expect(output).toMatch("1.0.0");
+    expect(output).toMatch("1.3.12");
   });
 
   it('TEARDOWN', function () {

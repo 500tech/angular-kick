@@ -6,6 +6,7 @@ var fs          = require('fs-extra');
 var colors      = require('colors');
 var logger      = require('../lib/logger');
 var utils       = require('../lib/utils');
+var message     = require('../lib/messages');
 var commands    = require('../lib/commands/commands');
 var command     = process.argv[2];
 var ROOT        = __dirname + '/..';
@@ -16,7 +17,7 @@ utils.ensureNodeVersion();
 switch (command) {
   case '--version':
   case '-v':
-    console.log(kickVersion);
+    logger.log(kickVersion);
     break;
   case 'help':
   case '--help':
@@ -67,8 +68,8 @@ switch (command) {
     break;
   default:
     if (command) {
-      logger.warn("kick didn't recognize the ".yellow + command.blue + ' command. Run '.yellow + 'kick help'.blue + ' to see all available commands'.yellow)
+      logger.warn(message.unrecognizedCommand(command))
     } else {
-      logger.warn("You didn't specify any command");
+      logger.warn(message.noCommand);
     }
 }
