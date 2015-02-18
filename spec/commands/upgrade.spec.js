@@ -10,7 +10,7 @@ describe('$ kick upgrade', function () {
   });
 
   it('should check for updates', function () {
-    var output = child_process.execSync(kick + 'upgrade').toString();
+    var output = child_process.execSync(kick + 'upgrade', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Checking for updates")
   });
