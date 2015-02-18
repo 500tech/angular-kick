@@ -3,13 +3,12 @@ class Layout {
 
     this.current = 'application';
     this.$state = $state;
-
-    $rootScope.currentLayout = () => this.getLayout();
-
+    this.$rootScope = $rootScope;
   }
 
   setLayout (name) {
     this.current = name;
+    this.$rootScope.$broadcast('layoutChange');
   }
 
   getLayout () {

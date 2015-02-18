@@ -5,6 +5,10 @@ class layoutController {
     $rootScope.$on('$stateChangeSuccess', function() {
       layout.current = Layout.getLayout(); 
     });
+
+    $rootScope.$on('layoutChange', function () {
+      layout.current = Layout.getLayout();
+    });
   }
 }
 
