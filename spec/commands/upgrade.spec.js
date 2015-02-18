@@ -1,6 +1,6 @@
 var fs            = require('fs-extra');
-var kick          = __dirname + '/../../bin/kick ';
 var child_process = require('child_process');
+var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick upgrade', function () {
   it('SETUP', function () {

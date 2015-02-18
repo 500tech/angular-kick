@@ -1,5 +1,5 @@
 var fs            = require('fs-extra');
-var kick          = __dirname + '/../../bin/kick ';
+var kick          = 'node ' + __dirname + '/../../bin/kick ';
 var child_process = require('child_process');
 
 describe('$ kick help', function () {
