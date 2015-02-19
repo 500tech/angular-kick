@@ -1,20 +1,21 @@
 describe('ifEnv Directive', function () {
-  var element, $scope, createDirective;
+  var devElement, buildElement;
 
   beforeEach(module('%APP_NAME%.config', '%APP_NAME%.directives'));
 
-  beforeEach(inject(function ($rootScope, $compile) {
-    createDirective = function (scopeAttrs) {
-      $scope = angular.extend($rootScope.$new(), scopeAttrs);
+  beforeEach(inject(function ($compile) {
+    devElement = angular.element('<div><div if-env="development">Contents</div></div>');
+    devElement = $compile(devElement)({});
 
-      element = angular.element('<div if-env="test">Contents</div>');
-      element = $compile(element)($scope);
-      $scope.$apply();
-    };
+    buildElement = angular.element('<div><div if-env="production">Contents</div></div>');
+    buildElement = $compile(buildElement)({});
   }));
 
-  it('should be true', function () {
-    createDirective({});
-    expect(true).toBeTruthy();
+  it('should show element under correct environment', function () {
+    expect(devElement.html()).toContain('Contents');
+  });
+
+  it('should destroy element under wrong environment', function () {
+    expect(buildElement.html()).not.toContain('Contents');
   });
 });
