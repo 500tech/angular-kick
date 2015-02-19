@@ -45,3 +45,4 @@ gulp.task('build:images',         build.images);
 gulp.task('build:views',          build.views);
 gulp.task('build:index',          build.index);
 gulp.task('build:fonts',          build.fonts);
+gulp.task('build:cleanManifests', build.cleanManifests);

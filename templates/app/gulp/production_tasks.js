@@ -22,7 +22,8 @@ module.exports = {
   vendorJS:       vendorJS,
   scripts:        scripts,
   build:          build,
-  buildEnv:       buildEnv
+  buildEnv:       buildEnv,
+  cleanManifests: cleanManifests
 };
 
 function catchError(err) {
@@ -32,6 +33,11 @@ function catchError(err) {
 
 function clean() {
   return gulp.src(destination, { read: false })
+    .pipe(plugins.rimraf());
+}
+
+function cleanManifests() {
+  return gulp.src(destination + '/manifests', { read: false })
     .pipe(plugins.rimraf());
 }
 
@@ -66,6 +72,7 @@ function styles() {
 }
 
 function vendorStyles() {
+  console.log(sources.vendor.stylesFile);
   return gulp.src(sources.vendor.stylesFile, { base: sources.base })
     .pipe(plugins.plumber({ errorHandler: catchError }))
     .pipe(plugins.include({ extensions: ['css'] }))
@@ -167,7 +174,8 @@ function build() {
     'build:images',
     'build:views',
     'build:index',
-    'build:fonts'
+    'build:fonts',
+    'build:cleanManifests'
   );
 }
 
