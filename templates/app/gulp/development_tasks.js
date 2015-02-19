@@ -132,6 +132,7 @@ function index() {
   var configs = gulp.src(sources.configs, {read: false});
   var directives = gulp.src(sources.directives, {read: false});
   var filters = gulp.src(sources.filters, {read: false});
+  var models = gulp.src(sources.models, {read: false});
   var services = gulp.src(sources.services, {read: false});
   var controllers = gulp.src(sources.controllers, {read: false});
   var vendorScripts = gulp.src(sources.vendor.scripts, {read: false});
@@ -143,7 +144,7 @@ function index() {
 
   return gulp.src(sources.index)
     .pipe(plugins.plumber({errorHandler: catchError}))
-    .pipe(plugins.inject(streams(styleFiles, vendorStyles, vendorScripts, modules, app, configs, directives, filters, services, controllers), {relative: true}))
+    .pipe(plugins.inject(streams(styleFiles, vendorStyles, vendorScripts, modules, app, configs, directives, filters, models, services, controllers), {relative: true}))
     .pipe(plugins.replace(/\.\.\//g, ''))
     .pipe(plugins.replace('app/', ''))
     .pipe(plugins.replace(destination + '/', ''))

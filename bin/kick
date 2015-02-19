@@ -4,6 +4,7 @@ process.bin = process.title = 'kick';
 "use strict";
 var fs          = require('fs-extra');
 var colors      = require('colors');
+var open        = require('opn');
 var logger      = require('../lib/logger');
 var utils       = require('../lib/utils');
 var message     = require('../lib/messages');
@@ -65,6 +66,12 @@ switch (command) {
   case 'upgrade':
   case 'u':
     commands.upgrade();
+    break;
+  case 'docs':
+    open('http://www.angular-kick.com');
+    break;
+  case 'karma-debug':
+    open('http://localhost:9876/debug.html');
     break;
   default:
     if (command) {

@@ -11,10 +11,10 @@ describe('HomeController', function () {
   }));
 
   beforeEach(function () {
-    createController()
+    createController();
   });
 
-  it('should be true', function () {
+  it('should have default variable', function () {
     expect(homeController.command).toBe('state');
   });
 });
