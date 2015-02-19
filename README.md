@@ -18,7 +18,7 @@ Brought to you by [500Tech](http://500tech.com).
 
 There are too many conventions for writing AngularJS applications, and after trying all the generators and conventions outside in tens of projects, we have put all of our experience to angular-kick, to make your development as fast and easy as possible.
 
-We strongly recommend you to follow [AngularJS Style Guide](https://github.com/johnpapa/angularjs-styleguide) by John Papa.
+Angular-kick uses conventions from [AngularJS Style Guide](https://github.com/toddmotto/angularjs-styleguide) by Todd Motto, which we encourage you to follow as well.
 
 
 ## Install
