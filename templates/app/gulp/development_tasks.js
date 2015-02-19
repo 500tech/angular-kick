@@ -21,6 +21,7 @@ module.exports = {
   setEnvironment: setEnvironment,
   fonts:          fonts,
   styles:         styles,
+  vendorStyles:   vendorStyles,
   index:          index,
   views:          views,
   images:         images,
@@ -96,7 +97,7 @@ function styles() {
     .pipe(plugins.changed(destination, {
       hasChanged: plugins.changed.compareSha1Digest
     }))
-    .pipe(plugins.plumber({errorHandler: catchError}))
+    .pipe(plugins.plumber({ errorHandler: catchError }))
     .pipe(plugins.include({ extensions: ['scss', 'css'] }))
     .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
     .pipe(plugins.sourcemaps.init())
@@ -106,6 +107,18 @@ function styles() {
     .pipe(plugins.autoprefixer({browsers: ['last 2 versions']}))
     .pipe(plugins.sourcemaps.write())
     .pipe(gulp.dest(destination));
+}
+
+function vendorStyles() {
+  return gulp.src(sources.vendor.styles, {base: sources.base})
+    .pipe(plugins.plumber({ errorHandler: catchError }))
+    .pipe(plugins.include({ extensions: ['scss', 'css'] }))
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.sass({
+      onError: catchError
+    }))
+    .pipe(plugins.sourcemaps.write())
+    .pipe(gulp.dest(destination + '/vendor'));
 }
 
 function index() {
@@ -121,7 +134,8 @@ function index() {
   var filters = gulp.src(sources.filters, {read: false});
   var services = gulp.src(sources.services, {read: false});
   var controllers = gulp.src(sources.controllers, {read: false});
-  var vendorFiles = gulp.src(sources.vendorFiles, {read: false});
+  var vendorScripts = gulp.src(sources.vendor.scripts, {read: false});
+  var vendorStyles = gulp.src(sources.vendor.styles, {read: false});
   var styleFiles = sources.styleFiles.map(function (file) {
     return destination + '/' + file.replace('app/', '').replace('scss', 'css');
   });
@@ -129,7 +143,7 @@ function index() {
 
   return gulp.src(sources.index)
     .pipe(plugins.plumber({errorHandler: catchError}))
-    .pipe(plugins.inject(streams(styleFiles, vendorFiles, modules, app, configs, directives, filters, services, controllers), {relative: true}))
+    .pipe(plugins.inject(streams(styleFiles, vendorStyles, vendorScripts, modules, app, configs, directives, filters, services, controllers), {relative: true}))
     .pipe(plugins.replace(/\.\.\//g, ''))
     .pipe(plugins.replace('app/', ''))
     .pipe(plugins.replace(destination + '/', ''))
@@ -156,13 +170,13 @@ function images() {
 }
 
 function vendorJS() {
-  return gulp.src(sources.vendorFiles, {base: sources.base})
+  return gulp.src(sources.vendor.scripts, {base: sources.base})
     .pipe(plugins.plumber({errorHandler: catchError}))
     .pipe(gulp.dest(destination + '/vendor'));
 }
 
 function vendorJSConcat() {
-  return gulp.src(sources.vendor)
+  return gulp.src(sources.vendor.scriptsFile)
     .pipe(plugins.plumber({errorHandler: catchError}))
     .pipe(plugins.include({extensions: ['js']}))
     .pipe(gulp.dest(destination));
@@ -184,7 +198,7 @@ function scripts() {
 
 function test() {
   destination = common.destinations.test;
-  return run('dev:clean', ['dev:vendorJSConcat', 'dev:scripts', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:testOnce', 'dev:clean');
+  return run('dev:clean', 'dev:vendorJSConcat', 'dev:scripts', 'dev:vendorStyles', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts', 'dev:index', 'dev:testOnce', 'dev:clean');
 }
 
 function testEnv() {
@@ -192,7 +206,7 @@ function testEnv() {
 }
 
 function server() {
-  return run('dev:clean', ['dev:vendorJSConcat', 'dev:vendorJS', 'dev:scripts', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:serve');
+  return run('dev:clean', ['dev:vendorJSConcat', 'dev:vendorJS', 'dev:scripts', 'dev:vendorStyles', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:serve');
 }
 
 function serverTdd() {

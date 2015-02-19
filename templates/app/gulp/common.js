@@ -4,7 +4,9 @@ var fs              = require('fs-extra');
 
 var jsFiles   = fs.readFileSync(__dirname + '/../app/vendor.js').toString().match(/\/\/=.*[require|include]\s(.*)\n*/g) || [];
 var cssFiles  = fs.readFileSync(__dirname + '/../app/assets/stylesheets/application.scss').toString().match(/\/\/=.*[require|include]\s(.*)\n*/g) || [];
+var vendorCssFiles  = fs.readFileSync(__dirname + '/../app/assets/stylesheets/vendor.scss').toString().match(/\/\/=.*[require|include]\s(.*)\n*/g) || [];
 var vendorFilesArray = [],
+  vendorStyleFilesArray = [],
   styleFilesArray  = [];
 
 jsFiles.forEach(function (string) {
@@ -16,15 +18,15 @@ cssFiles.forEach(function (string) {
   styleFilesArray.push('app/assets/stylesheets/' + file);
 });
 
-
+vendorCssFiles.forEach(function (string) {
+  var file = string.match(/\/\/=.*[require|include]\s(.*)/)[1];
+  vendorStyleFilesArray.push('app/assets/stylesheets/' + file);
+});
 
 module.exports = {
   sources: {
     error:         __dirname + '/error.html',
-
     base:         'app',
-    vendor:       'app/vendor.js',
-    vendorFiles:  vendorFilesArray,
 
     app:          'app/app.js',
     modules:      'app/modules.js',
@@ -42,7 +44,14 @@ module.exports = {
     images:       'app/assets/images/**',
     fonts:        'app/assets/fonts/**',
     views:        ['app/**/*.html', '!app/app.html'],
-    index:        'app/app.html'
+    index:        'app/app.html',
+
+    vendor: {
+      scripts:  vendorFilesArray,
+      scriptsFile: 'app/vendor.js',
+      styles:   vendorStyleFilesArray,
+      stylesFile: 'app/assets/stylesheets/vendor.scss'
+    }
   },
 
   destinations: {
