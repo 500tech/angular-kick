@@ -198,7 +198,7 @@ function scripts() {
 
 function test() {
   destination = common.destinations.test;
-  return run('dev:clean', ['dev:vendorJSConcat', 'dev:scripts', 'dev:vendorStyles', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:testOnce', 'dev:clean');
+  return run('dev:clean', 'dev:vendorJSConcat', 'dev:scripts', 'dev:vendorStyles', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts', 'dev:index', 'dev:testOnce', 'dev:clean');
 }
 
 function testEnv() {
