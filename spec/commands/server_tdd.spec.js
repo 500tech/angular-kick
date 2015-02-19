@@ -1,6 +1,6 @@
 var fs            = require('fs-extra');
 var child_process = require('child_process');
-var kick          = __dirname + '/../../bin/kick ';
+var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick server:tdd', function () {
 
@@ -19,7 +19,7 @@ describe('$ kick server:tdd', function () {
   it('should run gulp server:tdd task', function () {
     fs.ensureDirSync('node_modules');
     fs.ensureDirSync('bower_components');
-    var output = child_process.execSync(kick + 'server:tdd').toString();
+    var output = child_process.execSync(kick + 'server:tdd', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Running browserSync server");
     expect(output).toMatch("Running Karma test server");

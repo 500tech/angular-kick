@@ -1,4 +1,3 @@
-var kick          = __dirname + '/../../bin/kick ';
 var child_process = require('child_process');
 var utils         = require('../lib/utils');
 var logger        = require('../lib/logger');

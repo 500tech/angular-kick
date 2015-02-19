@@ -1,6 +1,6 @@
 var fs            = require('fs-extra');
 var child_process = require('child_process');
-var kick          = __dirname + '/../../bin/kick ';
+var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick server', function () {
 
@@ -19,7 +19,7 @@ describe('$ kick server', function () {
   it('should run gulp server task', function () {
     fs.ensureDirSync('node_modules');
     fs.ensureDirSync('bower_components');
-    var output = child_process.execSync(kick + 'server').toString();
+    var output = child_process.execSync(kick + 'server', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Running browserSync server");
   });

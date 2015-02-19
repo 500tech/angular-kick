@@ -1,6 +1,6 @@
 var fs            = require('fs-extra');
 var child_process = require('child_process');
-var kick          = __dirname + '/../../bin/kick ';
+var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick build', function () {
 
@@ -19,7 +19,7 @@ describe('$ kick build', function () {
   it('should run gulp build task', function () {
     fs.ensureDirSync('node_modules');
     fs.ensureDirSync('bower_components');
-    var output = child_process.execSync(kick + 'build').toString();
+    var output = child_process.execSync(kick + 'build', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Building application");
   });

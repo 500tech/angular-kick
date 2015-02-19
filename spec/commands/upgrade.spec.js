@@ -1,6 +1,6 @@
 var fs            = require('fs-extra');
-var kick          = __dirname + '/../../bin/kick ';
 var child_process = require('child_process');
+var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick upgrade', function () {
   it('SETUP', function () {
@@ -10,7 +10,7 @@ describe('$ kick upgrade', function () {
   });
 
   it('should check for updates', function () {
-    var output = child_process.execSync(kick + 'upgrade').toString();
+    var output = child_process.execSync(kick + 'upgrade', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Checking for updates")
   });

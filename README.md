@@ -1,8 +1,11 @@
 # angular-kick
 
 [![npm version](https://badge.fury.io/js/angular-kick.svg)](http://npmjs.com/packages/angular-kick)
-[![npm downloads](https://img.shields.io/npm/dm/angular-kick.svg)](http://npmjs.com/packages/angular-kick) 
+[![npm downloads](https://img.shields.io/npm/dm/angular-kick.svg)](http://npmjs.com/packages/angular-kick)
+[![travis build](https://travis-ci.org/500tech/angular-kick.svg?branch=master)](https://travis-ci.org/500tech/angular-kick)
 [![Code Climate](https://codeclimate.com/github/500tech/angular-kick/badges/gpa.svg)](https://codeclimate.com/github/500tech/angular-kick)
+
+![angular-kick logo](http://static.angular-kick.com/logo.png)
 
 **Disclaimer:** angular-kick is currently in alpha stage and it's only tested on MacOS X. Some functionality might change. Feel free to add issues to our [github](http://github.com/500tech/angular-kick) if you encounter any problems.
 

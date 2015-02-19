@@ -1,7 +1,56 @@
 body {
-  padding: 50px;
+  border-top: 5px solid #dd0000;
+}
+
+a {
+  color: #000;
+
+  &:hover {
+    color: red;
+  }
+}
+
+main, footer {
+  margin: 0 auto;
+}
+
+main {
+  width: 450px;
+  background-color: #eee;
+  padding: 20px 60px 30px 60px;
+  border-radius: 4px;
 
   ul>li {
     margin: 4px 0;
   }
+
+  code {
+    display: block;
+    background-color: #000;
+    color: lime;
+    padding: 10px;
+    border-radius: 2px;
+    margin: 10px 0;
+  }
+
+  .usage {
+    margin-top: 100px;
+  }
+}
+
+footer {
+  width: 540px;
+  margin-top: 10px;
+  font-size: smaller;
+
+  .right {
+    float: right;
+  }
+}
+
+.angular-kick-logo {
+  background: url("http://static.angular-kick.com/logo.png");
+  width: 200px;
+  height: 60px;
+  margin: 60px auto;
 }
