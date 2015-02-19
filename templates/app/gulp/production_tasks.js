@@ -15,6 +15,7 @@ module.exports = {
   setEnvironment: setEnvironment,
   fonts:          fonts,
   styles:         styles,
+  vendorStyles:   vendorStyles,
   index:          index,
   views:          views,
   images:         images,
@@ -64,18 +65,33 @@ function styles() {
     .pipe(gulp.dest(destination));
 }
 
+function vendorStyles() {
+  return gulp.src(sources.vendor.stylesFile, { base: sources.base })
+    .pipe(plugins.plumber({ errorHandler: catchError }))
+    .pipe(plugins.include({ extensions: ['css'] }))
+    .pipe(plugins.sass())
+    .pipe(plugins.cssmin())
+    .pipe(plugins.rev())
+    .pipe(gulp.dest(destination))
+    .pipe(plugins.rev.manifest({ path: 'manifests/vendorStyles.json' }))
+    .pipe(gulp.dest(destination));
+}
+
 function index() {
-  var manifest          = JSON.parse(fs.readFileSync(destination + '/manifests/scripts.json', "utf8"));
-  var configManifest    = JSON.parse(fs.readFileSync(destination + '/manifests/config.json', "utf8"));
-  var templateManifest  = JSON.parse(fs.readFileSync(destination + '/manifests/templates.json', "utf8"));
-  var styleManifest   = JSON.parse(fs.readFileSync(destination + '/manifests/styles.json', "utf8"));
+  var manifest            = JSON.parse(fs.readFileSync(destination + '/manifests/scripts.json', "utf8"));
+  var configManifest      = JSON.parse(fs.readFileSync(destination + '/manifests/config.json', "utf8"));
+  var templateManifest    = JSON.parse(fs.readFileSync(destination + '/manifests/templates.json', "utf8"));
+  var styleManifest       = JSON.parse(fs.readFileSync(destination + '/manifests/styles.json', "utf8"));
+  var vendorStyleManifest = JSON.parse(fs.readFileSync(destination + '/manifests/vendorStyles.json', "utf8"));
   var applicationSCSS = styleManifest[Object.keys(styleManifest)[0]].match(/application-.*\.css/)[0];
+  var vendorSCSS      = vendorStyleManifest[Object.keys(vendorStyleManifest)[0]].match(/vendor-.*\.css/)[0];
   return gulp.src(sources.index)
     .pipe(plugins.plumber({ errorHandler: catchError }))
     .pipe(plugins.replace('app.js', manifest['app.js']))
     .pipe(plugins.replace('vendor.js', configManifest['vendor.js']))
     .pipe(plugins.replace('templates.js', templateManifest['templates.js']))
     .pipe(plugins.replace('application.css', applicationSCSS))
+    .pipe(plugins.replace('vendor.css', vendorSCSS))
     .pipe(plugins.minifyHtml({
       empty: true,
       comments: true,
@@ -119,7 +135,7 @@ function images() {
 }
 
 function vendorJS() {
-  return gulp.src(sources.vendor)
+  return gulp.src(sources.vendor.scriptsFile)
     .pipe(plugins.include({ extensions: ['js'] }))
     .pipe(plugins.rev())
     .pipe(gulp.dest(destination))
@@ -147,6 +163,7 @@ function build() {
     'build:vendorJS',
     'build:scripts',
     'build:styles',
+    'build:vendorStyles',
     'build:images',
     'build:views',
     'build:index',
