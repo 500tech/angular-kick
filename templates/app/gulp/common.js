@@ -33,6 +33,7 @@ module.exports = {
     configs:      'app/config/**/*.js',
     directives:   'app/directives/**/*.js',
     filters:      'app/filters/**/*.js',
+    models:       'app/models/**/*.js',
     services:     'app/services/**/*.js',
     controllers:  'app/states/**/*.js',
 
