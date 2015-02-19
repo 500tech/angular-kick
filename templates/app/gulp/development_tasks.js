@@ -211,7 +211,7 @@ function server() {
 }
 
 function serverTdd() {
-  return run('dev:server', 'dev:tdd');
+  return run('dev:clean', 'dev:vendorJSConcat', 'dev:vendorJS', 'dev:scripts', 'dev:vendorStyles', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts', 'dev:index', 'dev:serve', 'dev:tdd');
 }
 
 function serverEnv() {
