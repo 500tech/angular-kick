@@ -15,14 +15,9 @@ describe('utils module', function () {
     expect(logger.log).toHaveBeenCalledWith('Checking for bower presence...');
   });
 
-  it('should delegate to a "npm list" command with child process', function () {
+  it('should delegate to a "which" command with child process', function () {
     utils.ensureGlobalModule('bower');
-    expect(child_process.execSync).toHaveBeenCalledWith('npm list -g bower');
-  });
-
-  it('should try to run the provided module "-v" command', function () {
-    utils.ensureGlobalModule('bower');
-    expect(child_process.execSync).toHaveBeenCalledWith('bower -v');
+    expect(child_process.execSync).toHaveBeenCalledWith('which bower');
   });
 
 });
