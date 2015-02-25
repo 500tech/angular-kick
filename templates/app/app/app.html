@@ -5,7 +5,8 @@
       // Dynamic creation of base tag, to make html5mode work locally
       // This script will remove itself upon execution
       (function () {
-        document.write('<base href="' + document.location + '" />');
+        var base_url =document.location.protocol+'//'+ document.location.host+'/' ;
+        document.write('<base href="' +base_url+ '" />');
         var node = document.getElementsByTagName('script')[0];
         node.parentNode.removeChild(node);
       }());
