@@ -144,7 +144,7 @@ function index() {
 
   return gulp.src(sources.index)
     .pipe(plugins.plumber({errorHandler: catchError}))
-    .pipe(plugins.inject(streams(styleFiles, vendorStyles, vendorScripts, modules, app, configs, directives, filters, models, services, controllers), {relative: true}))
+    .pipe(plugins.inject(streams(vendorStyles,styleFiles, vendorScripts, modules, app, configs, directives, filters, models, services, controllers), {relative: false}))
     .pipe(plugins.replace(/\.\.\//g, ''))
     .pipe(plugins.replace('app/', ''))
     .pipe(plugins.replace(destination + '/', ''))
