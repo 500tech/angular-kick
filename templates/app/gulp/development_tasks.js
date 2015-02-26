@@ -135,12 +135,19 @@ function index() {
   var models = gulp.src(sources.models, {read: false});
   var services = gulp.src(sources.services, {read: false});
   var controllers = gulp.src(sources.controllers, {read: false});
-  var vendorScripts = gulp.src(sources.vendor.scripts, {read: false});
+  var vendorScripts = sources.vendor.scripts.map(function (file) {
+    if (file.match(/^\.\./)) {
+      return file;
+    } else {
+      return destination + '/' + file;
+    }
+  });
   var vendorStyles = gulp.src(sources.vendor.styles, {read: false});
   var styleFiles = sources.styleFiles.map(function (file) {
     return destination + '/' + file.replace('app/', '').replace('scss', 'css');
   });
   styleFiles = gulp.src(styleFiles, {read: false});
+  vendorScripts = gulp.src(vendorScripts, {read: false});
 
   return gulp.src(sources.index)
     .pipe(plugins.plumber({errorHandler: catchError}))
