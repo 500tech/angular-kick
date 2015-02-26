@@ -13,6 +13,7 @@ angular.module('%APP_NAME%', [
 angular.module('%APP_NAME%').run(function ($rootScope, $state) {
 });
 
+//= require_tree models
 //= require_tree services
 //= require_tree directives
 //= require_tree filters
