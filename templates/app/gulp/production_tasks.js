@@ -1,6 +1,7 @@
 "use strict";
 
 var gulp        = require('gulp');
+var del         = require('del');
 var plugins     = require('gulp-load-plugins')();
 var fs          = require('fs-extra');
 var run         = require('run-sequence');
@@ -31,14 +32,12 @@ function catchError(err) {
   return console.log(err);
 }
 
-function clean() {
-  return gulp.src(destination, { read: false })
-    .pipe(plugins.rimraf());
+function clean(done) {
+  return del(destination, done);
 }
 
-function cleanManifests() {
-  return gulp.src(destination + '/manifests', { read: false })
-    .pipe(plugins.rimraf());
+function cleanManifests(done) {
+  return del(destination + '/manifests', done);
 }
 
 function setEnvironment() {

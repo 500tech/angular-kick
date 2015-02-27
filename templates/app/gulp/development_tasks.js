@@ -1,6 +1,7 @@
 "use strict";
 
 var gulp        = require('gulp');
+var del         = require('del');
 var plugins     = require('gulp-load-plugins')();
 var run         = require('run-sequence');
 var url         = require('url');
@@ -68,9 +69,8 @@ function catchError(err) {
     .pipe(gulp.dest(destination));
 }
 
-function clean() {
-  return gulp.src(destination, {read: false})
-    .pipe(plugins.rimraf());
+function clean(done) {
+  return del(destination, done);
 }
 
 function setEnvironment() {
