@@ -1,8 +1,6 @@
 class %STATE_CONTROLLER_NAME%Controller {
   constructor () {
-    var %STATE_CONTROLLER_NAME% = this;
-    %STATE_CONTROLLER_NAME%.stateUrl = '/%STATE_NAME%';
-    %STATE_CONTROLLER_NAME%.controllerName = '%STATE_CONTROLLER_NAME%Controller'
+    this.message = 'Hello from %STATE_CONTROLLER_NAME%Controller';
   }
 }
 

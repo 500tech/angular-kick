@@ -14,6 +14,6 @@ describe('%CONTROLLER_NAME%', function () {
   });
 
   it('should be true', function () {
-    expect(%CONTROLLER_VAR_NAME%.controllerName).toBe('%CONTROLLER_NAME%');
+    expect(%CONTROLLER_VAR_NAME%.message).toMatch('%CONTROLLER_NAME%');
   });
 });

@@ -1,7 +1,6 @@
 class %CONTROLLER_NAME% {
   constructor () {
-    var %CONTROLLER_VARIABLE% = this;
-    %CONTROLLER_VARIABLE%.controllerName = '%CONTROLLER_NAME%'
+    this.message = 'Hello from %CONTROLLER_NAME%';
   }
 }
 
