@@ -13,6 +13,7 @@ module.exports = function(config) {
       '.tmp/filters/**/*.js',
       '.tmp/config/**/*.js',
       '.tmp/states/**/*.js',
+      '.tmp/layouts/**/*.js',
       'test/mock/**.js',
       'test/unit/**/**.js'
     ],

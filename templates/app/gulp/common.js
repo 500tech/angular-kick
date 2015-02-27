@@ -35,7 +35,7 @@ module.exports = {
     filters:      'app/filters/**/*.js',
     models:       'app/models/**/*.js',
     services:     'app/services/**/*.js',
-    controllers:  'app/states/**/*.js',
+    controllers:  ['app/states/**/*.js', 'app/layouts/**/*.js'],
 
     scripts:      ['app/**/*.js', '!app/vendor.js'],
     styles:       'app/assets/stylesheets/**/*.scss',
