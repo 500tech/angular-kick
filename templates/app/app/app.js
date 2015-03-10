@@ -18,4 +18,5 @@ angular.module('%APP_NAME%').run(function ($rootScope, $state) {
 //= require_tree directives
 //= require_tree filters
 //= require_tree config
+//= require_tree layouts
 //= require_tree states
