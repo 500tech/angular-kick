@@ -1,9 +1,11 @@
+var angular = require('angular');
+
 describe('Layout Service', function () {
   var Layout;
 
-  beforeEach(module('%APP_NAME%.services', 'ui.router'));
+  beforeEach(angular.mock.module('%APP_NAME%.services', 'ui.router'));
 
-  beforeEach(inject(function (_Layout_) {
+  beforeEach(angular.mock.inject(function (_Layout_) {
     Layout = _Layout_;
   }));
 

@@ -1,4 +1,4 @@
-class HomeController {
+export class HomeController {
 
   constructor ($scope, $interval) {
     var Home = this;

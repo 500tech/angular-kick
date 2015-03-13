@@ -1,9 +1,11 @@
+var angular = require('angular');
+
 describe('HomeController', function () {
   var homeController, createController, scope;
 
-  beforeEach(module('%APP_NAME%.controllers'));
+  beforeEach(angular.mock.module('%APP_NAME%.controllers'));
 
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(angular.mock.inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     createController = function () {
       homeController = $controller('HomeController', { $scope: scope });

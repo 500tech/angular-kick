@@ -1,4 +1,4 @@
-class Layout {
+export class Layout {
   constructor ($rootScope, $state) {
 
     this.current = 'application';
@@ -22,5 +22,3 @@ class Layout {
     return 'layouts/' + layout + '.html';
   }
 }
-
-angular.module('%APP_NAME%.services').service('Layout', Layout);

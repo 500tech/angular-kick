@@ -1,3 +1,8 @@
+require('./constants');
+require('./decorators');
+require('./interceptors');
+require('./routes/routes');
+
 angular.module('%APP_NAME%.config')
   .config(function ($compileProvider, $httpProvider, $locationProvider, $logProvider, ENV) {
 

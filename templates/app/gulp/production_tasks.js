@@ -6,6 +6,7 @@ var plugins     = require('gulp-load-plugins')();
 var fs          = require('fs-extra');
 var run         = require('run-sequence');
 var common      = require('./common');
+var builder     = require('systemjs-builder');
 var sources     = common.sources;
 var setENV      = common.setENV;
 var destination = common.destinations.production;
@@ -16,12 +17,12 @@ module.exports = {
   setEnvironment: setEnvironment,
   fonts:          fonts,
   styles:         styles,
-  vendorStyles:   vendorStyles,
   index:          index,
   views:          views,
   images:         images,
-  vendorJS:       vendorJS,
   scripts:        scripts,
+  jspm:           jspm,
+  bundle:         bundle,
   build:          build,
   buildEnv:       buildEnv,
   cleanManifests: cleanManifests
@@ -59,7 +60,6 @@ function fonts() {
 function styles() {
   return gulp.src(sources.mainStyle, { base: sources.base })
     .pipe(plugins.plumber({ errorHandler: catchError }))
-    .pipe(plugins.include({ extensions: ['scss', 'css'] }))
     .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
     .pipe(plugins.sass())
     .pipe(plugins.autoprefixer({ browsers: ['last 2 versions'] }))
@@ -70,34 +70,12 @@ function styles() {
     .pipe(gulp.dest(destination));
 }
 
-function vendorStyles() {
-  console.log(sources.vendor.stylesFile);
-  return gulp.src(sources.vendor.stylesFile, { base: sources.base })
-    .pipe(plugins.plumber({ errorHandler: catchError }))
-    .pipe(plugins.include({ extensions: ['css'] }))
-    .pipe(plugins.sass())
-    .pipe(plugins.cssmin())
-    .pipe(plugins.rev())
-    .pipe(gulp.dest(destination))
-    .pipe(plugins.rev.manifest({ path: 'manifests/vendorStyles.json' }))
-    .pipe(gulp.dest(destination));
-}
-
 function index() {
-  var manifest            = JSON.parse(fs.readFileSync(destination + '/manifests/scripts.json', "utf8"));
-  var configManifest      = JSON.parse(fs.readFileSync(destination + '/manifests/config.json', "utf8"));
-  var templateManifest    = JSON.parse(fs.readFileSync(destination + '/manifests/templates.json', "utf8"));
   var styleManifest       = JSON.parse(fs.readFileSync(destination + '/manifests/styles.json', "utf8"));
-  var vendorStyleManifest = JSON.parse(fs.readFileSync(destination + '/manifests/vendorStyles.json', "utf8"));
   var applicationSCSS = styleManifest[Object.keys(styleManifest)[0]].match(/application-.*\.css/)[0];
-  var vendorSCSS      = vendorStyleManifest[Object.keys(vendorStyleManifest)[0]].match(/vendor-.*\.css/)[0];
   return gulp.src(sources.index)
     .pipe(plugins.plumber({ errorHandler: catchError }))
-    .pipe(plugins.replace('app.js', manifest['app.js']))
-    .pipe(plugins.replace('vendor.js', configManifest['vendor.js']))
-    .pipe(plugins.replace('templates.js', templateManifest['templates.js']))
     .pipe(plugins.replace('application.css', applicationSCSS))
-    .pipe(plugins.replace('vendor.css', vendorSCSS))
     .pipe(plugins.minifyHtml({
       empty: true,
       comments: true,
@@ -127,9 +105,6 @@ function views() {
     .pipe(plugins.concat('templates.js'))
     .pipe(plugins.ngAnnotate())
     .pipe(plugins.uglify())
-    .pipe(plugins.rev())
-    .pipe(gulp.dest(destination))
-    .pipe(plugins.rev.manifest({ path: 'manifests/templates.json' }))
     .pipe(gulp.dest(destination));
 }
 
@@ -140,40 +115,45 @@ function images() {
     .pipe(gulp.dest(destination));
 }
 
-function vendorJS() {
-  return gulp.src(sources.vendor.scriptsFile)
-    .pipe(plugins.include({ extensions: ['js'] }))
-    .pipe(plugins.rev())
-    .pipe(gulp.dest(destination))
-    .pipe(plugins.rev.manifest({ path: 'manifests/config.json' }))
+function scripts() {
+  return gulp.src(sources.scripts)
+    .pipe(plugins.plumber({ errorHandler: catchError }))
+    .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
+    .pipe(plugins.ngAnnotate())
+    //.pipe(plugins.uglify())
     .pipe(gulp.dest(destination));
 }
 
-function scripts() {
-  return gulp.src(sources.app)
-    .pipe(plugins.plumber({ errorHandler: catchError }))
-    .pipe(plugins.include({ extensions: ['js'] }))
-    .pipe(plugins.traceur({ modules: 'register' }))
-    .pipe(plugins.ngAnnotate())
-    .pipe(plugins.uglify())
-    .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
-    .pipe(plugins.rev())
-    .pipe(gulp.dest(destination))
-    .pipe(plugins.rev.manifest({ path: 'manifests/scripts.json' }))
-    .pipe(gulp.dest(destination));
+function jspm() {
+  return gulp.src(['config.js', 'jspm_packages/**'], {base: sources.base})
+    .pipe(plugins.plumber({errorHandler: catchError}))
+    .pipe(gulp.dest(destination + '/jspm'));
+}
+
+function bundle(cb) {
+  builder = new builder();
+  builder.reset();
+  builder.loadConfig('./config.js').then(function () {
+    builder.config({
+      baseURL: 'public/'
+    });
+    builder.build('app', 'public/app.js', { minify: true }).then(function () {
+      return cb();
+    })
+  });
 }
 
 function build() {
   return run(
     'build:clean',
-    'build:vendorJS',
     'build:scripts',
     'build:styles',
-    'build:vendorStyles',
     'build:images',
     'build:views',
     'build:index',
     'build:fonts',
+    'build:jspm',
+    'build:bundle',
     'build:cleanManifests'
   );
 }

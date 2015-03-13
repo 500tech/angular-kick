@@ -18,7 +18,7 @@ describe('$ kick server:tdd', function () {
 
   it('should run gulp server:tdd task', function () {
     fs.ensureDirSync('node_modules');
-    fs.ensureDirSync('bower_components');
+    fs.ensureDirSync('jspm_packages');
     var output = child_process.execSync(kick + 'server:tdd', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Running browserSync server");

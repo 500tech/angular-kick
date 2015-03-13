@@ -95,7 +95,7 @@ describe('$ kick destroy', function () {
 
     expect(fs.existsSync('app/config/routes/example.js')).toBeFalsy();
     expect(fs.existsSync('app/assets/stylesheets/example.scss')).toBeFalsy();
-    expect(mainStyle).not.toMatch('//= include example.scss');
+    expect(mainStyle).not.toMatch('@import "example";');
     expect(fs.existsSync('app/states/example/example.html')).toBeFalsy();
     expect(fs.existsSync('app/states/example/example.controller.js')).toBeFalsy();
     expect(fs.existsSync('test/unit/controllers/example/example.controller.spec.js')).toBeFalsy();
@@ -107,7 +107,7 @@ describe('$ kick destroy', function () {
     var mainFile = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
 
     expect(fs.existsSync('app/assets/stylesheets/example.scss')).toBeFalsy();
-    expect(mainFile).not.toMatch('//= include example.scss');
+    expect(mainFile).not.toMatch('@import "example";');
   });
 
   it('TEARDOWN', function () {
