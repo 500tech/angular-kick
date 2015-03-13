@@ -1,4 +1,4 @@
-class layoutController {
+export class layoutController {
   constructor($rootScope, Layout) {
     let layout = this;
 

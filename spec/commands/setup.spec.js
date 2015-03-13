@@ -13,7 +13,7 @@ describe('$ kick setup', function () {
     expect(true).toBeTruthy();
   });
 
-  it('should run bower install', function () {
+  it('should run jspm install', function () {
     expect(true).toBeTruthy();
   });
 

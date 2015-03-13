@@ -9,7 +9,7 @@ var proxy       = require('proxy-middleware');
 var modRewrite  = require('connect-modrewrite');
 var browserSync = require('browser-sync');
 var karma       = require('karma').server;
-var streams     = require('stream-series');
+var fs          = require('fs-extra');
 var common      = require('./common');
 var sources     = common.sources;
 var setENV      = common.setENV;
@@ -22,13 +22,11 @@ module.exports = {
   setEnvironment: setEnvironment,
   fonts:          fonts,
   styles:         styles,
-  vendorStyles:   vendorStyles,
   index:          index,
   views:          views,
   images:         images,
-  vendorJS:       vendorJS,
-  vendorJSConcat: vendorJSConcat,
   scripts:        scripts,
+  jspm:           jspm,
   test:           test,
   testEnv:        testEnv,
   server:         server,
@@ -93,12 +91,11 @@ function fonts() {
 }
 
 function styles() {
-  return gulp.src(sources.styleFiles, {base: sources.base})
+  return gulp.src(sources.styles, {base: sources.base})
     .pipe(plugins.changed(destination, {
       hasChanged: plugins.changed.compareSha1Digest
     }))
     .pipe(plugins.plumber({ errorHandler: catchError }))
-    .pipe(plugins.include({ extensions: ['scss', 'css'] }))
     .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass({
@@ -109,49 +106,14 @@ function styles() {
     .pipe(gulp.dest(destination));
 }
 
-function vendorStyles() {
-  return gulp.src(sources.vendor.styles, {base: sources.base})
-    .pipe(plugins.plumber({ errorHandler: catchError }))
-    .pipe(plugins.include({ extensions: ['scss', 'css'] }))
-    .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.sass({
-      onError: catchError
-    }))
-    .pipe(plugins.sourcemaps.write())
-    .pipe(gulp.dest(destination + '/vendor'));
-}
-
 function index() {
   if (errorRaised) {
     errorRaised = false;
     return;
   }
 
-  var app = gulp.src(sources.app, {read: false});
-  var modules = gulp.src(sources.modules, {read: false});
-  var configs = gulp.src(sources.configs, {read: false});
-  var directives = gulp.src(sources.directives, {read: false});
-  var filters = gulp.src(sources.filters, {read: false});
-  var models = gulp.src(sources.models, {read: false});
-  var services = gulp.src(sources.services, {read: false});
-  var controllers = gulp.src(sources.controllers, {read: false});
-  var vendorScripts = sources.vendor.scripts.map(function (file) {
-    if (file.match(/^\.\./)) {
-      return file;
-    } else {
-      return destination + '/' + file;
-    }
-  });
-  var vendorStyles = gulp.src(sources.vendor.styles, {read: false});
-  var styleFiles = sources.styleFiles.map(function (file) {
-    return destination + '/' + file.replace('app/', '').replace('scss', 'css');
-  });
-  styleFiles = gulp.src(styleFiles, {read: false});
-  vendorScripts = gulp.src(vendorScripts, {read: false});
-
   return gulp.src(sources.index)
     .pipe(plugins.plumber({errorHandler: catchError}))
-    .pipe(plugins.inject(streams(vendorStyles, styleFiles, vendorScripts, modules, app, configs, directives, filters, models, services, controllers)))
     .pipe(plugins.replace(/\.\.\//g, ''))
     .pipe(plugins.replace('app/', ''))
     .pipe(plugins.replace(destination + '/', ''))
@@ -159,12 +121,19 @@ function index() {
 }
 
 function views() {
+  var appName = JSON.parse(fs.readFileSync(__dirname + '/../package.json', "utf8")).name;
   return gulp.src(sources.views, {base: sources.base})
     .pipe(plugins.changed(destination, {
       hasChanged: plugins.changed.compareSha1Digest
     }))
     .pipe(plugins.plumber({errorHandler: catchError}))
     .pipe(plugins.replaceTask({ patterns: [{ json: ENV }] }))
+    .pipe(plugins.html2js({
+      outputModuleName: appName + '.templates',
+      base: 'app/'
+    }))
+    .pipe(plugins.concat('templates.js'))
+    .pipe(plugins.ngAnnotate())
     .pipe(gulp.dest(destination))
 }
 
@@ -177,19 +146,6 @@ function images() {
     .pipe(gulp.dest(destination));
 }
 
-function vendorJS() {
-  return gulp.src(sources.vendor.scripts, {base: sources.base})
-    .pipe(plugins.plumber({errorHandler: catchError}))
-    .pipe(gulp.dest(destination + '/vendor'));
-}
-
-function vendorJSConcat() {
-  return gulp.src(sources.vendor.scriptsFile)
-    .pipe(plugins.plumber({errorHandler: catchError}))
-    .pipe(plugins.include({extensions: ['js']}))
-    .pipe(gulp.dest(destination));
-}
-
 function scripts() {
   return gulp.src(sources.scripts)
     .pipe(plugins.changed(destination, {
@@ -198,15 +154,20 @@ function scripts() {
     .pipe(plugins.plumber({errorHandler: catchError}))
     .pipe(plugins.replaceTask({patterns: [{json: ENV}]}))
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.traceur({modules: 'register'}))
     .pipe(plugins.ngAnnotate())
     .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest(destination));
 }
 
+function jspm() {
+  return gulp.src(['config.js', 'jspm_packages/**'], {base: sources.base})
+    .pipe(plugins.plumber({errorHandler: catchError}))
+    .pipe(gulp.dest(destination + '/jspm'));
+}
+
 function test() {
   destination = common.destinations.test;
-  return run('dev:clean', 'dev:vendorJSConcat', 'dev:scripts', 'dev:vendorStyles', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts', 'dev:index', 'dev:testOnce', 'dev:clean');
+  return run('dev:clean', ['dev:scripts', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:jspm', 'dev:testOnce', 'dev:clean');
 }
 
 function testEnv() {
@@ -214,11 +175,11 @@ function testEnv() {
 }
 
 function server() {
-  return run('dev:clean', ['dev:vendorJSConcat', 'dev:vendorJS', 'dev:scripts', 'dev:vendorStyles', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:serve');
+  return run('dev:clean', ['dev:scripts', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts'], 'dev:index', 'dev:jspm', 'dev:serve');
 }
 
 function serverTdd() {
-  return run('dev:clean', 'dev:vendorJSConcat', 'dev:vendorJS', 'dev:scripts', 'dev:vendorStyles', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts', 'dev:index', 'dev:serve', 'dev:tdd');
+  return run('dev:clean', 'dev:scripts', 'dev:styles', 'dev:images', 'dev:views', 'dev:fonts', 'dev:index', 'dev:jspm', 'dev:serve', 'dev:tdd');
 }
 
 function serverEnv() {

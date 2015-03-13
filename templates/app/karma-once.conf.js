@@ -1,22 +1,18 @@
 module.exports = function(config) {
   config.set({
     basePath: '.',
-    frameworks: ['jasmine'],
-    files: [
-      '.test/vendor.js',
-      '.test/templates.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      '.test/modules.js',
-      '.test/app.js',
-      '.test/services/**/*.js',
-      '.test/directives/**/*.js',
-      '.test/filters/**/*.js',
-      '.test/config/**/*.js',
-      '.test/states/**/*.js',
-      '.test/layouts/**/*.js',
-      'test/mock/**.js',
-      'test/unit/**/**.js'
-    ],
+    frameworks: ['jspm', 'jasmine'],
+    jspm: {
+      useBundles: true,
+      loadFiles: [
+        '.test/jspm_packages/github/angular/bower-angular-mocks@1.3.14/angular-mocks.js',
+        '.test/app.js',
+        'test/mock/**/*.js',
+        'test/unit/**/*.js'
+      ],
+      serveFiles: ['.test/**']
+    },
+    files: [],
     exclude: [
       ".test/app/assets/**",
       ".test/app/config/**"

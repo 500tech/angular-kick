@@ -1,5 +1,2 @@
-/* Please do not include any styles in this file */
-/* Use it only to import other stylesheets */
-
-//= include normalize.scss
-//= include main.scss
+@import "normalize";
+@import "main";

@@ -11,18 +11,13 @@ describe('utils module', function () {
   });
 
   it('should log a message to the console', function () {
-    utils.ensureGlobalModule('bower');
-    expect(logger.log).toHaveBeenCalledWith('Checking for bower presence...');
-  });
-
-  it('should delegate to a "npm list" command with child process', function () {
-    utils.ensureGlobalModule('bower');
-    expect(child_process.execSync).toHaveBeenCalledWith('npm list -g bower');
+    utils.ensureGlobalModule('gulp');
+    expect(logger.log).toHaveBeenCalledWith('Checking for gulp presence...');
   });
 
   it('should try to run the provided module "-v" command', function () {
-    utils.ensureGlobalModule('bower');
-    expect(child_process.execSync).toHaveBeenCalledWith('bower -v');
+    utils.ensureGlobalModule('gulp');
+    expect(child_process.execSync).toHaveBeenCalledWith('gulp -v');
   });
 
 });

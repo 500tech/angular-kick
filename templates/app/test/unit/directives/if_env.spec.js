@@ -1,9 +1,11 @@
+var angular = require('angular');
+
 describe('ifEnv Directive', function () {
   var devElement, buildElement;
 
-  beforeEach(module('%APP_NAME%.config', '%APP_NAME%.directives'));
+  beforeEach(angular.mock.module('%APP_NAME%.config', '%APP_NAME%.directives'));
 
-  beforeEach(inject(function ($compile) {
+  beforeEach(angular.mock.inject(function ($compile) {
     devElement = angular.element('<div><div if-env="development">Contents</div></div>');
     devElement = $compile(devElement)({});
 

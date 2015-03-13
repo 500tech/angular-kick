@@ -46,7 +46,7 @@ Creating a new application is as simple as running:
 $ kick new [application-name]
 ```
 
-After you have created the application, you will have to download npm dependencies needed for Gulp and starter components from bower.
+After you have created the application, you will have to download npm and jspm dependencies.
 You can do that by running:
 
 ```sh
@@ -67,7 +67,7 @@ Additionally, you can run the server under a specific environment:
 $ kick server --production
 ```
 
-To display useful information about the application, such as its name, AngularJS version and included bower components:
+To display useful information about the application, such as its name and AngularJS version.
 
 ```sh
 $ kick about

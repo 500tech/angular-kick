@@ -15,7 +15,7 @@ describe('$ kick about', function () {
 
     expect(output).toMatch("NpmTest");
     expect(output).toMatch("1.0.0");
-    expect(output).toMatch("1.3.12");
+    expect(output).toMatch("1.3.14");
   });
 
   it('TEARDOWN', function () {
