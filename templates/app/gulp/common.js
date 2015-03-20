@@ -16,14 +16,14 @@ module.exports = {
     services:     'app/services/**/*.js',
     controllers:  ['app/states/**/*.js', 'app/layouts/**/*.js'],
 
-    scripts:      ['app/**/*.js', '!app/vendor.js'],
+    scripts:      'app/**/*.js',
     styles:       'app/assets/stylesheets/**/*.scss',
     mainStyle:    'app/assets/stylesheets/application.scss',
 
     images:       'app/assets/images/**',
     fonts:        'app/assets/fonts/**',
     views:        ['app/**/*.html', '!app/app.html'],
-    index:        'app/app.html',
+    index:        'app/app.html'
   },
 
   destinations: {
@@ -32,5 +32,5 @@ module.exports = {
     production: 'public'
   },
 
-  setENV: JSON.parse(fs.readFileSync(__dirname + '/../environments.json', "utf8"))
+  environments: JSON.parse(fs.readFileSync(__dirname + '/../environments.json', "utf8"))
 };
