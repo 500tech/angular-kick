@@ -50,7 +50,7 @@ After you have created the application, you will have to download npm and jspm d
 You can do that by running:
 
 ```sh
-$ cd applicationName
+$ cd application_name
 $ kick setup
 ```
 
