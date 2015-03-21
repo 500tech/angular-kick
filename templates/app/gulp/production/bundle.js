@@ -9,6 +9,6 @@ module.exports = function (cb) {
     });
     builder.build('app', 'public/app.js').then(function () {
       return cb();
-    })
+    });
   });
 };
