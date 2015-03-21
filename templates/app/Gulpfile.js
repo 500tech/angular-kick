@@ -6,6 +6,7 @@ var plugins = require('gulp-load-plugins')();
 var common = require('./gulp/common');
 plugins.util.env.GULP_ERROR_RAISED = false;
 
+gulp.task('dev:gulpAutoreload',   require('./gulp/development/gulp_autoreload'));
 gulp.task('dev:clean',            require('./gulp/development/clean'));
 gulp.task('dev:setEnvironment',   require('./gulp/development/set_environment'));
 gulp.task('dev:fonts',            require('./gulp/development/fonts'));
@@ -32,7 +33,7 @@ gulp.task('build:bundle',         require('./gulp/production/bundle'));
 gulp.task('build:cleanManifests', require('./gulp/production/clean_manifests'));
 
 gulp.task('default', function () {
-  return run('dev:server');
+  return run('dev:gulpAutoreload');
 });
 
 gulp.task('dev:server', function () {
