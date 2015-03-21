@@ -17,7 +17,7 @@ module.exports = function () {
     }
 
     var args = [task];
-    if (env) { args.push(env) }
+    if (env) { args.push(env); }
 
     if (gulpProcess) { gulpProcess.kill(); }
     gulpProcess = spawn('gulp', args, {stdio: 'inherit'});

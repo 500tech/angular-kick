@@ -23,7 +23,7 @@ module.exports = function () {
   var sources = common.sources;
 
   var proxyOptions;
-  proxyOptions = url.parse(plugins.util.env.ENV['API_URL']);
+  proxyOptions = url.parse(plugins.util.env.ENV.API_URL);
   proxyOptions.route = '/api';
   browserSync({
     browser: ['google chrome', 'chrome'],

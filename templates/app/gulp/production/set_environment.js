@@ -5,7 +5,7 @@ module.exports = function () {
   var environments = common.environments;
 
   if (!process.argv[3]) {
-    plugins.util.env.ENV = environments['production'];
+    plugins.util.env.ENV = environments.production;
   } else {
     var environment = process.argv[3].replace(/^--/, '');
     if (environments[environment]) {
@@ -14,7 +14,7 @@ module.exports = function () {
     } else {
       console.log('Environment "' + environment + '" was not found in environments.js file');
       console.log('Using default environment "production"');
-      plugins.util.env.ENV = environments['production'];
+      plugins.util.env.ENV = environments.production;
     }
   }
 };
