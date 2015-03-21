@@ -4,10 +4,15 @@ var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick about', function () {
 
-  it('SETUP', function () {
+  beforeAll(function () {
     fs.deleteSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
+  });
+
+  afterAll(function () {
+    process.chdir('..');
+    fs.deleteSync('npm_test');
   });
 
   it('should output information about application', function () {
@@ -16,10 +21,5 @@ describe('$ kick about', function () {
     expect(output).toMatch("NpmTest");
     expect(output).toMatch("1.0.0");
     expect(output).toMatch("1.3.14");
-  });
-
-  it('TEARDOWN', function () {
-    process.chdir('..');
-    fs.deleteSync('npm_test');
   });
 });

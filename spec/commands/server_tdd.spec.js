@@ -4,10 +4,15 @@ var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick server:tdd', function () {
 
-  it('SETUP', function () {
+  beforeAll(function () {
     fs.deleteSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
+  });
+
+  afterAll(function () {
+    process.chdir('..');
+    fs.deleteSync('npm_test');
   });
 
   it('should not run without packages', function () {
@@ -23,10 +28,5 @@ describe('$ kick server:tdd', function () {
 
     expect(output).toMatch("Running browserSync server");
     expect(output).toMatch("Running Karma test server");
-  });
-
-  it('TEARDOWN', function () {
-    process.chdir('..');
-    fs.deleteSync('npm_test');
   });
 });

@@ -12,7 +12,7 @@ describe('$ kick new', function () {
     expect(file).toMatch('"name": "NpmTest"');
   });
 
-  it('TEARDOWN', function () {
+  afterAll(function () {
     process.chdir('..');
     fs.deleteSync('npm_test');
   });
