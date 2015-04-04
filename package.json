@@ -1,6 +1,6 @@
 {
   "name": "angular-kick",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Kickstarter and generator for AngularJS based on ES6 and best practices",
   "author": "500Tech <info@500tech.com>",
   "contributors": [
@@ -53,10 +53,10 @@
     "replace": "0.3.0"
   },
   "devDependencies": {
-    "jasmine-node": "1.14.5"
+    "jasmine": "2.2.1"
   },
   "scripts": {
-    "test": "jasmine-node spec --captureExceptions"
+    "test": "node_modules/jasmine/bin/jasmine.js"
   },
   "preferGlobal": true
 }

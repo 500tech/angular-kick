@@ -19,6 +19,6 @@ export class Layout {
       layout = this.$state.current.data.layout;
     }
 
-    return 'layouts/' + layout + '.html';
+    return `layouts/${layout}.html`;
   }
 }

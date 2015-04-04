@@ -4,10 +4,15 @@ var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick server', function () {
 
-  it('SETUP', function () {
+  beforeAll(function () {
     fs.deleteSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
+  });
+
+  afterAll(function () {
+    process.chdir('..');
+    fs.deleteSync('npm_test');
   });
 
   it('should not run without packages', function () {
@@ -22,10 +27,5 @@ describe('$ kick server', function () {
     var output = child_process.execSync(kick + 'server', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Running browserSync server");
-  });
-
-  it('TEARDOWN', function () {
-    process.chdir('..');
-    fs.deleteSync('npm_test');
   });
 });

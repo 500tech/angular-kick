@@ -4,10 +4,15 @@ var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick generate', function () {
 
-  it('SETUP', function () {
+  beforeAll(function () {
     fs.deleteSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
+  });
+
+  afterAll(function () {
+    process.chdir('..');
+    fs.deleteSync('npm_test');
   });
 
   it('should ask what to generate', function () {
@@ -130,11 +135,6 @@ describe('$ kick generate', function () {
 
     expect(file).toBeTruthy();
     expect(mainFile).toMatch('@import "example";');
-  });
-
-  it('TEARDOWN', function () {
-    process.chdir('..');
-    fs.deleteSync('npm_test');
   });
 });
   

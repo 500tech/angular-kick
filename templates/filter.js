@@ -1,4 +1,4 @@
-function %FILTER_NAME% (input) {
+export default function %FILTER_NAME% (input) {
   return input;
 }
 
