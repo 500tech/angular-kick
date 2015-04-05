@@ -1,4 +1,4 @@
-angular.module('%APP_NAME%.config').config(function ($stateProvider) {
+export function staticRoutes($stateProvider) {
   $stateProvider
     .state('static', {
       template: '<ui-view></ui-view>',
@@ -9,4 +9,4 @@ angular.module('%APP_NAME%.config').config(function ($stateProvider) {
       url: '/404',
       templateUrl: 'states/static/404.html'
     })
-});
+}

@@ -1,9 +1,4 @@
-require('./constants');
-require('./decorators');
-require('./interceptors');
-require('./routes/routes');
-
-angular.module('%APP_NAME%.config')
+angular.module('%APP_NAME%.config', [])
   .config(function ($compileProvider, $httpProvider, $locationProvider, $logProvider, ENV) {
 
     if (ENV === 'production') {
@@ -20,3 +15,8 @@ angular.module('%APP_NAME%.config')
     // Allows to access application URLs without the # sign
     $locationProvider.html5Mode(true);
   });
+
+require('./constants');
+require('./decorators');
+require('./interceptors');
+require('./routes/routes');

@@ -4,5 +4,3 @@ export class %MODEL_NAME% {
     this.message = '%MODEL_NAME%';
   }
 }
-
-angular.module('%APP_NAME%.services').service('%MODEL_NAME%', %MODEL_NAME%);

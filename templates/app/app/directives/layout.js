@@ -1,4 +1,4 @@
-export class layoutController {
+class layoutController {
   constructor($rootScope, Layout) {
     let layout = this;
 
@@ -12,7 +12,7 @@ export class layoutController {
   }
 }
 
-angular.module('%APP_NAME%.directives').directive('layout', function () {
+export function layout() {
   return {
     restrict: 'EA',
     scope: {},
@@ -21,5 +21,4 @@ angular.module('%APP_NAME%.directives').directive('layout', function () {
     bindToController: true,
     template: "<ng-include src='layout.current'></ng-include>"
   }
-});
-
+}

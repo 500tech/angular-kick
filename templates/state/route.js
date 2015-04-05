@@ -1,3 +1,3 @@
-angular.module('%APP_NAME%.config').config(function ($stateProvider) {
+export function %STATE_NAME%Routes($stateProvider) {
   $stateProvider
-});
+}

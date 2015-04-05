@@ -5,4 +5,4 @@
       abstract: true,
       controller: '%STATE_CONTROLLER_NAME%Controller as %STATE_CONTROLLER_NAME%'
     })
-});
+}

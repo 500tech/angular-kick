@@ -1,10 +1,10 @@
-export class %DIRECTIVE_NAME%Controller {
+class %DIRECTIVE_NAME%Controller {
   constructor($element) {
     console.log($element);
   }
 }
 
-angular.module('%APP_NAME%.directives').directive('%DIRECTIVE_NAME%', function () {
+export function %DIRECTIVE_NAME%() {
   return {
     restrict: 'EA',
     scope: {},
@@ -13,4 +13,4 @@ angular.module('%APP_NAME%.directives').directive('%DIRECTIVE_NAME%', function (
     controllerAs: '%DIRECTIVE_NAME%',
     bindToController: true
   }
-});
+}

@@ -1,4 +1,4 @@
-angular.module('%APP_NAME%.config').config(function ($stateProvider, $urlRouterProvider) {
+export function homeRoutes($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/404');
 
   $stateProvider
@@ -7,4 +7,4 @@ angular.module('%APP_NAME%.config').config(function ($stateProvider, $urlRouterP
       templateUrl: 'states/home/home.html',
       controller: 'HomeController as Home'
     })
-});
+}
