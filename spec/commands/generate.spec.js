@@ -68,9 +68,12 @@ describe('$ kick generate', function () {
   it('should generate model', function () {
     child_process.execSync(kick + 'generate model example');
     var file = fs.readFileSync('app/models/example.js').toString();
+    var models   = fs.readFileSync('app/models/models.js').toString();
     var specFile = fs.readFileSync('test/unit/models/example.spec.js').toString();
 
     expect(file).toMatch("class Example");
+    expect(models).toMatch("import { Example } from './example'");
+    expect(models).toMatch("\\.service\\('Example', Example\\)");
     expect(specFile).toMatch("describe\\('Example Model'");
   });
 
