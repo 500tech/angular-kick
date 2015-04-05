@@ -33,7 +33,7 @@ describe('$ kick generate', function () {
     var file = fs.readFileSync('app/directives/example.js').toString();
     var specFile = fs.readFileSync('test/unit/directives/example.spec.js').toString();
 
-    expect(file).toMatch(".module\\('NpmTest.directives'\\).directive\\('example'");
+    expect(file).toMatch("export function example");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
 
