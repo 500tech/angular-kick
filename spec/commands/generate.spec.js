@@ -59,18 +59,24 @@ describe('$ kick generate', function () {
   it('should generate filter', function () {
     child_process.execSync(kick + 'generate filter example');
     var file = fs.readFileSync('app/filters/example.js').toString();
+    var filters  = fs.readFileSync('app/filters/filters.js').toString();
     var specFile = fs.readFileSync('test/unit/filters/example.spec.js').toString();
 
-    expect(file).toMatch(".module\\('NpmTest.filters'\\).filter\\('example'");
+    expect(file).toMatch("export function example\\(input\\)");
+    expect(filters).toMatch("import { example } from './example'");
+    expect(filters).toMatch("\\.filter\\('example', example\\)");
     expect(specFile).toMatch("describe\\('example Filter'");
   });
 
   it('should generate model', function () {
     child_process.execSync(kick + 'generate model example');
     var file = fs.readFileSync('app/models/example.js').toString();
+    var models   = fs.readFileSync('app/models/models.js').toString();
     var specFile = fs.readFileSync('test/unit/models/example.spec.js').toString();
 
     expect(file).toMatch("class Example");
+    expect(models).toMatch("import { Example } from './example'");
+    expect(models).toMatch("\\.service\\('Example', Example\\)");
     expect(specFile).toMatch("describe\\('Example Model'");
   });
 
@@ -91,15 +97,20 @@ describe('$ kick generate', function () {
   it('should generate service', function () {
     child_process.execSync(kick + 'generate service example');
     var file = fs.readFileSync('app/services/example.js').toString();
+    var services = fs.readFileSync('app/services/services.js').toString();
     var specFile = fs.readFileSync('test/unit/services/example.spec.js').toString();
 
     expect(file).toMatch("class Example");
+    expect(services).toMatch("import { Example } from './example'");
+    expect(services).toMatch("\\.service\\('Example', Example\\)");
     expect(specFile).toMatch("describe\\('Example Service'");
   });
 
   it('should generate state', function () {
     child_process.execSync(kick + 'generate state example');
     var route       = fs.readFileSync('app/config/routes/example.js').toString();
+    var routesFile  = fs.readFileSync('app/config/routes/routes.js').toString();
+    var statesFile  = fs.readFileSync('app/states/states.js').toString();
     var style       = fs.existsSync('app/assets/stylesheets/example.scss');
     var mainStyle   = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
     var view        = fs.readFileSync('app/states/example/example.html').toString();
@@ -107,6 +118,9 @@ describe('$ kick generate', function () {
     var spec        = fs.readFileSync('test/unit/controllers/example/example.controller.spec.js').toString();
 
     expect(route).toMatch("controller: 'ExampleController as Example'");
+    expect(routesFile).toMatch("import { exampleRoutes } from './example';");
+    expect(routesFile).toMatch("\\.config\\(exampleRoutes\\);");
+    expect(statesFile).toMatch("require\\('./example/example.controller'\\);");
     expect(style).toBeTruthy();
     expect(mainStyle).toMatch('@import "example";');
     expect(view).toMatch("<ui-view></ui-view>");
