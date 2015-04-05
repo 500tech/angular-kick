@@ -100,6 +100,8 @@ describe('$ kick generate', function () {
   it('should generate state', function () {
     child_process.execSync(kick + 'generate state example');
     var route       = fs.readFileSync('app/config/routes/example.js').toString();
+    var routesFile  = fs.readFileSync('app/config/routes/routes.js').toString();
+    var statesFile  = fs.readFileSync('app/states/states.js').toString();
     var style       = fs.existsSync('app/assets/stylesheets/example.scss');
     var mainStyle   = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
     var view        = fs.readFileSync('app/states/example/example.html').toString();
@@ -107,6 +109,9 @@ describe('$ kick generate', function () {
     var spec        = fs.readFileSync('test/unit/controllers/example/example.controller.spec.js').toString();
 
     expect(route).toMatch("controller: 'ExampleController as Example'");
+    expect(routesFile).toMatch("import { exampleRoutes } from './example';");
+    expect(routesFile).toMatch("\\.config\\(exampleRoutes\\);");
+    expect(statesFile).toMatch("require\\('./example/example.controller'\\);");
     expect(style).toBeTruthy();
     expect(mainStyle).toMatch('@import "example";');
     expect(view).toMatch("<ui-view></ui-view>");
