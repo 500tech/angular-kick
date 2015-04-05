@@ -59,9 +59,12 @@ describe('$ kick generate', function () {
   it('should generate filter', function () {
     child_process.execSync(kick + 'generate filter example');
     var file = fs.readFileSync('app/filters/example.js').toString();
+    var filters  = fs.readFileSync('app/filters/filters.js').toString();
     var specFile = fs.readFileSync('test/unit/filters/example.spec.js').toString();
 
-    expect(file).toMatch(".module\\('NpmTest.filters'\\).filter\\('example'");
+    expect(file).toMatch("export function example\\(input\\)");
+    expect(filters).toMatch("import { example } from './example'");
+    expect(filters).toMatch("\\.filter\\('example', example\\)");
     expect(specFile).toMatch("describe\\('example Filter'");
   });
 
