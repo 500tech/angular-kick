@@ -5,17 +5,17 @@ module.exports = function(config) {
     jspm: {
       useBundles: true,
       loadFiles: [
-        '.tmp/jspm_packages/github/angular/bower-angular-mocks@1.3.14/angular-mocks.js',
-        '.tmp/app.js',
+        global.karmaBaseDirectory + '/jspm_packages/github/angular/bower-angular-mocks@1.3.14/angular-mocks.js',
+        global.karmaBaseDirectory + '/app.js',
         'test/mock/**/*.js',
         'test/unit/**/*.js'
       ],
-      serveFiles: ['.tmp/**']
+      serveFiles: [global.karmaBaseDirectory + '/**']
     },
     files: [],
     exclude: [
-      ".tmp/app/assets/**",
-      ".tmp/app/config/**"
+      global.karmaBaseDirectory + "/app/assets/**",
+      global.karmaBaseDirectory + "/app/config/**"
     ],
     reporters: ['progress', 'html'],
     port: 9876,
