@@ -20,9 +20,13 @@ module.exports = function () {
       spare: true,
       conditionals: true
     }))
-    .pipe(plugins.html2js({
-      outputModuleName: appName + '.templates',
-      base: 'app/'
+    .pipe(plugins.angularTemplatecache({
+      module: appName + '.templates',
+      standalone: true,
+      templateHeader: 'export default angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {',
+      base: function (file) {
+        return file.history[0].replace(file.cwd,'').replace(file.base,'').substring(2);
+      }
     }))
     .pipe(plugins.concat('templates.js'))
     .pipe(plugins.ngAnnotate())

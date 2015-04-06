@@ -1,3 +1,4 @@
-angular.module('%APP_NAME%.config')
-  .constant('ENV', '@@ENV')
-  .constant('API_URL', '@@API_URL');
+export const constants = {
+  'ENV': '@@ENV',
+  'API_URL': '@@API_URL'
+};

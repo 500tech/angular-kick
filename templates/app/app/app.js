@@ -1,9 +1,7 @@
 "use strict";
 
-require('angular');
-require('angular-ui-router');
-
-angular.module('%APP_NAME%.templates', []);
+import 'angular';
+import 'angular-ui-router';
 
 import Models from './models/models';
 import Services from './services/services';
@@ -12,8 +10,7 @@ import Filters from './filters/filters';
 import Config from './config/config';
 import Routes from './config/routes/routes';
 import States from './states/states';
-
-require('./templates');
+import Templates from './templates';
 
 angular.module('%APP_NAME%', [
   Models.name,
@@ -23,8 +20,12 @@ angular.module('%APP_NAME%', [
   Config.name,
   Routes.name,
   States.name,
-  '%APP_NAME%.templates'
+  Templates.name
 ]);
 
 angular.module('%APP_NAME%').run(($rootScope, $state) => {
+});
+
+angular.element(document).ready(function() {
+  angular.bootstrap(document, ['%APP_NAME%']);
 });

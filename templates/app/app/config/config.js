@@ -1,4 +1,8 @@
+import { decorators } from './decorators';
+import { constants } from './constants';
+
 export default angular.module('%APP_NAME%.config', [])
+  .constant(constants)
   .config(function ($compileProvider, $httpProvider, $locationProvider, $logProvider, ENV) {
 
     if (ENV === 'production') {
@@ -14,8 +18,6 @@ export default angular.module('%APP_NAME%.config', [])
 
     // Allows to access application URLs without the # sign
     $locationProvider.html5Mode(true);
-  });
+  })
+  .config(decorators);
 
-require('./constants');
-require('./decorators');
-require('./interceptors');
