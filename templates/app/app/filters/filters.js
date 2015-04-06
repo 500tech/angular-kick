@@ -1,1 +1,1 @@
-angular.module('%APP_NAME%.filters', []);
+export default angular.module('%APP_NAME%.filters', []);

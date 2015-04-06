@@ -1,1 +1,1 @@
-angular.module('%APP_NAME%.models', []);
+export default angular.module('%APP_NAME%.models', []);

@@ -5,24 +5,26 @@ require('angular-ui-router');
 
 angular.module('%APP_NAME%.templates', []);
 
-require('./models/models');
-require('./services/services');
-require('./directives/directives');
-require('./filters/filters');
-require('./config/config');
-require('./states/states');
+import Models from './models/models';
+import Services from './services/services';
+import Directives from './directives/directives';
+import Filters from './filters/filters';
+import Config from './config/config';
+import Routes from './config/routes/routes';
+import States from './states/states';
+
 require('./templates');
 
 angular.module('%APP_NAME%', [
-  '%APP_NAME%.config',
-  '%APP_NAME%.routes',
-  '%APP_NAME%.services',
-  '%APP_NAME%.models',
-  '%APP_NAME%.filters',
-  '%APP_NAME%.directives',
-  '%APP_NAME%.controllers',
+  Models.name,
+  Services.name,
+  Directives.name,
+  Filters.name,
+  Config.name,
+  Routes.name,
+  States.name,
   '%APP_NAME%.templates'
 ]);
 
-angular.module('%APP_NAME%').run(function ($rootScope, $state) {
+angular.module('%APP_NAME%').run(($rootScope, $state) => {
 });

@@ -1,4 +1,4 @@
-angular.module('%APP_NAME%.config', [])
+export default angular.module('%APP_NAME%.config', [])
   .config(function ($compileProvider, $httpProvider, $locationProvider, $logProvider, ENV) {
 
     if (ENV === 'production') {
@@ -19,4 +19,3 @@ angular.module('%APP_NAME%.config', [])
 require('./constants');
 require('./decorators');
 require('./interceptors');
-require('./routes/routes');

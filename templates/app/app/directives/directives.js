@@ -1,6 +1,6 @@
 import { ifEnv } from './if_env';
 import { layout } from './layout';
 
-angular.module('%APP_NAME%.directives', [])
+export default angular.module('%APP_NAME%.directives', [])
   .directive('ifEnv', ifEnv)
   .directive('layout', layout);

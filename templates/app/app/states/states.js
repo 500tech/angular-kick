@@ -1,3 +1,4 @@
-angular.module('%APP_NAME%.controllers', []);
+import { HomeController } from './home/home';
 
-require('./home/home');
+export default angular.module('%APP_NAME%.controllers', [])
+  .controller('HomeController', HomeController);

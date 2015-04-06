@@ -27,5 +27,3 @@ export class HomeController {
   }
 
 }
-
-angular.module('%APP_NAME%.controllers').controller('HomeController', HomeController);
