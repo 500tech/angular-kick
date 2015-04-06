@@ -50,7 +50,7 @@ describe('formatters module', function () {
   });
 
   it('toJSFileName', function () {
-    expect(format.toJSFileName('newSample_controller')).toEqual('new_sample.controller.js');
+    expect(format.toJSFileName('newSample_controller')).toEqual('new_sample.js');
     expect(format.toJSFileName('newSample_spec')).toEqual('new_sample.spec.js');
     expect(format.toJSFileName('newSample')).toEqual('new_sample.js');
   });
@@ -68,11 +68,11 @@ describe('formatters module', function () {
   });
 
   it('toPartialControllerName', function () {
-    expect(format.toPartialControllerName('NewSample')).toEqual('_new_sample.controller.js');
+    expect(format.toPartialControllerName('NewSample')).toEqual('_new_sample.js');
   });
 
   it('toPartialControllerSpecName', function () {
-    expect(format.toPartialControllerSpecName('NewSample')).toEqual('_new_sample.controller.spec.js');
+    expect(format.toPartialControllerSpecName('NewSample')).toEqual('_new_sample.spec.js');
   });
 
   it('parentPath', function () {

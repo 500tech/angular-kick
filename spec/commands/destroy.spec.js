@@ -81,8 +81,8 @@ describe('$ kick destroy', function () {
     child_process.execSync(kick + 'destroy partial example_2');
 
     expect(fs.existsSync('app/layouts/shared/_example_2.html')).toBeFalsy();
-    expect(fs.existsSync('app/layouts/shared/_example_2.controller.js')).toBeFalsy();
-    expect(fs.existsSync('test/units/controllers/shared/_example_2.controller.spec.js')).toBeFalsy();
+    expect(fs.existsSync('app/layouts/shared/_example_2.js')).toBeFalsy();
+    expect(fs.existsSync('test/units/controllers/shared/_example_2.spec.js')).toBeFalsy();
   });
 
   it('should destroy service', function () {
@@ -102,8 +102,8 @@ describe('$ kick destroy', function () {
     expect(fs.existsSync('app/assets/stylesheets/example.scss')).toBeFalsy();
     expect(mainStyle).not.toMatch('@import "example";');
     expect(fs.existsSync('app/states/example/example.html')).toBeFalsy();
-    expect(fs.existsSync('app/states/example/example.controller.js')).toBeFalsy();
-    expect(fs.existsSync('test/unit/controllers/example/example.controller.spec.js')).toBeFalsy();
+    expect(fs.existsSync('app/states/example/example.js')).toBeFalsy();
+    expect(fs.existsSync('test/unit/controllers/example/example.spec.js')).toBeFalsy();
   });
 
   it('should destroy style', function () {

@@ -89,7 +89,7 @@ describe('$ kick generate', function () {
 
   it('should generate partial with controller', function () {
     child_process.execSync(kick + 'generate partial example_2 --controller');
-    var controller = fs.readFileSync('app/layouts/shared/_example_2.controller.js').toString();
+    var controller = fs.readFileSync('app/layouts/shared/_example_2.js').toString();
 
     expect(controller).toMatch("class Example2Controller");
   });
@@ -114,13 +114,13 @@ describe('$ kick generate', function () {
     var style       = fs.existsSync('app/assets/stylesheets/example.scss');
     var mainStyle   = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
     var view        = fs.readFileSync('app/states/example/example.html').toString();
-    var controller  = fs.readFileSync('app/states/example/example.controller.js').toString();
-    var spec        = fs.readFileSync('test/unit/controllers/example/example.controller.spec.js').toString();
+    var controller  = fs.readFileSync('app/states/example/example.js').toString();
+    var spec        = fs.readFileSync('test/unit/controllers/example/example.spec.js').toString();
 
     expect(route).toMatch("controller: 'ExampleController as Example'");
     expect(routesFile).toMatch("import { exampleRoutes } from './example';");
     expect(routesFile).toMatch("\\.config\\(exampleRoutes\\);");
-    expect(statesFile).toMatch("require\\('./example/example.controller'\\);");
+    expect(statesFile).toMatch("require\\('./example/example'\\);");
     expect(style).toBeTruthy();
     expect(mainStyle).toMatch('@import "example";');
     expect(view).toMatch("<ui-view></ui-view>");
