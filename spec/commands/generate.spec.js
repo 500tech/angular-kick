@@ -120,7 +120,8 @@ describe('$ kick generate', function () {
     expect(route).toMatch("controller: 'ExampleController as Example'");
     expect(routesFile).toMatch("import { exampleRoutes } from './example';");
     expect(routesFile).toMatch("\\.config\\(exampleRoutes\\);");
-    expect(statesFile).toMatch("require\\('./example/example'\\);");
+    expect(statesFile).toMatch("import { ExampleController } from './example/example");
+    expect(statesFile).toMatch(".controller\\('ExampleController', ExampleController\\);");
     expect(style).toBeTruthy();
     expect(mainStyle).toMatch('@import "example";');
     expect(view).toMatch("<ui-view></ui-view>");
