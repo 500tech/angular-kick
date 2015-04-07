@@ -4,3 +4,5 @@ export class %MODEL_NAME% {
     this.message = '%MODEL_NAME%';
   }
 }
+
+%MODEL_NAME%.$inject = ['$log'];

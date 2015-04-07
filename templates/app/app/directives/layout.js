@@ -12,6 +12,8 @@ class layoutController {
   }
 }
 
+layoutController.$inject = ['$rootScope', 'Layout'];
+
 export function layout() {
   return {
     restrict: 'EA',

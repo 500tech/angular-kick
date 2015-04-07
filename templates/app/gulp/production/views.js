@@ -30,6 +30,5 @@ module.exports = function () {
     }))
     .pipe(plugins.concat('templates.js'))
     .pipe(plugins.ngAnnotate())
-    .pipe(plugins.uglify())
     .pipe(gulp.dest(destination));
 };

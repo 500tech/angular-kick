@@ -8,3 +8,5 @@ export function homeRoutes($stateProvider, $urlRouterProvider) {
       controller: 'HomeController as Home'
     })
 }
+
+homeRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];

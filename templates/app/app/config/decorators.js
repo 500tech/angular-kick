@@ -9,3 +9,6 @@ function exceptionHandlerDecorator($delegate, $log) {
 
   return $delegate;
 }
+
+decorators.$inject = ['$provide'];
+exceptionHandlerDecorator.$inject = ['$delegate', '$log'];

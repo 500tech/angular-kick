@@ -23,9 +23,6 @@ angular.module('%APP_NAME%', [
   Templates.name
 ]);
 
-angular.module('%APP_NAME%').run(($rootScope, $state) => {
-});
-
 angular.element(document).ready(function() {
   angular.bootstrap(document, ['%APP_NAME%']);
 });

@@ -7,7 +7,7 @@ module.exports = function (cb) {
     builder.config({
       baseURL: 'public/'
     });
-    builder.build('app', 'public/app.js').then(function () {
+    builder.build('app', 'public/app.js', { minify: true }).then(function () {
       return cb();
     });
   });

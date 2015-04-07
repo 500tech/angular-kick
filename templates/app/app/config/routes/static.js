@@ -10,3 +10,5 @@ export function staticRoutes($stateProvider) {
       templateUrl: 'states/static/404.html'
     })
 }
+
+staticRoutes.$inject = ['$stateProvider'];

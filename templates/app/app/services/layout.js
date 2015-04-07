@@ -22,3 +22,5 @@ export class Layout {
     return `layouts/${layout}.html`;
   }
 }
+
+Layout.$inject = ['$rootScope', '$state'];

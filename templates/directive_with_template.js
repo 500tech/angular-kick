@@ -4,6 +4,8 @@ class %DIRECTIVE_NAME%Controller {
   }
 }
 
+%DIRECTIVE_NAME%Controller.$inject = ['$element'];
+
 export function %DIRECTIVE_NAME%() {
   return {
     restrict: 'EA',

@@ -27,3 +27,5 @@ export class HomeController {
   }
 
 }
+
+HomeController.$inject = ['$scope', '$interval'];
