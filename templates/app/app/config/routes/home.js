@@ -1,12 +1,13 @@
-export function homeRoutes($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/404');
+import homeTemplate from 'states/home/home.html';
+
+export function homeRoutes($stateProvider) {
 
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'states/home/home.html',
+      templateUrl: homeTemplate,
       controller: 'HomeController as Home'
     })
 }
 
-homeRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+homeRoutes.$inject = ['$stateProvider'];

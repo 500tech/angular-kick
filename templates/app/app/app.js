@@ -1,7 +1,9 @@
 "use strict";
 
+import 'sugar';
 import 'angular';
-import 'angular-ui-router';
+
+import 'assets/stylesheets/application.scss';
 
 import Models from './models/models';
 import Services from './services/services';
@@ -10,7 +12,6 @@ import Filters from './filters/filters';
 import Config from './config/config';
 import Routes from './config/routes/routes';
 import States from './states/states';
-import Templates from './templates';
 
 angular.module('%APP_NAME%', [
   Models.name,
@@ -20,7 +21,6 @@ angular.module('%APP_NAME%', [
   Config.name,
   Routes.name,
   States.name,
-  Templates.name
 ]);
 
 angular.element(document).ready(function() {

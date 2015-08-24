@@ -2,7 +2,7 @@ var fs            = require('fs-extra');
 var child_process = require('child_process');
 var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-describe('$ kick build', function () {
+describe('$ kick bundle', function () {
 
   beforeAll(function () {
     fs.deleteSync('npm_test');
@@ -16,15 +16,15 @@ describe('$ kick build', function () {
   });
 
   it('should not run without packages', function () {
-    var output = child_process.execSync(kick + 'build').toString();
+    var output = child_process.execSync(kick + 'bundle').toString();
 
     expect(output).toMatch("Can't start server with missing packages");
   });
 
-  it('should run gulp build task', function () {
+  it('should run gulp bundle task', function () {
     fs.ensureDirSync('node_modules');
     fs.ensureDirSync('jspm_packages');
-    var output = child_process.execSync(kick + 'build', { timeout: 5000 }).toString();
+    var output = child_process.execSync(kick + 'bundle', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Building application");
   });
