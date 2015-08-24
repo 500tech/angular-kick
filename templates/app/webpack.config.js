@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === 'development') {
     noInfo: false,
     hot: true,
     historyApiFallback: true
-  }
+  };
 }
 
 module.exports = config;
