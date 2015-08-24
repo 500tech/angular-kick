@@ -44,7 +44,7 @@ describe('$ kick generate', function () {
     var specFile = fs.readFileSync('test/unit/directives/example.spec.js').toString();
 
     expect(file).toMatch("export function example");
-    expect(file).toMatch("templateUrl: require('directives/example.html')");
+    expect(file).toMatch("templateUrl: require\\('directives/example\\.html'\\)");
     expect(template).toMatch("<div>example Directive</div>");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
