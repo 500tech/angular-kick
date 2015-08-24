@@ -26,6 +26,7 @@
     "babel-core": "5.8.20",
     "babel-loader": "5.3.2",
     "css-loader": "0.15.6",
+    "env-replace-loader": "1.0.0",
     "file-loader": "0.8.4",
     "karma": "0.12.31",
     "karma-chrome-launcher": "0.1.7",

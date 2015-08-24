@@ -15,6 +15,12 @@ var config = {
   },
 
   module: {
+    preLoaders: [
+      {
+        test: /\.*/,
+        loaders: ['env-replace?prefix=@@&file=' + __dirname + '/environments.json']
+      }
+    ],
     loaders: [
       // Transpile ES6 and annotate AngularJS dependencies
       { test: /\.js$/, exclude: /node_modules/, loaders: ['ng-annotate', 'babel'] },
