@@ -20,6 +20,6 @@ describe('$ kick about', function () {
 
     expect(output).toMatch("NpmTest");
     expect(output).toMatch("1.0.0");
-    expect(output).toMatch("1.3.14");
+    expect(output).toMatch("1.4.3");
   });
 });
