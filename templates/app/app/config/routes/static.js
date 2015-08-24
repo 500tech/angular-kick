@@ -1,5 +1,3 @@
-import notFoundTemplate from 'states/static/404.html';
-
 export function staticRoutes($stateProvider) {
   $stateProvider
     .state('static', {
@@ -9,7 +7,7 @@ export function staticRoutes($stateProvider) {
 
     .state('static.404', {
       url: '/404',
-      templateUrl: notFoundTemplate
+      templateUrl: require('states/static/404.html')
     })
 }
 

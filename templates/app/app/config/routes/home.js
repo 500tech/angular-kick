@@ -1,11 +1,9 @@
-import homeTemplate from 'states/home/home.html';
-
 export function homeRoutes($stateProvider) {
 
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: homeTemplate,
+      templateUrl: require('states/home/home.html'),
       controller: 'HomeController as Home'
     })
 }
