@@ -21,7 +21,7 @@ describe('$ kick server', function () {
     expect(output).toMatch("Can't start server with missing packages");
   });
 
-  it('should run gulp server task', function () {
+  it('should run npm start task', function () {
     fs.ensureDirSync('node_modules');
     var output = child_process.execSync(kick + 'server', { timeout: 5000 }).toString();
 
