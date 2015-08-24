@@ -42,19 +42,19 @@ var config = {
         loaders: ['ngtemplate?relativeTo=' + __dirname + '/app', 'html']
       }
     ]
+  },
+
+  devServer: {
+    contentBase: './app',
+    noInfo: false,
+    hot: true,
+    historyApiFallback: true
   }
 
 };
 
 if (process.env.NODE_ENV === 'development') {
   config.devtool = '#inline-source-map';
-
-  config.devServer = {
-    contentBase: './app',
-    noInfo: false,
-    hot: true,
-    historyApiFallback: true
-  };
 }
 
 module.exports = config;
