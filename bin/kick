@@ -55,9 +55,9 @@ switch (command) {
   case 'ass':
     commands.serverTdd();
     break;
-  case 'build':
+  case 'bundle':
   case 'b':
-    commands.build();
+    commands.bundle();
     break;
   case 'test':
   case 't':
