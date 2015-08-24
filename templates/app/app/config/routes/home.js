@@ -4,7 +4,8 @@ export function homeRoutes($stateProvider) {
     .state('home', {
       url: '/',
       templateUrl: require('states/home/home.html'),
-      controller: 'HomeController as Home'
+      controller: 'HomeController',
+      controllerAs: 'Home'
     })
 }
 

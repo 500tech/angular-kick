@@ -3,6 +3,7 @@
       url: '%STATE_URL%',
       templateUrl: require('states/%STATE_PATH%.html'),
       abstract: true,
-      controller: '%STATE_CONTROLLER_NAME%Controller as %STATE_CONTROLLER_NAME%'
+      controller: '%STATE_CONTROLLER_NAME%Controller',
+      controllerAs: '%STATE_CONTROLLER_NAME%'
     })
 }
