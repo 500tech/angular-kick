@@ -45,8 +45,9 @@ if (process.env.NODE_ENV === 'development') {
 
   config.devServer = {
     contentBase: './app',
-      noInfo: false,
-      hot: true
+    noInfo: false,
+    hot: true,
+    historyApiFallback: true
   }
 }
 
