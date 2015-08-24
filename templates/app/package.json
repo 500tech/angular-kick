@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "node_modules/.bin/webpack-dev-server --content-base app --no-inof --hot --progress --colors"
+    "start": "node_modules/.bin/webpack-dev-server --content-base app --no-inof --hot --progress --colors",
+    "bundle": "cp app/index.html dist/index.html && node_modules/.bin/webpack -p --progress"
   },
   "repository": {
     "type": "git",
