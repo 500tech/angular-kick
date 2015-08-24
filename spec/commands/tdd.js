@@ -2,7 +2,7 @@ var fs            = require('fs-extra');
 var child_process = require('child_process');
 var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-describe('$ kick server', function () {
+describe('$ kick tdd', function () {
 
   beforeAll(function () {
     fs.deleteSync('npm_test');
@@ -16,15 +16,15 @@ describe('$ kick server', function () {
   });
 
   it('should not run without packages', function () {
-    var output = child_process.execSync(kick + 'server').toString();
+    var output = child_process.execSync(kick + 'tdd').toString();
 
-    expect(output).toMatch("Can't start server with missing packages");
+    expect(output).toMatch("Can't start server with missing packages")
   });
 
-  it('should run npm start task', function () {
+  it('should run npm test task', function () {
     fs.ensureDirSync('node_modules');
-    var output = child_process.execSync(kick + 'server', { timeout: 5000 }).toString();
+    var output = child_process.execSync(kick + 'tdd', { timeout: 5000 }).toString();
 
-    expect(output).toMatch("Running browserSync server");
+    expect(output).toMatch("Running Karma test server");
   });
 });

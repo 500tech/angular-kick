@@ -12,7 +12,7 @@ Welcome to your angular-kick application!
 ## Usage
 
 * ```kick setup``` to download npm packages before working with your application
-* ```kick server``` to start browserSync
+* ```kick start``` to start webpack-dev-server
 * ```kick test``` to run the test suit once
 
 
