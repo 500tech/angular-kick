@@ -46,7 +46,7 @@ Creating a new application is as simple as running:
 $ kick new [application-name]
 ```
 
-After you have created the application, you will have to download npm and jspm dependencies.
+After you have created the application, you will have to download npm dependencies.
 You can do that by running:
 
 ```sh

@@ -23,7 +23,6 @@ describe('$ kick bundle', function () {
 
   it('should run gulp bundle task', function () {
     fs.ensureDirSync('node_modules');
-    fs.ensureDirSync('jspm_packages');
     var output = child_process.execSync(kick + 'bundle', { timeout: 5000 }).toString();
 
     expect(output).toMatch("Building application");

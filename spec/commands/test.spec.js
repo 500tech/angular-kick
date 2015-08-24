@@ -23,7 +23,6 @@ describe('$ kick test', function () {
 
   it('should run gulp test', function () {
     fs.ensureDirSync('node_modules');
-    fs.ensureDirSync('jspm_packages');
     var output = child_process.execSync(kick + 'test', { timeout: 5000 });
 
     expect(output.toString()).toMatch("Starting tests...");

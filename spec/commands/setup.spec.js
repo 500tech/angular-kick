@@ -18,8 +18,4 @@ describe('$ kick setup', function () {
   it('should run npm install', function () {
     expect(true).toBeTruthy();
   });
-
-  it('should run jspm install', function () {
-    expect(true).toBeTruthy();
-  });
 });
