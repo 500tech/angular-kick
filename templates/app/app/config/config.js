@@ -1,5 +1,5 @@
-import { decorators } from './decorators';
-import { constants } from './constants';
+import { decorators } from 'config/decorators';
+import { constants } from 'config/constants';
 
 export default angular.module('%APP_NAME%.config', [])
   .constant(constants)

@@ -1,7 +1,7 @@
 import 'ui-router';
 
-import { homeRoutes } from './home';
-import { staticRoutes } from './static';
+import { homeRoutes } from 'config/routes/home';
+import { staticRoutes } from 'config/routes/static';
 
 export default angular.module('%APP_NAME%.routes', ['ui.router'])
   .config(($urlRouterProvider) => $urlRouterProvider.otherwise('/404'))
