@@ -1,7 +1,5 @@
 /.idea
-/.tmp
 /.test
-/jspm_packages
 /node_modules
 /.sass-cache
 /test/results

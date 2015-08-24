@@ -4,64 +4,47 @@
   "description": "AngularJS Application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "npm install",
+    "start": "node_modules/.bin/webpack-dev-server --content-base app --no-inof --hot --progress --colors"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": ""
   },
   "homepage": "",
   "dependencies": {
-    "fs-extra": "0.16.3",
-    "run-sequence": "1.0.2",
-    "connect-modrewrite": "0.7.9",
-    "del": "1.1.1",
-    "browser-sync": "2.0.1",
-    "proxy-middleware": "0.11.0",
-    "gulp": "3.8.11",
-    "gulp-angular-templatecache": "1.6.0",
-    "gulp-autoprefixer": "2.1.0",
-    "gulp-cssmin": "0.1.6",
-    "gulp-sourcemaps": "1.3.0",
-    "gulp-imagemin": "2.1.0",
-    "gulp-include": "1.1.1",
-    "gulp-karma": "0.0.4",
-    "gulp-load-plugins": "0.8.0",
-    "gulp-minify-html": "0.1.8",
-    "gulp-ng-annotate": "0.5.2",
-    "gulp-plumber": "0.6.6",
-    "gulp-replace": "0.5.2",
-    "gulp-replace-task": "0.1.0",
-    "gulp-rev": "3.0.1",
-    "gulp-sass": "1.3.3",
-    "gulp-changed": "1.1.1",
-    "gulp-util": "3.0.3",
-    "gulp-concat": "2.4.3",
-    "gulp-traceur": "0.16.0",
-    "gulp-inject": "1.1.1",
-    "stream-series": "0.1.1",
-    "karma": "0.12.31",
-    "karma-jasmine": "0.3.5",
-    "karma-jspm": "1.1.4",
-    "karma-chrome-launcher": "0.1.7",
-    "karma-html-reporter": "0.2.6",
-    "karma-coverage": "0.2.7",
-    "systemjs-builder": "0.9.1"
+    "angular": "1.4.3",
+    "angular-mocks": "1.4.3",
+    "ui-router": "0.0.1",
+    "sugar": "1.4.1"
   },
-  "jspm": {
-    "directories": {
-      "lib": "app",
-      "packages": "jspm_packages"
-    },
-    "dependencies": {
-      "angular": "github:angular/bower-angular@^1.3.14",
-      "angular-mocks": "github:angular/bower-angular-mocks@^1.3.14",
-      "angular-ui-router": "github:angular-ui/ui-router@^0.2.13"
-    }
+  "devDependencies": {
+    "autoprefixer-loader": "2.0.0",
+    "babel-core": "5.8.20",
+    "babel-loader": "5.3.2",
+    "css-loader": "0.15.6",
+    "file-loader": "0.8.4",
+    "karma": "0.12.31",
+    "karma-chrome-launcher": "0.1.7",
+    "karma-clear-screen-reporter": "0.0.1",
+    "karma-jasmine": "0.3.5",
+    "karma-mocha-reporter": "1.0.2",
+    "karma-osx-reporter": "0.2.0",
+    "karma-webpack": "1.5.1",
+    "html-loader": "0.3.0",
+    "json-loader": "0.5.2",
+    "ng-annotate-loader": "0.0.6",
+    "ngtemplate-loader": "1.3.0",
+    "node-sass": "3.2.0",
+    "sass-loader": "1.0.4",
+    "style-loader": "0.12.3",
+    "url-loader": "0.5.6",
+    "webpack": "1.10.5",
+    "webpack-dev-server": "1.10.1"
   }
 }
