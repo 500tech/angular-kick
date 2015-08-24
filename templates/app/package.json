@@ -14,9 +14,6 @@
   },
   "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": ""
-  },
   "homepage": "",
   "dependencies": {
     "angular": "1.4.3",
