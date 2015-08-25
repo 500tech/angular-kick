@@ -1,8 +1,9 @@
 'use strict';
 
-import 'sugar';
-import 'angular';
+require('sugar');
+require('angular');
+require('angular-mocks');
 
-const context = require.context(__dirname, true, /\.spec\./);
+const context = require.context(__dirname + '/../test', true, /\.spec\./);
 
 context.keys().forEach(context);

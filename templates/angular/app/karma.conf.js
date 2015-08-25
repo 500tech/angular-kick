@@ -6,16 +6,12 @@ module.exports = function(config) {
       require('karma-webpack'),
       'karma-jasmine',
       'karma-osx-reporter',
-      'karma-clean-screen-reporter',
+      'karma-clear-screen-reporter',
       'karma-mocha-reporter',
       'karma-chrome-launcher'
     ],
 
     frameworks: ['jasmine'],
-
-    files: [
-      './app/test.js'
-    ],
 
     webpack: {
       resolve: {
@@ -24,7 +20,7 @@ module.exports = function(config) {
 
       modules: {
         loaders: [
-          { test: /\.js$/, loader: 'babel' },
+          { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
           { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
           { test: /\.css$/, loaders: ['style', 'css'] },
           { test: /\.json$/, loader: 'json' }
@@ -35,6 +31,10 @@ module.exports = function(config) {
     webpackServer: {
       noInfo: true
     },
+
+    files: [
+      './app/test.js'
+    ],
 
     proxies: {
       '/assets': '/assets'
@@ -53,7 +53,8 @@ module.exports = function(config) {
       output: 'minimal'
     },
 
-    reporters: ['osx', 'clear-screen', 'mocha', 'coverage'],
+    reporters: ['osx', 'clear-screen', 'mocha'],
+
     port: 9876,
     colors: true,
     logLevel: config.LOG_WARN,
