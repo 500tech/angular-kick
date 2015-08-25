@@ -12,5 +12,9 @@ module.exports = {
   cleanup: function () {
     process.chdir('..');
     fs.deleteSync('npm_test');
+  },
+
+  getFile: function (filename) {
+    return fs.readFileSync(filename).toString();
   }
 };

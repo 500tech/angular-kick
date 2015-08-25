@@ -41,7 +41,7 @@ describe('$ kick destroy', function () {
   it('should destroy environment', function () {
     child_process.execSync(kick + 'generate environment example');
     child_process.execSync(kick + 'destroy environment example');
-    var file = fs.readFileSync('environments.json').toString();
+    var file = helpers.getFile('environments.json');
 
     expect(file).not.toMatch('"ENV": "example"');
   });
@@ -89,7 +89,7 @@ describe('$ kick destroy', function () {
   it('should destroy state', function () {
     child_process.execSync(kick + 'generate state example');
     child_process.execSync(kick + 'destroy state example');
-    var mainStyle = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
+    var mainStyle = helpers.getFile('app/assets/stylesheets/application.scss');
 
     expect(fs.existsSync('app/config/routes/example.js')).toBeFalsy();
     expect(fs.existsSync('app/assets/stylesheets/example.scss')).toBeFalsy();
@@ -102,7 +102,7 @@ describe('$ kick destroy', function () {
   it('should destroy style', function () {
     child_process.execSync(kick + 'generate style example');
     child_process.execSync(kick + 'destroy style example');
-    var mainFile = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
+    var mainFile = helpers.getFile('app/assets/stylesheets/application.scss');
 
     expect(fs.existsSync('app/assets/stylesheets/example.scss')).toBeFalsy();
     expect(mainFile).not.toMatch('@import "example";');

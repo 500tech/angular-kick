@@ -8,7 +8,7 @@ describe('$ kick new', function () {
     fs.deleteSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
-    var file = fs.readFileSync('package.json').toString();
+    var file = helpers.getFile('package.json');
 
     expect(file).toMatch('"name": "NpmTest"');
   });
