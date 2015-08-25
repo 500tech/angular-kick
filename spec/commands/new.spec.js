@@ -1,3 +1,4 @@
+var helpers       = require('../support/helpers');
 var fs            = require('fs-extra');
 var child_process = require('child_process');
 var kick          = 'node ' + __dirname + '/../../bin/kick ';
@@ -12,8 +13,5 @@ describe('$ kick new', function () {
     expect(file).toMatch('"name": "NpmTest"');
   });
 
-  afterAll(function () {
-    process.chdir('..');
-    fs.deleteSync('npm_test');
-  });
+  afterAll(helpers.cleanup);
 });
