@@ -18,7 +18,7 @@
   "dependencies": {
     "angular": "1.4.3",
     "angular-mocks": "1.4.3",
-    "ui-router": "0.0.1",
+    "angular-ui-router": "0.2.15",
     "sugar": "1.4.1"
   },
   "devDependencies": {
