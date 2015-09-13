@@ -46,18 +46,17 @@ switch (command) {
   case 'set':
     commands.setup();
     break;
-  case 'server':
+  case 'start':
   case 's':
-    commands.server();
+    commands.start();
     break;
-  case 'server:tdd':
-  case 's:tdd':
+  case 'tdd':
   case 'ass':
-    commands.serverTdd();
+    commands.tdd();
     break;
-  case 'build':
+  case 'bundle':
   case 'b':
-    commands.build();
+    commands.bundle();
     break;
   case 'test':
   case 't':

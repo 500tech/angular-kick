@@ -11,13 +11,13 @@ describe('utils module', function () {
   });
 
   it('should log a message to the console', function () {
-    utils.ensureGlobalModule('gulp');
-    expect(logger.log).toHaveBeenCalledWith('Checking for gulp presence...');
+    utils.ensureGlobalModule('webpack');
+    expect(logger.log).toHaveBeenCalledWith('Checking for webpack presence...');
   });
 
   it('should try to run the provided module "-v" command', function () {
-    utils.ensureGlobalModule('gulp');
-    expect(child_process.execSync).toHaveBeenCalledWith('gulp -v');
+    utils.ensureGlobalModule('webpack');
+    expect(child_process.execSync).toHaveBeenCalledWith('webpack -v');
   });
 
 });

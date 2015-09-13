@@ -46,7 +46,7 @@ Creating a new application is as simple as running:
 $ kick new [application-name]
 ```
 
-After you have created the application, you will have to download npm and jspm dependencies.
+After you have created the application, you will have to download npm dependencies.
 You can do that by running:
 
 ```sh
@@ -57,14 +57,14 @@ $ kick setup
 Now you can run the server, which will automatically reload the browser when you make changes to files. You can also run it in TDD mode, which will run test suit on every file change.
 
 ```sh
-$ kick server
-$ kick server:tdd
+$ kick start
+$ kick tdd
 ```
 
 Additionally, you can run the server under a specific environment:
 
 ```sh
-$ kick server --production
+$ kick start production
 ```
 
 To display useful information about the application, such as its name and AngularJS version.

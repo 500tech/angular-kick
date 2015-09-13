@@ -1,0 +1,49 @@
+{
+  "name": "%APP_NAME%",
+  "version": "1.0.0",
+  "description": "AngularJS Application",
+  "main": "app.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node_modules/.bin/webpack-dev-server --content-base app --no-inof --hot --progress --colors",
+    "bundle": "cp app/index.html dist/index.html && node_modules/.bin/webpack -p --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "1.4.3",
+    "angular-mocks": "1.4.3",
+    "ui-router": "0.0.1",
+    "sugar": "1.4.1"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "2.0.0",
+    "babel-core": "5.8.20",
+    "babel-loader": "5.3.2",
+    "css-loader": "0.15.6",
+    "env-replace-loader": "1.0.0",
+    "file-loader": "0.8.4",
+    "karma": "0.12.31",
+    "karma-chrome-launcher": "0.1.7",
+    "karma-clear-screen-reporter": "0.0.1",
+    "karma-jasmine": "0.3.5",
+    "karma-mocha-reporter": "1.0.2",
+    "karma-osx-reporter": "0.2.0",
+    "karma-webpack": "1.5.1",
+    "html-loader": "0.3.0",
+    "json-loader": "0.5.2",
+    "ng-annotate-loader": "0.0.6",
+    "ngtemplate-loader": "1.3.0",
+    "node-sass": "3.2.0",
+    "sass-loader": "1.0.4",
+    "style-loader": "0.12.3",
+    "url-loader": "0.5.6",
+    "webpack": "1.10.5",
+    "webpack-dev-server": "1.10.1"
+  }
+}

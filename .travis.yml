@@ -2,5 +2,6 @@ language: node_js
 node_js:
   - "0.12"
 before_install:
-  - "npm install -g gulp"
-  - "npm install -g jspm"
+  - "npm install -g karma"
+  - "npm install -g webpack"
+  - "npm install -g webpack-dev-server"

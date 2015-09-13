@@ -3,17 +3,21 @@ var format = require('../lib/formatters');
 describe('formatters module', function () {
 
   it('toControllerName', function () {
-    expect(format.toControllerName('new_sample')).toEqual('NewSampleController');
-    expect(format.toControllerName('new_sample_ctrl')).toEqual('NewSampleController');
-    expect(format.toControllerName('new_sampleController')).toEqual('NewSampleController');
-    expect(format.toControllerName('newSampleCtrl')).toEqual('NewSampleController');
+    var transform = format.toControllerName;
+
+    expect(transform('new_sample')).toEqual('NewSampleController');
+    expect(transform('new_sample_ctrl')).toEqual('NewSampleController');
+    expect(transform('new_sampleController')).toEqual('NewSampleController');
+    expect(transform('newSampleCtrl')).toEqual('NewSampleController');
   });
 
   it('toControllerVarName', function () {
-    expect(format.toControllerVarName('new_sample')).toEqual('newSampleController');
-    expect(format.toControllerVarName('new_sample_ctrl')).toEqual('newSampleController');
-    expect(format.toControllerVarName('new_sampleController')).toEqual('newSampleController');
-    expect(format.toControllerVarName('newSampleCtrl')).toEqual('newSampleController');
+    var transform = format.toControllerVarName;
+
+    expect(transform('new_sample')).toEqual('newSampleController');
+    expect(transform('new_sample_ctrl')).toEqual('newSampleController');
+    expect(transform('new_sampleController')).toEqual('newSampleController');
+    expect(transform('newSampleCtrl')).toEqual('newSampleController');
   });
 
   it('toConstName', function () {
@@ -21,23 +25,29 @@ describe('formatters module', function () {
   });
 
   it('toServiceName', function () {
-    expect(format.toServiceName('new_sample')).toEqual('NewSample');
-    expect(format.toServiceName('newSampleService')).toEqual('NewSample');
-    expect(format.toServiceName('newSampleSrv')).toEqual('NewSample');
-    expect(format.toServiceName('NewSampleProvider')).toEqual('NewSample');
-    expect(format.toServiceName('new_sample_factory')).toEqual('NewSample');
+    var transform = format.toServiceName;
+
+    expect(transform('new_sample')).toEqual('NewSample');
+    expect(transform('newSampleService')).toEqual('NewSample');
+    expect(transform('newSampleSrv')).toEqual('NewSample');
+    expect(transform('NewSampleProvider')).toEqual('NewSample');
+    expect(transform('new_sample_factory')).toEqual('NewSample');
   });
 
   it('toDirectiveName', function () {
-    expect(format.toDirectiveName('new_sampleDirective')).toEqual('newSample');
-    expect(format.toDirectiveName('newSampleDrv')).toEqual('newSample');
-    expect(format.toDirectiveName('NewSample')).toEqual('newSample');
+    var transform = format.toDirectiveName;
+
+    expect(transform('new_sampleDirective')).toEqual('newSample');
+    expect(transform('newSampleDrv')).toEqual('newSample');
+    expect(transform('NewSample')).toEqual('newSample');
   });
 
   it('toDirectiveTagName', function () {
-    expect(format.toDirectiveTagName('new_sampleDirective')).toEqual('new-sample');
-    expect(format.toDirectiveTagName('newSampleDrv')).toEqual('new-sample');
-    expect(format.toDirectiveTagName('NewSample')).toEqual('new-sample');
+    var transform = format.toDirectiveTagName;
+
+    expect(transform('new_sampleDirective')).toEqual('new-sample');
+    expect(transform('newSampleDrv')).toEqual('new-sample');
+    expect(transform('NewSample')).toEqual('new-sample');
   });
 
   it('toFilterName', function () {
@@ -50,9 +60,11 @@ describe('formatters module', function () {
   });
 
   it('toJSFileName', function () {
-    expect(format.toJSFileName('newSample_controller')).toEqual('new_sample.js');
-    expect(format.toJSFileName('newSample_spec')).toEqual('new_sample.spec.js');
-    expect(format.toJSFileName('newSample')).toEqual('new_sample.js');
+    var transform = format.toJSFileName;
+
+    expect(transform('newSample_controller')).toEqual('new_sample.js');
+    expect(transform('newSample_spec')).toEqual('new_sample.spec.js');
+    expect(transform('newSample')).toEqual('new_sample.js');
   });
 
   it('toHTMLFileName', function () {
