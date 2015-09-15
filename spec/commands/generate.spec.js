@@ -1,4 +1,5 @@
 var helpers       = require('../support/helpers');
+var utils         = require('../../lib/utils');
 var fs            = require('fs-extra');
 var child_process = require('child_process');
 var kick          = 'node ' + __dirname + '/../../bin/kick ';
@@ -104,7 +105,7 @@ describe('$ kick generate', function () {
     var route       = helpers.getFile('app/config/routes/example.js');
     var routesFile  = helpers.getFile('app/config/routes/routes.js');
     var statesFile  = helpers.getFile('app/states/states.js');
-    var style       = fs.existsSync('app/assets/stylesheets/example.scss');
+    var style       = utils.isFileExist('app/assets/stylesheets/example.scss');
     var mainStyle   = helpers.getFile('app/assets/stylesheets/application.scss');
     var view        = helpers.getFile('app/states/example/example.html');
     var controller  = helpers.getFile('app/states/example/example.js');
@@ -139,7 +140,7 @@ describe('$ kick generate', function () {
 
   it('should generate style', function () {
     child_process.execSync(kick + 'generate style example');
-    var file = fs.existsSync('app/assets/stylesheets/example.scss');
+    var file = utils.isFileExist('app/assets/stylesheets/example.scss');
     var mainFile = helpers.getFile('app/assets/stylesheets/application.scss');
 
     expect(file).toBeTruthy();

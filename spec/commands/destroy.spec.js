@@ -1,5 +1,5 @@
 var helpers       = require('../support/helpers');
-var fs            = require('fs-extra');
+var utils         = require('../../lib/utils');
 var child_process = require('child_process');
 var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
@@ -18,24 +18,24 @@ describe('$ kick destroy', function () {
     child_process.execSync(kick + 'generate config example');
     child_process.execSync(kick + 'destroy config example');
 
-    expect(fs.existsSync('app/config/example.js')).toBeFalsy();
+    expect(utils.isFileExist('app/config/example.js')).toBeFalsy();
   });
 
   it('should destroy directive', function () {
     child_process.execSync(kick + 'generate directive example');
     child_process.execSync(kick + 'destroy directive example');
 
-    expect(fs.existsSync('app/directives/example.js')).toBeFalsy();
-    expect(fs.existsSync('test/unit/directives/example.spec.js')).toBeFalsy();
+    expect(utils.isFileExist('app/directives/example.js')).toBeFalsy();
+    expect(utils.isFileExist('test/unit/directives/example.spec.js')).toBeFalsy();
   });
 
   it('should destroy directive with template', function () {
     child_process.execSync(kick + 'generate directive example --template');
     child_process.execSync(kick + 'destroy directive example');
 
-    expect(fs.existsSync('app/directives/example.js')).toBeFalsy();
-    expect(fs.existsSync('app/directives/example.html')).toBeFalsy();
-    expect(fs.existsSync('test/unit/directives/example.spec.js')).toBeFalsy();
+    expect(utils.isFileExist('app/directives/example.js')).toBeFalsy();
+    expect(utils.isFileExist('app/directives/example.html')).toBeFalsy();
+    expect(utils.isFileExist('test/unit/directives/example.spec.js')).toBeFalsy();
   });
 
   it('should destroy environment', function () {
@@ -50,40 +50,40 @@ describe('$ kick destroy', function () {
     child_process.execSync(kick + 'generate filter example');
     child_process.execSync(kick + 'destroy filter example');
 
-    expect(fs.existsSync('app/filters/example.js')).toBeFalsy();
-    expect(fs.existsSync('test/unit/filters/example.spec.js')).toBeFalsy();
+    expect(utils.isFileExist('app/filters/example.js')).toBeFalsy();
+    expect(utils.isFileExist('test/unit/filters/example.spec.js')).toBeFalsy();
   });
 
   it('should destroy model', function () {
     child_process.execSync(kick + 'generate model example');
     child_process.execSync(kick + 'destroy model example');
 
-    expect(fs.existsSync('app/models/example.js')).toBeFalsy();
-    expect(fs.existsSync('test/unit/models/example.spec.js')).toBeFalsy();
+    expect(utils.isFileExist('app/models/example.js')).toBeFalsy();
+    expect(utils.isFileExist('test/unit/models/example.spec.js')).toBeFalsy();
   });
 
   it('should destroy partial', function () {
     child_process.execSync(kick + 'generate partial example');
     child_process.execSync(kick + 'destroy partial example');
 
-    expect(fs.existsSync('app/layouts/shared/_example.html')).toBeFalsy();
+    expect(utils.isFileExist('app/layouts/shared/_example.html')).toBeFalsy();
   });
 
   it('should destroy partial with controller', function () {
     child_process.execSync(kick + 'generate partial example_2 --controller');
     child_process.execSync(kick + 'destroy partial example_2');
 
-    expect(fs.existsSync('app/layouts/shared/_example_2.html')).toBeFalsy();
-    expect(fs.existsSync('app/layouts/shared/_example_2.js')).toBeFalsy();
-    expect(fs.existsSync('test/units/controllers/shared/_example_2.spec.js')).toBeFalsy();
+    expect(utils.isFileExist('app/layouts/shared/_example_2.html')).toBeFalsy();
+    expect(utils.isFileExist('app/layouts/shared/_example_2.js')).toBeFalsy();
+    expect(utils.isFileExist('test/units/controllers/shared/_example_2.spec.js')).toBeFalsy();
   });
 
   it('should destroy service', function () {
     child_process.execSync(kick + 'generate service example');
     child_process.execSync(kick + 'destroy service example');
 
-    expect(fs.existsSync('app/services/example.js')).toBeFalsy();
-    expect(fs.existsSync('test/unit/services/example.spec.js')).toBeFalsy();
+    expect(utils.isFileExist('app/services/example.js')).toBeFalsy();
+    expect(utils.isFileExist('test/unit/services/example.spec.js')).toBeFalsy();
   });
 
   it('should destroy state', function () {
@@ -91,12 +91,12 @@ describe('$ kick destroy', function () {
     child_process.execSync(kick + 'destroy state example');
     var mainStyle = helpers.getFile('app/assets/stylesheets/application.scss');
 
-    expect(fs.existsSync('app/config/routes/example.js')).toBeFalsy();
-    expect(fs.existsSync('app/assets/stylesheets/example.scss')).toBeFalsy();
+    expect(utils.isFileExist('app/config/routes/example.js')).toBeFalsy();
+    expect(utils.isFileExist('app/assets/stylesheets/example.scss')).toBeFalsy();
     expect(mainStyle).not.toMatch('@import "example";');
-    expect(fs.existsSync('app/states/example/example.html')).toBeFalsy();
-    expect(fs.existsSync('app/states/example/example.js')).toBeFalsy();
-    expect(fs.existsSync('test/unit/controllers/example/example.spec.js')).toBeFalsy();
+    expect(utils.isFileExist('app/states/example/example.html')).toBeFalsy();
+    expect(utils.isFileExist('app/states/example/example.js')).toBeFalsy();
+    expect(utils.isFileExist('test/unit/controllers/example/example.spec.js')).toBeFalsy();
   });
 
   it('should destroy style', function () {
@@ -104,7 +104,7 @@ describe('$ kick destroy', function () {
     child_process.execSync(kick + 'destroy style example');
     var mainFile = helpers.getFile('app/assets/stylesheets/application.scss');
 
-    expect(fs.existsSync('app/assets/stylesheets/example.scss')).toBeFalsy();
+    expect(utils.isFileExist('app/assets/stylesheets/example.scss')).toBeFalsy();
     expect(mainFile).not.toMatch('@import "example";');
   });
 });
