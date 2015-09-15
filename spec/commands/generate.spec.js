@@ -47,7 +47,7 @@ describe('$ kick generate', function () {
     child_process.execSync(kick + 'generate environment example');
     var file = helpers.getFile('environments.json');
 
-    expect(file).toMatch('"ENV":"example"');
+    expect(file).toMatch('"ENV": "example"');
   });
    
   it('should generate filter', function () {
