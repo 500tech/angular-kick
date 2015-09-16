@@ -2,10 +2,11 @@
 process.bin = process.title = 'kick';
 
 "use strict";
+const Logger = require('../lib/logger');
+
 var fs          = require('fs-extra');
 var colors      = require('colors');
 var open        = require('opn');
-var logger      = require('../lib/logger');
 var utils       = require('../lib/utils');
 var message     = require('../lib/messages');
 var commands    = require('../lib/commands/commands');
@@ -18,7 +19,7 @@ utils.ensureNodeVersion();
 switch (command) {
   case '--version':
   case '-v':
-    logger.log(kickVersion);
+    Logger.log(kickVersion);
     break;
   case 'help':
   case '--help':
@@ -74,8 +75,8 @@ switch (command) {
     break;
   default:
     if (command) {
-      logger.warn(message.unrecognizedCommand(command))
+      Logger.warn(message.unrecognizedCommand(command))
     } else {
-      logger.warn(message.noCommand);
+      Logger.warn(message.noCommand);
     }
 }
