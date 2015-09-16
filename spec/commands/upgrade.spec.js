@@ -1,14 +1,16 @@
-var helpers       = require('../support/helpers');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-describe('$ kick upgrade', function () {
+const TestHelpers   = require('../support/helpers');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-  beforeAll(helpers.createApp);
-  afterAll(helpers.cleanup);
+describe('$ kick upgrade', () => {
 
-  it('should check for updates', function () {
-    var output = child_process.execSync(kick + 'upgrade', { timeout: 15000 }).toString();
+  beforeAll(TestHelpers.createApp);
+  afterAll(TestHelpers.cleanup);
+
+  it('should check for updates', () => {
+    const output = child_process.execSync(kick + 'upgrade', { timeout: 15000 }).toString();
 
     expect(output).toMatch("Checking for updates")
   });

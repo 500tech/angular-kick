@@ -1,20 +1,24 @@
-var fs            = require('fs-extra');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-module.exports = {
-  createApp: function () {
+const fs            = require('fs-extra');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
+
+module.exports = class TestHelpers {
+
+  static createApp() {
     fs.removeSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
-  },
+  }
 
-  cleanup: function () {
+  static cleanup() {
     process.chdir('..');
     fs.removeSync('npm_test');
-  },
+  }
 
-  getFile: function (filename) {
+  static getFile(filename) {
     return fs.readFileSync(filename).toString();
   }
+
 };

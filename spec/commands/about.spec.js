@@ -1,14 +1,16 @@
-var helpers       = require('../support/helpers');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-describe('$ kick about', function () {
+const TestHelpers   = require('../support/helpers');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-  beforeAll(helpers.createApp);
-  afterAll(helpers.cleanup);
+describe('$ kick about', () => {
 
-  it('should output information about application', function () {
-    var output = child_process.execSync(kick + 'about').toString();
+  beforeAll(TestHelpers.createApp);
+  afterAll(TestHelpers.cleanup);
+
+  it('should output information about application', () => {
+    const output = child_process.execSync(kick + 'about').toString();
 
     expect(output).toMatch("NpmTest");
     expect(output).toMatch("1.0.0");

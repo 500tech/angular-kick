@@ -1,22 +1,25 @@
-var child_process = require('child_process');
-var utils         = require('../lib/utils');
-var logger        = require('../lib/logger');
+'use strict';
 
-describe('utils module', function () {
+const Logger = require('../lib/logger');
+const Utils  = require('../lib/utils');
 
-  beforeEach(function () {
+const child_process = require('child_process');
+
+describe('utils module', () => {
+
+  beforeEach(() => {
     spyOn(child_process, 'execSync');
-    spyOn(logger, 'log');
-    spyOn(logger, 'warn');
+    spyOn(Logger, 'log');
+    spyOn(Logger, 'warn');
   });
 
-  it('should log a message to the console', function () {
-    utils.ensureGlobalModule('webpack');
-    expect(logger.log).toHaveBeenCalledWith('Checking for webpack presence...');
+  it('should log a message to the console', () => {
+    Utils.ensureGlobalModule('webpack');
+    expect(Logger.log).toHaveBeenCalledWith('Checking for webpack presence...');
   });
 
-  it('should check if provided module is installed with which command', function () {
-    utils.ensureGlobalModule('webpack');
+  it('should check if provided module is installed with which command', () => {
+    Utils.ensureGlobalModule('webpack');
     expect(child_process.execSync).toHaveBeenCalledWith('which webpack');
   });
 

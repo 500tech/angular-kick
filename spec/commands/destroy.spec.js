@@ -1,110 +1,113 @@
-var helpers       = require('../support/helpers');
-var utils         = require('../../lib/utils');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-describe('$ kick destroy', function () {
+const Utils       = require('../../lib/utils');
+const TestHelpers = require('../support/helpers');
 
-  beforeAll(helpers.createApp);
-  afterAll(helpers.cleanup);
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-  it('should ask what to destroy', function () {
-    var process = child_process.execSync(kick + 'destroy');
+describe('$ kick destroy', () => {
+
+  beforeAll(TestHelpers.createApp);
+  afterAll(TestHelpers.cleanup);
+
+  it('should ask what to destroy', () => {
+    const process = child_process.execSync(kick + 'destroy');
 
     expect(process).toMatch("What do you want to destroy?");
   });
 
-  it('should destroy config', function () {
+  it('should destroy config', () => {
     child_process.execSync(kick + 'generate config example');
     child_process.execSync(kick + 'destroy config example');
 
-    expect(utils.exists('app/config/example.js')).toBeFalsy();
+    expect(Utils.exists('app/config/example.js')).toBeFalsy();
   });
 
-  it('should destroy directive', function () {
+  it('should destroy directive', () => {
     child_process.execSync(kick + 'generate directive example');
     child_process.execSync(kick + 'destroy directive example');
 
-    expect(utils.exists('app/directives/example.js')).toBeFalsy();
-    expect(utils.exists('test/unit/directives/example.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/directives/example.js')).toBeFalsy();
+    expect(Utils.exists('test/unit/directives/example.spec.js')).toBeFalsy();
   });
 
-  it('should destroy directive with template', function () {
+  it('should destroy directive with template', () => {
     child_process.execSync(kick + 'generate directive example --template');
     child_process.execSync(kick + 'destroy directive example');
 
-    expect(utils.exists('app/directives/example.js')).toBeFalsy();
-    expect(utils.exists('app/directives/example.html')).toBeFalsy();
-    expect(utils.exists('test/unit/directives/example.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/directives/example.js')).toBeFalsy();
+    expect(Utils.exists('app/directives/example.html')).toBeFalsy();
+    expect(Utils.exists('test/unit/directives/example.spec.js')).toBeFalsy();
   });
 
-  it('should destroy environment', function () {
+  it('should destroy environment', () => {
     child_process.execSync(kick + 'generate environment example');
     child_process.execSync(kick + 'destroy environment example');
-    var file = helpers.getFile('environments.json');
+    const file = TestHelpers.getFile('environments.json');
 
     expect(file).not.toMatch('"ENV": "example"');
   });
 
-  it('should destroy filter', function () {
+  it('should destroy filter', () => {
     child_process.execSync(kick + 'generate filter example');
     child_process.execSync(kick + 'destroy filter example');
 
-    expect(utils.exists('app/filters/example.js')).toBeFalsy();
-    expect(utils.exists('test/unit/filters/example.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/filters/example.js')).toBeFalsy();
+    expect(Utils.exists('test/unit/filters/example.spec.js')).toBeFalsy();
   });
 
-  it('should destroy model', function () {
+  it('should destroy model', () => {
     child_process.execSync(kick + 'generate model example');
     child_process.execSync(kick + 'destroy model example');
 
-    expect(utils.exists('app/models/example.js')).toBeFalsy();
-    expect(utils.exists('test/unit/models/example.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/models/example.js')).toBeFalsy();
+    expect(Utils.exists('test/unit/models/example.spec.js')).toBeFalsy();
   });
 
-  it('should destroy partial', function () {
+  it('should destroy partial', () => {
     child_process.execSync(kick + 'generate partial example');
     child_process.execSync(kick + 'destroy partial example');
 
-    expect(utils.exists('app/layouts/shared/_example.html')).toBeFalsy();
+    expect(Utils.exists('app/layouts/shared/_example.html')).toBeFalsy();
   });
 
-  it('should destroy partial with controller', function () {
+  it('should destroy partial with controller', () => {
     child_process.execSync(kick + 'generate partial example_2 --controller');
     child_process.execSync(kick + 'destroy partial example_2');
 
-    expect(utils.exists('app/layouts/shared/_example_2.html')).toBeFalsy();
-    expect(utils.exists('app/layouts/shared/_example_2.js')).toBeFalsy();
-    expect(utils.exists('test/units/controllers/shared/_example_2.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/layouts/shared/_example_2.html')).toBeFalsy();
+    expect(Utils.exists('app/layouts/shared/_example_2.js')).toBeFalsy();
+    expect(Utils.exists('test/units/controllers/shared/_example_2.spec.js')).toBeFalsy();
   });
 
-  it('should destroy service', function () {
+  it('should destroy service', () => {
     child_process.execSync(kick + 'generate service example');
     child_process.execSync(kick + 'destroy service example');
 
-    expect(utils.exists('app/services/example.js')).toBeFalsy();
-    expect(utils.exists('test/unit/services/example.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/services/example.js')).toBeFalsy();
+    expect(Utils.exists('test/unit/services/example.spec.js')).toBeFalsy();
   });
 
-  it('should destroy state', function () {
+  it('should destroy state', () => {
     child_process.execSync(kick + 'generate state example');
     child_process.execSync(kick + 'destroy state example');
-    var mainStyle = helpers.getFile('app/assets/stylesheets/application.scss');
+    const mainStyle = TestHelpers.getFile('app/assets/stylesheets/application.scss');
 
-    expect(utils.exists('app/config/routes/example.js')).toBeFalsy();
-    expect(utils.exists('app/assets/stylesheets/example.scss')).toBeFalsy();
+    expect(Utils.exists('app/config/routes/example.js')).toBeFalsy();
+    expect(Utils.exists('app/assets/stylesheets/example.scss')).toBeFalsy();
     expect(mainStyle).not.toMatch('@import "example";');
-    expect(utils.exists('app/states/example/example.html')).toBeFalsy();
-    expect(utils.exists('app/states/example/example.js')).toBeFalsy();
-    expect(utils.exists('test/unit/controllers/example/example.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/states/example/example.html')).toBeFalsy();
+    expect(Utils.exists('app/states/example/example.js')).toBeFalsy();
+    expect(Utils.exists('test/unit/controllers/example/example.spec.js')).toBeFalsy();
   });
 
-  it('should destroy style', function () {
+  it('should destroy style', () => {
     child_process.execSync(kick + 'generate style example');
     child_process.execSync(kick + 'destroy style example');
-    var mainFile = helpers.getFile('app/assets/stylesheets/application.scss');
+    const mainFile = TestHelpers.getFile('app/assets/stylesheets/application.scss');
 
-    expect(utils.exists('app/assets/stylesheets/example.scss')).toBeFalsy();
+    expect(Utils.exists('app/assets/stylesheets/example.scss')).toBeFalsy();
     expect(mainFile).not.toMatch('@import "example";');
   });
 });
