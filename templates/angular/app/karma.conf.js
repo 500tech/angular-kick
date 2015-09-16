@@ -1,3 +1,9 @@
+var webpackConfig = require('./webpack.config');
+
+// remove entry and output to allow testing
+delete webpackConfig.entry;
+delete webpackConfig.output;
+
 module.exports = function(config) {
   config.set({
     basePath: '',
@@ -13,20 +19,7 @@ module.exports = function(config) {
 
     frameworks: ['jasmine'],
 
-    webpack: {
-      resolve: {
-        root: [__dirname + '/app']
-      },
-
-      modules: {
-        loaders: [
-          { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
-          { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
-          { test: /\.css$/, loaders: ['style', 'css'] },
-          { test: /\.json$/, loader: 'json' }
-        ]
-      }
-    },
+    webpack: webpackConfig,
 
     webpackServer: {
       noInfo: true

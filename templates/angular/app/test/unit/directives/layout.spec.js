@@ -3,7 +3,7 @@ var angular = require('angular');
 describe('layout Directive', function () {
   var element, $scope, createDirective;
 
-  beforeEach(angular.mock.module('%APP_NAME%.config', '%APP_NAME%.services', '%APP_NAME%.directives'));
+  beforeEach(angular.mock.module('%APP_NAME%.routes', '%APP_NAME%.config', '%APP_NAME%.services', '%APP_NAME%.directives'));
 
   beforeEach(angular.mock.inject(function ($rootScope, $compile, $templateCache, Layout) {
     $templateCache.put('layouts/application.html', 'APPLICATION');

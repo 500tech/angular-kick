@@ -1,4 +1,4 @@
-import 'ui-router';
+import 'angular-ui-router';
 
 import { homeRoutes } from 'config/routes/home';
 import { staticRoutes } from 'config/routes/static';
