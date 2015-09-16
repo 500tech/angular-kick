@@ -1,20 +1,21 @@
 #!/usr/bin/env node
 process.bin = process.title = 'kick';
 
-"use strict";
+'use strict';
+
 const Logger = require('../lib/logger');
+const Utils  = require('../lib/utils');
 
 var fs          = require('fs-extra');
 var colors      = require('colors');
 var open        = require('opn');
-var utils       = require('../lib/utils');
 var message     = require('../lib/messages');
 var commands    = require('../lib/commands/commands');
 var command     = process.argv[2];
 var ROOT        = __dirname + '/..';
 var kickVersion = fs.readJSONSync(ROOT + '/package.json')['version'];
 
-utils.ensureNodeVersion();
+Utils.ensureNodeVersion();
 
 switch (command) {
   case '--version':
