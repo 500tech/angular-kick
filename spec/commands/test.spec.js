@@ -10,13 +10,12 @@ describe('$ kick test', function () {
 
   it('should not run without packages', function () {
     var output = child_process.execSync(kick + 'test').toString();
-
     expect(output).toMatch("Can't start server with missing packages")
   });
 
   it('should run npm test', function () {
     fs.ensureDirSync('node_modules');
-    var output = child_process.execSync(kick + 'test', { timeout: 5000 });
+    var output = child_process.execSync(kick + 'test');
 
     expect(output.toString()).toMatch("Starting tests...");
   });

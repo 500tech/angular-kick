@@ -5,7 +5,7 @@ var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick new', function () {
   it('should create new application without setup', function () {
-    fs.deleteSync('npm_test');
+    fs.removeSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
     var file = helpers.getFile('package.json');

@@ -4,14 +4,14 @@ var kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 module.exports = {
   createApp: function () {
-    fs.deleteSync('npm_test');
+    fs.removeSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
   },
 
   cleanup: function () {
     process.chdir('..');
-    fs.deleteSync('npm_test');
+    fs.removeSync('npm_test');
   },
 
   getFile: function (filename) {

@@ -16,7 +16,7 @@ describe('$ kick tdd', function () {
 
   it('should run npm test task', function () {
     fs.ensureDirSync('node_modules');
-    var output = child_process.execSync(kick + 'tdd', { timeout: 5000 }).toString();
+    var output = child_process.execSync(kick + 'tdd').toString();
 
     expect(output).toMatch("Running Karma test server");
   });
