@@ -42,14 +42,14 @@ describe('$ kick generate', function () {
     expect(template).toMatch("<div>example Directive</div>");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
-  
+
   it('should generate environment', function () {
     child_process.execSync(kick + 'generate environment example');
-    var file = helpers.getFile('environments.json');
+    var environments = JSON.parse(helpers.getFile('environments.json'));
 
-    expect(file).toMatch('"ENV": "example"');
+    expect(environments.example.ENV).toBe("example");
   });
-   
+
   it('should generate filter', function () {
     child_process.execSync(kick + 'generate filter example');
     var file = helpers.getFile('app/filters/example.js');
@@ -147,4 +147,4 @@ describe('$ kick generate', function () {
     expect(mainFile).toMatch('@import "example";');
   });
 });
-  
+

@@ -1,4 +1,8 @@
-var webpackConfig = require('./webpack.config.test');
+var webpackConfig = require('./webpack.config');
+
+// remove entry and output to allow testing
+delete webpackConfig.entry;
+delete webpackConfig.output;
 
 module.exports = function(config) {
   config.set({
