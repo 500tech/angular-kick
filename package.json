@@ -21,7 +21,7 @@
     "kick": "./bin/kick"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=4.0"
   },
   "repository": {
     "type": "git",
@@ -42,18 +42,19 @@
   "license": "MIT",
   "homepage": "http://angular-kick.com",
   "dependencies": {
-    "change-case": "2.2.0",
-    "colors": "1.0.3",
-    "fs-extra": "0.16.3",
+    "change-case": "2.3.0",
+    "colors": "1.1.2",
+    "fs-extra": "0.24.0",
     "get-folder-size": "0.1.1",
-    "ncp": "1.0.1",
-    "opn": "^1.0.1",
+    "ncp": "2.0.0",
+    "opn": "3.0.2",
     "progress": "1.1.8",
-    "readline-sync": "0.5.2",
+    "readline-sync": "1.2.21",
     "replace": "0.3.0"
   },
   "devDependencies": {
-    "jasmine": "2.2.1"
+    "jasmine": "2.2.1",
+    "webpack": "^1.12.1"
   },
   "scripts": {
     "test": "node_modules/jasmine/bin/jasmine.js"
