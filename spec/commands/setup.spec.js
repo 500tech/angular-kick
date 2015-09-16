@@ -1,14 +1,16 @@
-var helpers       = require('../support/helpers');
-var fs            = require('fs-extra');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-describe('$ kick setup', function () {
+const TestHelpers   = require('../support/helpers');
+const fs            = require('fs-extra');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-  beforeAll(helpers.createApp);
-  afterAll(helpers.cleanup);
+describe('$ kick setup', () => {
 
-  it('should run npm install', function () {
+  beforeAll(TestHelpers.createApp);
+  afterAll(TestHelpers.cleanup);
+
+  it('should run npm install', () => {
     expect(true).toBeTruthy();
   });
 });

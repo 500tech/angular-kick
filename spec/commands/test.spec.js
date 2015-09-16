@@ -1,15 +1,18 @@
-var helpers       = require('../support/helpers');
-var fs            = require('fs-extra');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-describe('$ kick test', function () {
+const TestHelpers   = require('../support/helpers');
+const fs            = require('fs-extra');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-  beforeAll(helpers.createApp);
-  afterAll(helpers.cleanup);
+describe('$ kick test', () => {
 
-  it('should not run without packages', function () {
-    var output = child_process.execSync(kick + 'test').toString();
+  beforeAll(TestHelpers.createApp);
+  afterAll(TestHelpers.cleanup);
+
+  it('should not run without packages', () => {
+    const output = child_process.execSync(kick + 'test').toString();
+
     expect(output).toMatch("Can't start server with missing packages")
   });
 

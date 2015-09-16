@@ -1,13 +1,15 @@
-var helpers       = require('../support/helpers');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-describe('$ kick help', function () {
+const TestHelpers   = require('../support/helpers');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-  beforeAll(helpers.createApp);
-  afterAll(helpers.cleanup);
+describe('$ kick help', () => {
 
-  it('should output help', function () {
+  beforeAll(TestHelpers.createApp);
+  afterAll(TestHelpers.cleanup);
+
+  it('should output help', () => {
     var output = child_process.execSync(kick + 'help').toString();
 
     expect(output).toMatch("Available commands");

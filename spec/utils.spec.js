@@ -3,22 +3,22 @@
 const Logger = require('../lib/logger');
 const Utils  = require('../lib/utils');
 
-var child_process = require('child_process');
+const child_process = require('child_process');
 
-describe('utils module', function () {
+describe('utils module', () => {
 
-  beforeEach(function () {
+  beforeEach(() => {
     spyOn(child_process, 'execSync');
     spyOn(Logger, 'log');
     spyOn(Logger, 'warn');
   });
 
-  it('should log a message to the console', function () {
+  it('should log a message to the console', () => {
     Utils.ensureGlobalModule('webpack');
     expect(Logger.log).toHaveBeenCalledWith('Checking for webpack presence...');
   });
 
-  it('should check if provided module is installed with which command', function () {
+  it('should check if provided module is installed with which command', () => {
     Utils.ensureGlobalModule('webpack');
     expect(child_process.execSync).toHaveBeenCalledWith('which webpack');
   });

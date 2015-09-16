@@ -6,14 +6,14 @@ process.bin = process.title = 'kick';
 const Logger = require('../lib/logger');
 const Utils  = require('../lib/utils');
 
-var fs          = require('fs-extra');
-var colors      = require('colors');
-var open        = require('opn');
-var message     = require('../lib/messages');
-var commands    = require('../lib/commands/commands');
-var command     = process.argv[2];
-var ROOT        = __dirname + '/..';
-var kickVersion = fs.readJSONSync(ROOT + '/package.json')['version'];
+const fs          = require('fs-extra');
+const colors      = require('colors');
+const open        = require('opn');
+const message     = require('../lib/messages');
+const commands    = require('../lib/commands/commands');
+const command     = process.argv[2];
+const ROOT        = __dirname + '/..';
+const kickVersion = fs.readJSONSync(ROOT + '/package.json').version;
 
 Utils.ensureNodeVersion();
 
