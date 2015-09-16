@@ -1,10 +1,10 @@
-import { decorators } from 'config/decorators';
-import { constants } from 'config/constants';
+import { exceptionHandlerDecorator } from 'config/decorators';
+import { constants }                 from 'config/constants';
 
 export default angular.module('%APP_NAME%.config', [])
   .constant(constants)
   .config(config)
-  .config(decorators);
+  .decorator('$exceptionHandler', exceptionHandlerDecorator);
 
 function config($compileProvider, $httpProvider, $locationProvider, $logProvider, ENV) {
 

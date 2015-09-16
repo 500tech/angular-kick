@@ -15,9 +15,9 @@ describe('utils module', function () {
     expect(logger.log).toHaveBeenCalledWith('Checking for webpack presence...');
   });
 
-  it('should try to run the provided module "-v" command', function () {
+  it('should check if provided module is installed with which command', function () {
     utils.ensureGlobalModule('webpack');
-    expect(child_process.execSync).toHaveBeenCalledWith('webpack -v');
+    expect(child_process.execSync).toHaveBeenCalledWith('which webpack');
   });
 
 });
