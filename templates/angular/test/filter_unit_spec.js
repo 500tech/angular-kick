@@ -1,9 +1,9 @@
 describe('%FILTER_NAME% Filter', function () {
   var %FILTER_NAME%;
 
-  beforeEach(module('%APP_NAME%.filters'));
+  beforeEach(angular.mock.module('%APP_NAME%.filters'));
 
-  beforeEach(inject(function ($filter) {
+  beforeEach(angular.mock.inject(function ($filter) {
     %FILTER_NAME% = $filter('%FILTER_NAME%');
   }));
 

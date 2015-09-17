@@ -1,9 +1,9 @@
 describe('%CONTROLLER_NAME%', function () {
   var %CONTROLLER_VAR_NAME%, createController;
 
-  beforeEach(module('%APP_NAME%.controllers'));
+  beforeEach(angular.mock.module('%APP_NAME%.controllers'));
 
-  beforeEach(inject(function ($controller) {
+  beforeEach(angular.mock.inject(function ($controller) {
     createController = function () {
       %CONTROLLER_VAR_NAME% = $controller('%CONTROLLER_NAME%');
     };

@@ -1,9 +1,9 @@
 describe('%DIRECTIVE_NAME% Directive', function () {
   var element, $scope, createDirective;
 
-  beforeEach(module('%APP_NAME%.directives'));
+  beforeEach(angular.mock.module('%APP_NAME%.directives'));
 
-  beforeEach(inject(function ($rootScope, $compile) {
+  beforeEach(angular.mock.inject(function ($rootScope, $compile) {
     createDirective = function (scopeAttrs) {
       $scope = angular.extend($rootScope.$new(), scopeAttrs);
 
