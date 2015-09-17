@@ -1,9 +1,9 @@
-const format = require('../lib/formatters');
+const Format = require('../lib/format');
 
 describe('formatters module', () => {
 
   it('toControllerName', () => {
-    const transform = format.toControllerName;
+    const transform = Format.toControllerName;
 
     expect(transform('new_sample')).toEqual('NewSampleController');
     expect(transform('new_sample_ctrl')).toEqual('NewSampleController');
@@ -12,7 +12,7 @@ describe('formatters module', () => {
   });
 
   it('toControllerVarName', () => {
-    const transform = format.toControllerVarName;
+    const transform = Format.toControllerVarName;
 
     expect(transform('new_sample')).toEqual('newSampleController');
     expect(transform('new_sample_ctrl')).toEqual('newSampleController');
@@ -21,11 +21,11 @@ describe('formatters module', () => {
   });
 
   it('toConstName', () => {
-    expect(format.toConstName('new_sample')).toEqual('NewSample');
+    expect(Format.toConstName('new_sample')).toEqual('NewSample');
   });
 
   it('toServiceName', () => {
-    const transform = format.toServiceName;
+    const transform = Format.toServiceName;
 
     expect(transform('new_sample')).toEqual('NewSample');
     expect(transform('newSampleService')).toEqual('NewSample');
@@ -35,7 +35,7 @@ describe('formatters module', () => {
   });
 
   it('toDirectiveName', () => {
-    const transform = format.toDirectiveName;
+    const transform = Format.toDirectiveName;
 
     expect(transform('new_sampleDirective')).toEqual('newSample');
     expect(transform('newSampleDrv')).toEqual('newSample');
@@ -43,7 +43,7 @@ describe('formatters module', () => {
   });
 
   it('toDirectiveTagName', () => {
-    const transform = format.toDirectiveTagName;
+    const transform = Format.toDirectiveTagName;
 
     expect(transform('new_sampleDirective')).toEqual('new-sample');
     expect(transform('newSampleDrv')).toEqual('new-sample');
@@ -51,16 +51,16 @@ describe('formatters module', () => {
   });
 
   it('toFilterName', () => {
-    expect(format.toFilterName('newSampleFilter')).toEqual('newSample');
-    expect(format.toFilterName('New_sample')).toEqual('newSample');
+    expect(Format.toFilterName('newSampleFilter')).toEqual('newSample');
+    expect(Format.toFilterName('New_sample')).toEqual('newSample');
   });
 
   it('toFolderName', () => {
-    expect(format.toFolderName('newSample')).toEqual('new_sample');
+    expect(Format.toFolderName('newSample')).toEqual('new_sample');
   });
 
   it('toJSFileName', () => {
-    const transform = format.toJSFileName;
+    const transform = Format.toJSFileName;
 
     expect(transform('newSample_controller')).toEqual('new_sample.js');
     expect(transform('newSample_spec')).toEqual('new_sample.spec.js');
@@ -68,31 +68,31 @@ describe('formatters module', () => {
   });
 
   it('toHTMLFileName', () => {
-    expect(format.toHTMLFileName('NewSample')).toEqual('new_sample.html');
+    expect(Format.toHTMLFileName('NewSample')).toEqual('new_sample.html');
   });
 
   it('toSCSSFileName', () => {
-    expect(format.toSCSSFileName('NewSample')).toEqual('new_sample.scss');
+    expect(Format.toSCSSFileName('NewSample')).toEqual('new_sample.scss');
   });
 
   it('toPartialName', () => {
-    expect(format.toPartialName('NewSample')).toEqual('_new_sample.html');
+    expect(Format.toPartialName('NewSample')).toEqual('_new_sample.html');
   });
 
   it('toPartialControllerName', () => {
-    expect(format.toPartialControllerName('NewSample')).toEqual('_new_sample.js');
+    expect(Format.toPartialControllerName('NewSample')).toEqual('_new_sample.js');
   });
 
   it('toPartialControllerSpecName', () => {
-    expect(format.toPartialControllerSpecName('NewSample')).toEqual('_new_sample.spec.js');
+    expect(Format.toPartialControllerSpecName('NewSample')).toEqual('_new_sample.spec.js');
   });
 
   it('parentPath', () => {
-    expect(format.parentPath(['new', 'sample', 'path'])).toEqual('new/sample/path/');
+    expect(Format.parentPath(['new', 'sample', 'path'])).toEqual('new/sample/path/');
   });
 
   it('parentState', () => {
-    expect(format.parentState(['new', 'sample', 'state'])).toEqual('new.sample.state');
+    expect(Format.parentState(['new', 'sample', 'state'])).toEqual('new.sample.state');
   });
 
 });

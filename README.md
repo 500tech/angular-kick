@@ -7,7 +7,7 @@
 
 ![angular-kick logo](http://static.angular-kick.com/kick-logo.png)
 
-Angular-kick is opinionated kickstarter and generator for classic single-page AngularJS applications. Based on **ECMAScript** 6 and **best practices**. It allows you to create a working state-based application in no time, and add develop with ease.
+Angular-kick is opinionated kickstarter and generator for classic single-page AngularJS applications. Based on **ECMAScript 6**, **webpack** and **best practices**. It allows you to create a working state-based application in no time, and add develop with ease.
 
 Brought to you by [500Tech](http://500tech.com).
 
