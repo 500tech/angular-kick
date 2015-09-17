@@ -1,7 +1,7 @@
 export class HomeController {
 
   constructor ($scope, $interval) {
-    var Home = this;
+    const Home = this;
     let commands = [
       'state',
       'model',
