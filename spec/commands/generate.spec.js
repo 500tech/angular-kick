@@ -1,66 +1,63 @@
-var fs            = require('fs-extra');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-describe('$ kick generate', function () {
+const Utils       = require('../../lib/utils');
+const TestHelpers = require('../support/helpers');
 
-  beforeAll(function () {
-    fs.deleteSync('npm_test');
-    child_process.execSync(kick + 'new npmTest -ns');
-    process.chdir('npm_test');
-  });
+const fs            = require('fs-extra');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-  afterAll(function () {
-    process.chdir('..');
-    fs.deleteSync('npm_test');
-  });
+describe('$ kick generate', () => {
 
-  it('should ask what to generate', function () {
-    var output = child_process.execSync(kick + 'generate');
+  beforeAll(TestHelpers.createApp);
+  afterAll(TestHelpers.cleanup);
+
+  it('should ask what to generate', () => {
+    const output = child_process.execSync(kick + 'generate');
 
     expect(output).toMatch("What do you want to generate?");
   });
 
-  it('should generate config', function () {
+  it('should generate config', () => {
     child_process.execSync(kick + 'generate config example');
-    var configFile = fs.readFileSync('app/config/example.js').toString();
+    const configFile = TestHelpers.getFile('app/config/example.js');
 
     expect(configFile).toMatch('NpmTest.config');
   });
 
-  it('should generate directive', function () {
+  it('should generate directive', () => {
     child_process.execSync(kick + 'generate directive example');
-    var file = fs.readFileSync('app/directives/example.js').toString();
-    var specFile = fs.readFileSync('test/unit/directives/example.spec.js').toString();
+    const file = TestHelpers.getFile('app/directives/example.js');
+    const specFile = TestHelpers.getFile('test/unit/directives/example.spec.js');
 
     expect(file).toMatch("export function example");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
 
-  it('should generate directive with template', function () {
+  it('should generate directive with template', () => {
     child_process.execSync(kick + 'generate directive example --template');
-    var file = fs.readFileSync('app/directives/example.js').toString();
-    var template = fs.readFileSync('app/directives/example.html').toString();
-    var specFile = fs.readFileSync('test/unit/directives/example.spec.js').toString();
+    const file = TestHelpers.getFile('app/directives/example.js');
+    const template = TestHelpers.getFile('app/directives/example.html');
+    const specFile = TestHelpers.getFile('test/unit/directives/example.spec.js');
 
     expect(file).toMatch("export function example");
-    expect(file).toMatch("templateUrl: 'directives/example.html'");
+    expect(file).toMatch("templateUrl: require\\('directives/example\\.html'\\)");
     expect(template).toMatch("<div>example Directive</div>");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
-  
-  it('should generate environment', function () {
-    child_process.execSync(kick + 'generate environment example');
-    var file = fs.readFileSync('environments.json').toString();
 
-    expect(file).toMatch('"ENV": "example"');
+  it('should generate environment', () => {
+    child_process.execSync(kick + 'generate environment example');
+    const environments = JSON.parse(TestHelpers.getFile('environments.json'));
+
+    expect(environments.example.ENV).toBe("example");
   });
-   
-  it('should generate filter', function () {
+
+  it('should generate filter', () => {
     child_process.execSync(kick + 'generate filter example');
-    var file = fs.readFileSync('app/filters/example.js').toString();
-    var filters  = fs.readFileSync('app/filters/filters.js').toString();
-    var specFile = fs.readFileSync('test/unit/filters/example.spec.js').toString();
+    const file = TestHelpers.getFile('app/filters/example.js');
+    const filters  = TestHelpers.getFile('app/filters/filters.js');
+    const specFile = TestHelpers.getFile('test/unit/filters/example.spec.js');
 
     expect(file).toMatch("export function example\\(input\\)");
     expect(filters).toMatch("import { example } from './example'");
@@ -68,11 +65,11 @@ describe('$ kick generate', function () {
     expect(specFile).toMatch("describe\\('example Filter'");
   });
 
-  it('should generate model', function () {
+  it('should generate model', () => {
     child_process.execSync(kick + 'generate model example');
-    var file = fs.readFileSync('app/models/example.js').toString();
-    var models   = fs.readFileSync('app/models/models.js').toString();
-    var specFile = fs.readFileSync('test/unit/models/example.spec.js').toString();
+    const file = TestHelpers.getFile('app/models/example.js');
+    const models   = TestHelpers.getFile('app/models/models.js');
+    const specFile = TestHelpers.getFile('test/unit/models/example.spec.js');
 
     expect(file).toMatch("class Example");
     expect(models).toMatch("import { Example } from './example'");
@@ -80,25 +77,25 @@ describe('$ kick generate', function () {
     expect(specFile).toMatch("describe\\('Example Model'");
   });
 
-  it('should generate partial', function () {
+  it('should generate partial', () => {
     child_process.execSync(kick + 'generate partial example');
-    var file = fs.readFileSync('app/layouts/shared/_example.html').toString();
+    const file = TestHelpers.getFile('app/layouts/shared/_example.html');
 
     expect(file).toMatch("<div>states/shared/_example.html</div>");
   });
 
-  it('should generate partial with controller', function () {
+  it('should generate partial with controller', () => {
     child_process.execSync(kick + 'generate partial example_2 --controller');
-    var controller = fs.readFileSync('app/layouts/shared/_example_2.js').toString();
+    const controller = TestHelpers.getFile('app/layouts/shared/_example_2.js');
 
     expect(controller).toMatch("class Example2Controller");
   });
 
-  it('should generate service', function () {
+  it('should generate service', () => {
     child_process.execSync(kick + 'generate service example');
-    var file = fs.readFileSync('app/services/example.js').toString();
-    var services = fs.readFileSync('app/services/services.js').toString();
-    var specFile = fs.readFileSync('test/unit/services/example.spec.js').toString();
+    const file = TestHelpers.getFile('app/services/example.js');
+    const services = TestHelpers.getFile('app/services/services.js');
+    const specFile = TestHelpers.getFile('test/unit/services/example.spec.js');
 
     expect(file).toMatch("class Example");
     expect(services).toMatch("import { Example } from './example'");
@@ -106,18 +103,19 @@ describe('$ kick generate', function () {
     expect(specFile).toMatch("describe\\('Example Service'");
   });
 
-  it('should generate state', function () {
+  it('should generate state', () => {
     child_process.execSync(kick + 'generate state example');
-    var route       = fs.readFileSync('app/config/routes/example.js').toString();
-    var routesFile  = fs.readFileSync('app/config/routes/routes.js').toString();
-    var statesFile  = fs.readFileSync('app/states/states.js').toString();
-    var style       = fs.existsSync('app/assets/stylesheets/example.scss');
-    var mainStyle   = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
-    var view        = fs.readFileSync('app/states/example/example.html').toString();
-    var controller  = fs.readFileSync('app/states/example/example.js').toString();
-    var spec        = fs.readFileSync('test/unit/controllers/example/example.spec.js').toString();
+    const route       = TestHelpers.getFile('app/config/routes/example.js');
+    const routesFile  = TestHelpers.getFile('app/config/routes/routes.js');
+    const statesFile  = TestHelpers.getFile('app/states/states.js');
+    const style       = Utils.exists('app/assets/stylesheets/example.scss');
+    const mainStyle   = TestHelpers.getFile('app/assets/stylesheets/application.scss');
+    const view        = TestHelpers.getFile('app/states/example/example.html');
+    const controller  = TestHelpers.getFile('app/states/example/example.js');
+    const spec        = TestHelpers.getFile('test/unit/controllers/example/example.spec.js');
 
-    expect(route).toMatch("controller: 'ExampleController as Example'");
+    expect(route).toMatch("controller: 'ExampleController'");
+    expect(route).toMatch("controllerAs: 'Example'");
     expect(routesFile).toMatch("import { exampleRoutes } from './example';");
     expect(routesFile).toMatch("\\.config\\(exampleRoutes\\);");
     expect(statesFile).toMatch("import { ExampleController } from './example/example");
@@ -129,27 +127,27 @@ describe('$ kick generate', function () {
     expect(spec).toMatch("describe\\('ExampleController'");
   });
 
-  it('should generate abstract state', function () {
+  it('should generate abstract state', () => {
     child_process.execSync(kick + 'generate state example_2 --abstract');
-    var route = fs.readFileSync('app/config/routes/example_2.js').toString();
+    const route = TestHelpers.getFile('app/config/routes/example_2.js');
 
     expect(route).toMatch("abstract: true");
   });
 
-  it('should generate state without controller', function () {
+  it('should generate state without controller', () => {
     child_process.execSync(kick + 'generate state abs_example_3 --no-controller');
-    var route = fs.readFileSync('app/config/routes/abs_example_3.js').toString();
+    const route = TestHelpers.getFile('app/config/routes/abs_example_3.js');
 
     expect(route).not.toMatch("controller: 'ExampleController as Example'");
   });
 
-  it('should generate style', function () {
+  it('should generate style', () => {
     child_process.execSync(kick + 'generate style example');
-    var file = fs.existsSync('app/assets/stylesheets/example.scss');
-    var mainFile = fs.readFileSync('app/assets/stylesheets/application.scss').toString();
+    const file = Utils.exists('app/assets/stylesheets/example.scss');
+    const mainFile = TestHelpers.getFile('app/assets/stylesheets/application.scss');
 
     expect(file).toBeTruthy();
     expect(mainFile).toMatch('@import "example";');
   });
 });
-  
+

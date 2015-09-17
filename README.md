@@ -25,7 +25,7 @@ In order to use `angular-kick`, make sure you have node.js and npm installed:
 
 https://docs.npmjs.com/getting-started/installing-node
 
-**Note:** You need node >=0.12 in order to use angular-kick
+**Note:** You need node >=4.0 in order to use angular-kick
 
 Then, install angular-kick by running:
 
@@ -46,25 +46,19 @@ Creating a new application is as simple as running:
 $ kick new [application-name]
 ```
 
-After you have created the application, you will have to download npm and jspm dependencies.
-You can do that by running:
+After you have created the application, you can run the server, 
+which will automatically reload the browser when you make changes to files. 
+You can also run it in TDD mode, which will run test suit on every file change. 
 
 ```sh
 $ cd application_name
-$ kick setup
-```
-
-Now you can run the server, which will automatically reload the browser when you make changes to files. You can also run it in TDD mode, which will run test suit on every file change.
-
-```sh
-$ kick server
-$ kick server:tdd
+$ kick tdd
 ```
 
 Additionally, you can run the server under a specific environment:
 
 ```sh
-$ kick server --production
+$ kick start production
 ```
 
 To display useful information about the application, such as its name and AngularJS version.

@@ -1,19 +1,19 @@
-var fs            = require('fs-extra');
-var child_process = require('child_process');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
+'use strict';
 
-describe('$ kick new', function () {
-  it('should create new application without setup', function () {
-    fs.deleteSync('npm_test');
+const TestHelpers   = require('../support/helpers');
+const fs            = require('fs-extra');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
+
+describe('$ kick new', () => {
+  it('should create new application without setup', () => {
+    fs.removeSync('npm_test');
     child_process.execSync(kick + 'new npmTest -ns');
     process.chdir('npm_test');
-    var file = fs.readFileSync('package.json').toString();
+    const file = TestHelpers.getFile('package.json');
 
     expect(file).toMatch('"name": "NpmTest"');
   });
 
-  afterAll(function () {
-    process.chdir('..');
-    fs.deleteSync('npm_test');
-  });
+  afterAll(TestHelpers.cleanup);
 });

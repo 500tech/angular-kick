@@ -1,21 +1,15 @@
-var fs            = require('fs-extra');
-var kick          = 'node ' + __dirname + '/../../bin/kick ';
-var child_process = require('child_process');
+'use strict';
 
-describe('$ kick help', function () {
+const TestHelpers   = require('../support/helpers');
+const child_process = require('child_process');
+const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-  beforeAll(function () {
-    fs.deleteSync('npm_test');
-    child_process.execSync(kick + 'new npmTest -ns');
-    process.chdir('npm_test');
-  });
+describe('$ kick help', () => {
 
-  afterAll(function () {
-    process.chdir('..');
-    fs.deleteSync('npm_test');
-  });
+  beforeAll(TestHelpers.createApp);
+  afterAll(TestHelpers.cleanup);
 
-  it('should output help', function () {
+  it('should output help', () => {
     var output = child_process.execSync(kick + 'help').toString();
 
     expect(output).toMatch("Available commands");
