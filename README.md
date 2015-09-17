@@ -1,7 +1,7 @@
 # kick
 
-[![npm version](https://badge.fury.io/js/angular-kick.svg)](http://npmjs.com/packages/angular-kick)
-[![npm downloads](https://img.shields.io/npm/dm/angular-kick.svg)](http://npmjs.com/packages/angular-kick)
+[![npm version](https://badge.fury.io/js/kick.svg)](http://npmjs.com/packages/kick)
+[![npm downloads](https://img.shields.io/npm/dm/kick.svg)](http://npmjs.com/packages/kick)
 [![travis build](https://travis-ci.org/500tech/angular-kick.svg?branch=master)](https://travis-ci.org/500tech/angular-kick)
 [![Code Climate](https://codeclimate.com/github/500tech/angular-kick/badges/gpa.svg)](https://codeclimate.com/github/500tech/angular-kick)
 
