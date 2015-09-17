@@ -1,6 +1,6 @@
 # %APP_NAME%
 
-Welcome to your angular-kick application!
+Welcome to your kick application!
 
 
 ## Before you start
@@ -16,4 +16,4 @@ Welcome to your angular-kick application!
 
 ## Help and documentation
 
-Check out [angular-kick](http://github.com/500tech/angular-kick) on github for more information
+Check out [kick](http://github.com/500tech/angular-kick) on github for more information

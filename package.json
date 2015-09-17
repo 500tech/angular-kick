@@ -1,7 +1,7 @@
 {
-  "name": "angular-kick",
-  "version": "0.0.32",
-  "description": "Kickstarter and generator for AngularJS based on ES6 and best practices",
+  "name": "kick",
+  "version": "1.0.0",
+  "description": "Kickstarter and generator for AngularJS based on ES6, webpack and best practices",
   "author": "500Tech <info@500tech.com>",
   "contributors": [
     {
@@ -15,6 +15,10 @@
     {
       "name": "Nir Kaufman",
       "email": "nir@500tech.com"
+    },
+    {
+      "name": "Maayan Glikser",
+      "email": "maayan@500tech.com"
     }
   ],
   "bin": {

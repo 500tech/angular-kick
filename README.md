@@ -1,4 +1,4 @@
-# angular-kick
+# kick
 
 [![npm version](https://badge.fury.io/js/angular-kick.svg)](http://npmjs.com/packages/angular-kick)
 [![npm downloads](https://img.shields.io/npm/dm/angular-kick.svg)](http://npmjs.com/packages/angular-kick)
@@ -14,23 +14,23 @@ Brought to you by [500Tech](http://500tech.com).
 
 ## Best practices
 
-There are too many conventions for writing AngularJS applications, and after trying all the generators and conventions outside in tens of projects, we have put all of our experience to angular-kick, to make your development as fast and easy as possible.
+There are too many conventions for writing AngularJS applications, and after trying all the generators and conventions outside in tens of projects, we have put all of our experience to kick, to make your development as fast and easy as possible.
 
 Angular-kick uses conventions from [AngularJS Style Guide](https://github.com/toddmotto/angularjs-styleguide) by Todd Motto, which we encourage you to follow as well.
 
 
 ## Install
 
-In order to use `angular-kick`, make sure you have node.js and npm installed:
+In order to use `kick`, make sure you have node.js and npm installed:
 
 https://docs.npmjs.com/getting-started/installing-node
 
-**Note:** You need node >=4.0 in order to use angular-kick
+**Note:** You need node >=4.0 in order to use kick
 
-Then, install angular-kick by running:
+Then, install kick by running:
 
 ```sh
-$ npm install -g angular-kick
+$ npm install -g kick
 ```
 
 
@@ -71,12 +71,12 @@ $ kick about
 
 Check out our [documentation](http://www.angular-kick.com).
 
-You can find there documentation on using other angular-kick features as generators, destroyers, running local server, testing and building for production.
+You can find there documentation on using other kick features as generators, destroyers, running local server, testing and building for production.
 
 
-### Updating angular-kick
+### Updating angular
 
-Checking for updates on each command slows down cli apps a lot. Hence, angular-kick won't check for updates automatically.
+Checking for updates on each command slows down cli apps a lot. Hence, angular won't check for updates automatically.
 You can check for a new version by running:
 
 ```sh

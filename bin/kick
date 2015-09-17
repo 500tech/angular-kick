@@ -11,7 +11,7 @@ var colors        = require('colors');
 
 function ensureNodeVersion() {
   if (!nodeVersion.match('v4.0')) {
-    console.log('⚠ '.red + 'You need nodejs '.yellow + '>= 4.0'.white + ' in order to use angular-kick'.yellow);
+    console.log('⚠ '.red + 'You need nodejs '.yellow + '>= 4.0'.white + ' in order to use angular'.yellow);
     process.exit(0);
   }
 }
