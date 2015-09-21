@@ -1,3 +1,6 @@
+import { inject } from 'decorators/di';
+
+@inject('$scope', '$interval')
 export class HomeController {
 
   constructor ($scope, $interval) {
@@ -27,5 +30,3 @@ export class HomeController {
   }
 
 }
-
-HomeController.$inject = ['$scope', '$interval'];
