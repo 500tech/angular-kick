@@ -87,9 +87,5 @@ switch (command) {
     open('http://localhost:9876/debug.html');
     break;
   default:
-    if (command) {
-      Logger.warn(message.unrecognizedCommand(command))
-    } else {
-      Logger.warn(message.noCommand);
-    }
+    commands.help();
 }
