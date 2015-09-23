@@ -1,6 +1,6 @@
-import { inject } from 'decorators/di';
+import { Inject } from 'decorators/di';
 
-@inject('$rootScope', 'Layout')
+@Inject('$rootScope', 'Layout')
 class layoutController {
   constructor($rootScope, Layout) {
     let layout = this;
