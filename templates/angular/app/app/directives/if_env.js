@@ -1,5 +1,15 @@
 export function ifEnv(ENV) {
-  return function (scope, element, attrs) {
-    if (ENV !== attrs.ifEnv) { element.remove(); }
+  return {
+    restrict: 'A',
+    priority: 600,
+    transclude: 'element',
+    terminal: true,
+    link: function(scope, element, attrs, ctrl, $transclude) {
+      if (ENV === attrs.ifEnv) {
+        $transclude(function (clone) {
+          element.after(clone);
+        });
+      }
+    }
   }
 }
