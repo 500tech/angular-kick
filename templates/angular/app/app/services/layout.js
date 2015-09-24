@@ -1,4 +1,4 @@
-import { Inject } from 'decorators/di';
+import { Inject } from 'decorators/inject';
 
 @Inject('$rootScope', '$state')
 export class Layout {
