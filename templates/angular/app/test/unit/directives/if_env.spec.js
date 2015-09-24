@@ -5,19 +5,19 @@ describe('ifEnv Directive', function () {
 
   beforeEach(angular.mock.module('%APP_NAME%.config', '%APP_NAME%.directives'));
 
-  beforeEach(angular.mock.inject(function ($compile) {
+  beforeEach(angular.mock.inject(function ($compile, $rootScope) {
     testElement = angular.element('<div><div if-env="test">Contents</div></div>');
-    testElement = $compile(testElement)({});
+    testElement = $compile(testElement)($rootScope);
 
     buildElement = angular.element('<div><div if-env="production">Contents</div></div>');
-    buildElement = $compile(buildElement)({});
+    buildElement = $compile(buildElement)($rootScope);
   }));
 
-  it('should show element under correct environment', function () {
+  it('should render element under correct environment', function () {
     expect(testElement.html()).toContain('Contents');
   });
 
-  it('should destroy element under wrong environment', function () {
+  it('should not render element under wrong environment', function () {
     expect(buildElement.html()).not.toContain('Contents');
   });
 });
