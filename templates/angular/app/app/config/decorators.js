@@ -1,6 +1,3 @@
-import { Inject } from 'decorators/inject';
-
-@Inject('$delegate', '$log')
 export function exceptionHandlerDecorator($delegate, $log) {
   $delegate = function (exception, cause) {
     $log.error(exception, cause);
@@ -8,3 +5,5 @@ export function exceptionHandlerDecorator($delegate, $log) {
 
   return $delegate;
 }
+
+exceptionHandlerDecorator.$inject = ['$delegate', '$log'];

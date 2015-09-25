@@ -1,6 +1,3 @@
-import { Inject } from 'decorators/inject';
-
-@Inject('$stateProvider')
 export function staticRoutes($stateProvider) {
   $stateProvider
     .state('static', {
@@ -13,3 +10,5 @@ export function staticRoutes($stateProvider) {
       templateUrl: require('states/static/404.html')
     })
 }
+
+staticRoutes.$inject = ['$stateProvider'];

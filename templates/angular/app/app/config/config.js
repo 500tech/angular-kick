@@ -1,5 +1,3 @@
-import { Inject } from 'decorators/inject';
-
 import { exceptionHandlerDecorator } from 'config/decorators';
 import { constants }                 from 'config/constants';
 
@@ -8,7 +6,6 @@ export default angular.module('%APP_NAME%.config', [])
   .config(config)
   .decorator('$exceptionHandler', exceptionHandlerDecorator);
 
-@Inject('$compileProvider', '$httpProvider', '$locationProvider', '$logProvider', 'ENV')
 function config($compileProvider, $httpProvider, $locationProvider, $logProvider, ENV) {
 
   if (ENV === 'production') {
@@ -25,3 +22,5 @@ function config($compileProvider, $httpProvider, $locationProvider, $logProvider
   // Allows to access application URLs without the # sign
   $locationProvider.html5Mode(true);
 }
+
+config.$inject = ['$compileProvider', '$httpProvider', '$locationProvider', '$logProvider', 'ENV'];
