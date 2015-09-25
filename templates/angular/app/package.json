@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "AngularJS Application",
   "main": "app.js",
+  "babel": {
+    "stage": 1
+  },
   "scripts": {
     "prestart": "npm install",
     "start": "node_modules/.bin/webpack-dev-server --content-base app --no-inof --hot --progress --colors",
