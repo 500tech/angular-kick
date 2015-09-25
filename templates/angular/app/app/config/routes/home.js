@@ -1,3 +1,6 @@
+import { Inject } from 'decorators/inject';
+
+@Inject('$stateProvider')
 export function homeRoutes($stateProvider) {
 
   $stateProvider
@@ -8,5 +11,3 @@ export function homeRoutes($stateProvider) {
       controllerAs: 'Home'
     })
 }
-
-homeRoutes.$inject = ['$stateProvider'];
