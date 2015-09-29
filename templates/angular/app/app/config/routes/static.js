@@ -7,7 +7,7 @@ export function staticRoutes($stateProvider) {
 
     .state('static.404', {
       url: '/404',
-      templateUrl: require('states/static/404.html')
+      templateUrl: '/states/static/404.html'
     })
 }
 

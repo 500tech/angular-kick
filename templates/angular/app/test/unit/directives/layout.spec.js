@@ -6,7 +6,7 @@ describe('layout Directive', function () {
   beforeEach(angular.mock.module('%APP_NAME%.routes', '%APP_NAME%.config', '%APP_NAME%.services', '%APP_NAME%.directives'));
 
   beforeEach(angular.mock.inject(function ($rootScope, $compile, $templateCache, Layout) {
-    $templateCache.put('layouts/application.html', 'APPLICATION');
+    $templateCache.put('/layouts/application.html', 'APPLICATION');
     createDirective = function (scopeAttrs) {
       $scope = angular.extend($rootScope.$new(), scopeAttrs);
 
