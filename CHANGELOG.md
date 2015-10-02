@@ -1,3 +1,7 @@
+# Version 1.1.1:
+
+* Fix: Typo in function name caused HTML templates not to load
+
 # Version 1.1.0:
 
 * Fix: HTML templates work correctly in production
