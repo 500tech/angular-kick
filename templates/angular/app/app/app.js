@@ -17,7 +17,7 @@ import States     from 'states/states';
 // If you need to use lazy loading, you will probably need
 // to remove these two lines and explicitly require htmls
 const templates = require.context(__dirname, true, /\.html$/);
-templates.keys().forEach(template);
+templates.keys().forEach(templates);
 
 angular.module('%APP_NAME%', [
   Models.name,
