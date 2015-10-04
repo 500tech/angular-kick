@@ -1,3 +1,4 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = {
 
   // set the context (optional)
@@ -8,6 +9,13 @@ var config = {
     path: __dirname + '/dist',
     filename: 'bundle.js'
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: 'app/index.html'
+    })
+  ],
 
   // enable loading modules relatively (without the ../../ prefix)
   resolve: {
