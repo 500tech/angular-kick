@@ -1,6 +1,5 @@
 "use strict";
 
-import 'sugar';
 import 'angular';
 
 import 'assets/stylesheets/application.scss';

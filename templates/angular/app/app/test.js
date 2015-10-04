@@ -1,6 +1,5 @@
 'use strict';
 
-require('sugar');
 require('angular');
 require('angular-mocks');
 require('app');
