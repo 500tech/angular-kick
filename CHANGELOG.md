@@ -1,3 +1,11 @@
+# Version 1.2.0:
+
+* Change: SugarJS is not included by default anymore
+* Feature: Vendor files are separated in another chunk
+* Fix: Added cache busting for bundles
+* Fix: Changed /public to /dist in output
+* Fix: Kick upgrade now does npm install instead of npm update
+
 # Version 1.1.1:
 
 * Fix: Typo in function name caused HTML templates not to load
