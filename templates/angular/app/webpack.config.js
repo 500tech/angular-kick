@@ -61,6 +61,7 @@ var config = {
     contentBase: './app',
     noInfo: false,
     hot: true,
+    inline: true,
     historyApiFallback: true
   }
 
