@@ -1,3 +1,7 @@
+# Version 1.2.1:
+
+* Fix: Hot reloading now works in webpack
+
 # Version 1.2.0:
 
 * Change: SugarJS is not included by default anymore
