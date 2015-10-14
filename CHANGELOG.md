@@ -1,3 +1,14 @@
+# Version 1.3.0:
+
+* Feature: Components
+* Change: Generated directives are now restricted to 'A'
+* Deprecated: Generating directive with a template
+
+__Important change__: Components are directives with a template.
+They now have their own place inside app/components directory.
+Generating directives with --template (-t) argument is deprecated
+and will be removed in future versions.
+
 # Version 1.2.1:
 
 * Fix: Hot reloading now works in webpack
