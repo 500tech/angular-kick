@@ -41,6 +41,15 @@ describe('$ kick destroy', () => {
     expect(Utils.exists('test/unit/directives/example.spec.js')).toBeFalsy();
   });
 
+  it('should destroy component', () => {
+    child_process.execSync(kick + 'generate component example --template');
+    child_process.execSync(kick + 'destroy component example');
+
+    expect(Utils.exists('app/components/example/example.js')).toBeFalsy();
+    expect(Utils.exists('app/components/example/example.html')).toBeFalsy();
+    expect(Utils.exists('test/unit/components/example/example.spec.js')).toBeFalsy();
+  });
+
   it('should destroy environment', () => {
     child_process.execSync(kick + 'generate environment example');
     child_process.execSync(kick + 'destroy environment example');

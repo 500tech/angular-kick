@@ -46,6 +46,18 @@ describe('$ kick generate', () => {
     expect(specFile).toMatch("describe\\('example Directive'");
   });
 
+  it('should generate component', () => {
+    child_process.execSync(kick + 'generate component example --template');
+    const file = TestHelpers.getFile('app/components/example/example.js');
+    const template = TestHelpers.getFile('app/components/example/example.html');
+    const specFile = TestHelpers.getFile('test/unit/components/example/example.spec.js');
+
+    expect(file).toMatch("export function example");
+    expect(file).toMatch("templateUrl: require\\('components/example/example\\.html'\\)");
+    expect(template).toMatch("<div>example Component</div>");
+    expect(specFile).toMatch("describe\\('example Component'");
+  });
+
   it('should generate environment', () => {
     child_process.execSync(kick + 'generate environment example');
     const environments = JSON.parse(TestHelpers.getFile('environments.json'));
