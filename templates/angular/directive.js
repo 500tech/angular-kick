@@ -9,7 +9,7 @@ class %DIRECTIVE_NAME%Controller {
 
 export function %DIRECTIVE_NAME%() {
   return {
-    restrict: 'EA',
+    restrict: 'A',
     scope: {},
     controller: %DIRECTIVE_NAME%Controller,
     controllerAs: '%DIRECTIVE_NAME%',
