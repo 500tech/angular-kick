@@ -41,7 +41,11 @@
     "angular",
     "angularjs",
     "kickstart",
-    "es6"
+    "es6",
+    "angular cli",
+    "angular starter",
+    "starter",
+    "angularjs cli"
   ],
   "license": "MIT",
   "homepage": "http://angular-kick.com",
