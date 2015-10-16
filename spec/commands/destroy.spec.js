@@ -78,15 +78,15 @@ describe('$ kick destroy', () => {
     child_process.execSync(kick + 'generate partial example');
     child_process.execSync(kick + 'destroy partial example');
 
-    expect(Utils.exists('app/layouts/shared/_example.html')).toBeFalsy();
+    expect(Utils.exists('app/partials/shared/_example.html')).toBeFalsy();
   });
 
   it('should destroy partial with controller', () => {
     child_process.execSync(kick + 'generate partial example_2 --controller');
     child_process.execSync(kick + 'destroy partial example_2');
 
-    expect(Utils.exists('app/layouts/shared/_example_2.html')).toBeFalsy();
-    expect(Utils.exists('app/layouts/shared/_example_2.js')).toBeFalsy();
+    expect(Utils.exists('app/partials/shared/_example_2.html')).toBeFalsy();
+    expect(Utils.exists('app/partials/shared/_example_2.js')).toBeFalsy();
     expect(Utils.exists('test/units/controllers/shared/_example_2.spec.js')).toBeFalsy();
   });
 

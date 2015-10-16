@@ -17,7 +17,13 @@
   </head>
   <body>
 
-    <layout></layout>
+    <ng-include src="'/partials/shared/_header.html'"></ng-include>
+
+    <main>
+      <ui-view></ui-view>
+    </main>
+
+    <ng-include src="'/partials/shared/_footer.html'"></ng-include>
 
   </body>
 </html>
