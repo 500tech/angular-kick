@@ -91,14 +91,14 @@ describe('$ kick generate', () => {
 
   it('should generate partial', () => {
     child_process.execSync(kick + 'generate partial example');
-    const file = TestHelpers.getFile('app/partial/shared/_example.html');
+    const file = TestHelpers.getFile('app/partials/_example.html');
 
-    expect(file).toMatch("<div>states/shared/_example.html</div>");
+    expect(file).toMatch("<div>states/_example.html</div>");
   });
 
   it('should generate partial with controller', () => {
     child_process.execSync(kick + 'generate partial example_2 --controller');
-    const controller = TestHelpers.getFile('app/partial/shared/_example_2.js');
+    const controller = TestHelpers.getFile('app/partials/_example_2.js');
 
     expect(controller).toMatch("class Example2Controller");
   });
