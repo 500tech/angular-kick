@@ -1,6 +1,6 @@
 {
   "name": "kick",
-  "version": "1.0.1",
+  "version": "1.3.0",
   "description": "Kickstarter and generator for AngularJS based on ES6, webpack and best practices",
   "author": "500Tech <info@500tech.com>",
   "contributors": [
@@ -41,7 +41,11 @@
     "angular",
     "angularjs",
     "kickstart",
-    "es6"
+    "es6",
+    "angular cli",
+    "angular starter",
+    "starter",
+    "angularjs cli"
   ],
   "license": "MIT",
   "homepage": "http://angular-kick.com",

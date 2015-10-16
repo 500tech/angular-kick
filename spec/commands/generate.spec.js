@@ -46,6 +46,18 @@ describe('$ kick generate', () => {
     expect(specFile).toMatch("describe\\('example Directive'");
   });
 
+  it('should generate component', () => {
+    child_process.execSync(kick + 'generate component example --template');
+    const file = TestHelpers.getFile('app/components/example/example.js');
+    const template = TestHelpers.getFile('app/components/example/example.html');
+    const specFile = TestHelpers.getFile('test/unit/components/example/example.spec.js');
+
+    expect(file).toMatch("export function example");
+    expect(file).toMatch("templateUrl: require\\('components/example/example\\.html'\\)");
+    expect(template).toMatch("<div>example Component</div>");
+    expect(specFile).toMatch("describe\\('example Component'");
+  });
+
   it('should generate environment', () => {
     child_process.execSync(kick + 'generate environment example');
     const environments = JSON.parse(TestHelpers.getFile('environments.json'));
@@ -79,14 +91,14 @@ describe('$ kick generate', () => {
 
   it('should generate partial', () => {
     child_process.execSync(kick + 'generate partial example');
-    const file = TestHelpers.getFile('app/layouts/shared/_example.html');
+    const file = TestHelpers.getFile('app/partials/_example.html');
 
-    expect(file).toMatch("<div>states/shared/_example.html</div>");
+    expect(file).toMatch("<div>states/_example.html</div>");
   });
 
   it('should generate partial with controller', () => {
     child_process.execSync(kick + 'generate partial example_2 --controller');
-    const controller = TestHelpers.getFile('app/layouts/shared/_example_2.js');
+    const controller = TestHelpers.getFile('app/partials/_example_2.js');
 
     expect(controller).toMatch("class Example2Controller");
   });

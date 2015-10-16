@@ -1,13 +1,26 @@
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = {
 
   // set the context (optional)
   context: __dirname + '/app',
-  entry: 'app.js',
+  entry: {
+    app: 'app.js',
+    vendor: ['angular', 'angular-ui-router']
+  },
 
   output: {
     path: __dirname + '/dist',
     filename: 'bundle.js'
   },
+
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName: */'vendor', /* filename: */'vendor.[hash].js'),
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: 'app/index.html'
+    })
+  ],
 
   // enable loading modules relatively (without the ../../ prefix)
   resolve: {
@@ -48,6 +61,7 @@ var config = {
     contentBase: './app',
     noInfo: false,
     hot: true,
+    inline: true,
     historyApiFallback: true
   }
 

@@ -41,6 +41,15 @@ describe('$ kick destroy', () => {
     expect(Utils.exists('test/unit/directives/example.spec.js')).toBeFalsy();
   });
 
+  it('should destroy component', () => {
+    child_process.execSync(kick + 'generate component example --template');
+    child_process.execSync(kick + 'destroy component example');
+
+    expect(Utils.exists('app/components/example/example.js')).toBeFalsy();
+    expect(Utils.exists('app/components/example/example.html')).toBeFalsy();
+    expect(Utils.exists('test/unit/components/example/example.spec.js')).toBeFalsy();
+  });
+
   it('should destroy environment', () => {
     child_process.execSync(kick + 'generate environment example');
     child_process.execSync(kick + 'destroy environment example');
@@ -69,16 +78,16 @@ describe('$ kick destroy', () => {
     child_process.execSync(kick + 'generate partial example');
     child_process.execSync(kick + 'destroy partial example');
 
-    expect(Utils.exists('app/layouts/shared/_example.html')).toBeFalsy();
+    expect(Utils.exists('app/partials/_example.html')).toBeFalsy();
   });
 
   it('should destroy partial with controller', () => {
     child_process.execSync(kick + 'generate partial example_2 --controller');
     child_process.execSync(kick + 'destroy partial example_2');
 
-    expect(Utils.exists('app/layouts/shared/_example_2.html')).toBeFalsy();
-    expect(Utils.exists('app/layouts/shared/_example_2.js')).toBeFalsy();
-    expect(Utils.exists('test/units/controllers/shared/_example_2.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/partials/_example_2.html')).toBeFalsy();
+    expect(Utils.exists('app/partials/_example_2.js')).toBeFalsy();
+    expect(Utils.exists('test/units/controllers/_example_2.spec.js')).toBeFalsy();
   });
 
   it('should destroy service', () => {

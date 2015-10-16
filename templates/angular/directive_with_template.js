@@ -1,14 +1,15 @@
+import { Inject } from 'decorators/inject';
+
+@Inject('$element')
 class %DIRECTIVE_NAME%Controller {
   constructor($element) {
     console.log($element);
   }
 }
 
-%DIRECTIVE_NAME%Controller.$inject = ['$element'];
-
 export function %DIRECTIVE_NAME%() {
   return {
-    restrict: 'EA',
+    restrict: 'A',
     scope: {},
     templateUrl: require('%DIRECTIVE_TEMPLATE_URL%'),
     controller: %DIRECTIVE_NAME%Controller,

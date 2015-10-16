@@ -17,8 +17,13 @@
   </head>
   <body>
 
-    <layout></layout>
+    <ng-include src="'/partials/_header.html'"></ng-include>
 
-    <script type="text/javascript" src="/bundle.js"></script>
+    <main>
+      <ui-view></ui-view>
+    </main>
+
+    <ng-include src="'/partials/_footer.html'"></ng-include>
+
   </body>
 </html>
