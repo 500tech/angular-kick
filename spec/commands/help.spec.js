@@ -4,7 +4,7 @@ const TestHelpers   = require('../support/helpers');
 const child_process = require('child_process');
 const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
-fdescribe('$ kick help', () => {
+describe('$ kick help', () => {
 
   beforeAll(TestHelpers.createApp);
   afterAll(TestHelpers.cleanup);
