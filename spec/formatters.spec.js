@@ -56,35 +56,35 @@ describe('formatters module', () => {
   });
 
   it('toFolderName', () => {
-    expect(Format.toFolderName('newSample')).toEqual('new_sample');
+    expect(Format.toFolderName('newSample')).toEqual('new-sample');
   });
 
   it('toJSFileName', () => {
     const transform = Format.toJSFileName;
 
-    expect(transform('newSample_controller')).toEqual('new_sample.js');
-    expect(transform('newSample_spec')).toEqual('new_sample.spec.js');
-    expect(transform('newSample')).toEqual('new_sample.js');
+    expect(transform('newSample_controller')).toEqual('new-sample.js');
+    expect(transform('newSample_spec')).toEqual('new-sample.spec.js');
+    expect(transform('newSample')).toEqual('new-sample.js');
   });
 
   it('toHTMLFileName', () => {
-    expect(Format.toHTMLFileName('NewSample')).toEqual('new_sample.html');
+    expect(Format.toHTMLFileName('NewSample')).toEqual('new-sample.html');
   });
 
   it('toSCSSFileName', () => {
-    expect(Format.toSCSSFileName('NewSample')).toEqual('new_sample.scss');
+    expect(Format.toSCSSFileName('NewSample')).toEqual('new-sample.scss');
   });
 
   it('toPartialName', () => {
-    expect(Format.toPartialName('NewSample')).toEqual('_new_sample.html');
+    expect(Format.toPartialName('NewSample')).toEqual('_new-sample.html');
   });
 
   it('toPartialControllerName', () => {
-    expect(Format.toPartialControllerName('NewSample')).toEqual('_new_sample.js');
+    expect(Format.toPartialControllerName('NewSample')).toEqual('_new-sample.js');
   });
 
   it('toPartialControllerSpecName', () => {
-    expect(Format.toPartialControllerSpecName('NewSample')).toEqual('_new_sample.spec.js');
+    expect(Format.toPartialControllerSpecName('NewSample')).toEqual('_new-sample.spec.js');
   });
 
   it('parentPath', () => {

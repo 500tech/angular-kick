@@ -98,7 +98,7 @@ describe('$ kick generate', () => {
 
   it('should generate partial with controller', () => {
     child_process.execSync(kick + 'generate partial example_2 --controller');
-    const controller = TestHelpers.getFile('app/partials/_example_2.js');
+    const controller = TestHelpers.getFile('app/partials/_example-2.js');
 
     expect(controller).toMatch("class Example2Controller");
   });
@@ -141,14 +141,14 @@ describe('$ kick generate', () => {
 
   it('should generate abstract state', () => {
     child_process.execSync(kick + 'generate state example_2 --abstract');
-    const route = TestHelpers.getFile('app/config/routes/example_2.js');
+    const route = TestHelpers.getFile('app/config/routes/example-2.js');
 
     expect(route).toMatch("abstract: true");
   });
 
   it('should generate state without controller', () => {
     child_process.execSync(kick + 'generate state abs_example_3 --no-controller');
-    const route = TestHelpers.getFile('app/config/routes/abs_example_3.js');
+    const route = TestHelpers.getFile('app/config/routes/abs-example-3.js');
 
     expect(route).not.toMatch("controller: 'ExampleController as Example'");
   });

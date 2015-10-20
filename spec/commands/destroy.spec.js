@@ -85,9 +85,9 @@ describe('$ kick destroy', () => {
     child_process.execSync(kick + 'generate partial example_2 --controller');
     child_process.execSync(kick + 'destroy partial example_2');
 
-    expect(Utils.exists('app/partials/_example_2.html')).toBeFalsy();
-    expect(Utils.exists('app/partials/_example_2.js')).toBeFalsy();
-    expect(Utils.exists('test/units/controllers/_example_2.spec.js')).toBeFalsy();
+    expect(Utils.exists('app/partials/_example-2.html')).toBeFalsy();
+    expect(Utils.exists('app/partials/_example-2.js')).toBeFalsy();
+    expect(Utils.exists('test/units/controllers/_example-2.spec.js')).toBeFalsy();
   });
 
   it('should destroy service', () => {

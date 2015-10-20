@@ -7,9 +7,9 @@ const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick new', () => {
   it('should create new application without setup', () => {
-    fs.removeSync('npm_test');
+    fs.removeSync('npm-test');
     child_process.execSync(kick + 'new npmTest -ns');
-    process.chdir('npm_test');
+    process.chdir('npm-test');
     const file = TestHelpers.getFile('package.json');
 
     expect(file).toMatch('"name": "NpmTest"');

@@ -7,14 +7,14 @@ const kick          = 'node ' + __dirname + '/../../bin/kick ';
 module.exports = class TestHelpers {
 
   static createApp() {
-    fs.removeSync('npm_test');
+    fs.removeSync('npm-test');
     child_process.execSync(kick + 'new npmTest -ns');
-    process.chdir('npm_test');
+    process.chdir('npm-test');
   }
 
   static cleanup() {
     process.chdir('..');
-    fs.removeSync('npm_test');
+    fs.removeSync('npm-test');
   }
 
   static getFile(filename) {
