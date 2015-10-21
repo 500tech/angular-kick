@@ -76,6 +76,9 @@ switch (command) {
   case 't':
     commands.test();
     break;
+  case 'lint':
+    commands.lint();
+    break;
   case 'upgrade':
   case 'u':
     commands.upgrade();
