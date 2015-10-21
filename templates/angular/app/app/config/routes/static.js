@@ -1,4 +1,4 @@
-export function staticRoutes($stateProvider) {
+export /* @ngInject */ function staticRoutes($stateProvider) {
   $stateProvider
     .state('static', {
       template: '<ui-view></ui-view>',
@@ -10,5 +10,3 @@ export function staticRoutes($stateProvider) {
       templateUrl: '/states/static/404.html',
     });
 }
-
-staticRoutes.$inject = ['$stateProvider'];

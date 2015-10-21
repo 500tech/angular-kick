@@ -1,7 +1,6 @@
-import { Inject } from 'decorators/inject';
-
-@Inject('$element')
 class %DIRECTIVE_NAME%Controller {
+
+  // @ngInject
   constructor($element) {
     console.log($element);
   }

@@ -1,4 +1,4 @@
-export function homeRoutes($stateProvider) {
+export /* @ngInject */ function homeRoutes($stateProvider) {
 
   $stateProvider
     .state('home', {
@@ -8,5 +8,3 @@ export function homeRoutes($stateProvider) {
       controllerAs: 'Home',
     });
 }
-
-homeRoutes.$inject = ['$stateProvider'];

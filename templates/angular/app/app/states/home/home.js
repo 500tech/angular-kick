@@ -1,8 +1,6 @@
-import { Inject } from 'decorators/inject';
-
-@Inject('$scope', '$interval')
 export class HomeController {
 
+  // @ngInject
   constructor ($scope, $interval) {
     const Home = this;
     let commands = [
