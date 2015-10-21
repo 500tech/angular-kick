@@ -51,6 +51,7 @@
   "homepage": "http://angular-kick.com",
   "dependencies": {
     "change-case": "2.3.0",
+    "cli-clear": "1.0.4",
     "colors": "1.1.2",
     "cpr": "0.4.3",
     "fs-extra": "0.24.0",
