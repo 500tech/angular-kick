@@ -111,7 +111,7 @@ if (process.env.NODE_ENV === 'development') {
 // TODO: Allow karma to run in production environment
 // In order to do this, we should not include CommonsChunkPlugin
 // while running karma-webpack since they are incompatible
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV !== 'test') {
   config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin(
       /* chunkName: */ 'vendor',
