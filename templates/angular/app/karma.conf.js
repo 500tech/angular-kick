@@ -1,10 +1,10 @@
-var webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.config');
 
-// remove entry and output to allow testing
+// Remove entry and output to allow testing
 delete webpackConfig.entry;
 delete webpackConfig.output;
 
-module.exports = function(config) {
+module.exports = (config) => {
   config.set({
     basePath: '',
 
@@ -38,8 +38,8 @@ module.exports = function(config) {
     },
 
     exclude: [
-      global.karmaBaseDirectory + "/app/assets/**",
-      global.karmaBaseDirectory + "/app/config/**"
+      `${global.karmaBaseDirectory}/app/assets/**`,
+      `${global.karmaBaseDirectory}/app/config/**`
     ],
 
     mochaReporter: {
