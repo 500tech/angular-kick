@@ -1,6 +1,8 @@
 const webpackConfig = require('./webpack.config');
+const karmaWebpack  = require('karma-webpack');
 
 // Remove entry and output to allow testing
+/* eslint-disable prefer-reflect */
 delete webpackConfig.entry;
 delete webpackConfig.output;
 
@@ -9,7 +11,7 @@ module.exports = (config) => {
     basePath: '',
 
     plugins: [
-      require('karma-webpack'),
+      karmaWebpack,
       'karma-jasmine',
       'karma-osx-reporter',
       'karma-clear-screen-reporter',
@@ -37,6 +39,7 @@ module.exports = (config) => {
       './app/test.js': ['webpack']
     },
 
+    /* global global */
     exclude: [
       `${global.karmaBaseDirectory}/app/assets/**`,
       `${global.karmaBaseDirectory}/app/config/**`
