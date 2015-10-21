@@ -1,10 +1,10 @@
-describe('%COMPONENT_NAME% Component', function () {
-  var element, $scope, createComponent;
+describe('%COMPONENT_NAME% Component', () => {
+  let element, $scope, createComponent;
 
   beforeEach(angular.mock.module('%APP_NAME%.components'));
 
-  beforeEach(angular.mock.inject(function ($rootScope, $compile) {
-    createComponent = function (scopeAttrs) {
+  beforeEach(angular.mock.inject(($rootScope, $compile) => {
+    createComponent = (scopeAttrs) => {
       $scope = angular.extend($rootScope.$new(), scopeAttrs);
 
       element = angular.element('<%COMPONENT_TAG_NAME%></%COMPONENT_TAG_NAME%>');
@@ -13,7 +13,7 @@ describe('%COMPONENT_NAME% Component', function () {
     };
   }));
 
-  it('should be true', function () {
+  it('should be true', () => {
     createComponent({});
     expect(true).toBeTruthy();
   });

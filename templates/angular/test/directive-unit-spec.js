@@ -1,10 +1,10 @@
-describe('%DIRECTIVE_NAME% Directive', function () {
-  var element, $scope, createDirective;
+describe('%DIRECTIVE_NAME% Directive', () => {
+  let element, $scope, createDirective;
 
   beforeEach(angular.mock.module('%APP_NAME%.directives'));
 
-  beforeEach(angular.mock.inject(function ($rootScope, $compile) {
-    createDirective = function (scopeAttrs) {
+  beforeEach(angular.mock.inject(($rootScope, $compile) => {
+    createDirective = (scopeAttrs) => {
       $scope = angular.extend($rootScope.$new(), scopeAttrs);
 
       element = angular.element('<%DIRECTIVE_TAG_NAME%></%DIRECTIVE_TAG_NAME%>');
@@ -13,7 +13,7 @@ describe('%DIRECTIVE_NAME% Directive', function () {
     };
   }));
 
-  it('should be true', function () {
+  it('should be true', () => {
     createDirective({});
     expect(true).toBeTruthy();
   });

@@ -1,19 +1,19 @@
-describe('%CONTROLLER_NAME%', function () {
-  var %CONTROLLER_VAR_NAME%, createController;
+describe('%CONTROLLER_NAME%', () => {
+  let %CONTROLLER_VAR_NAME%, createController;
 
   beforeEach(angular.mock.module('%APP_NAME%.controllers'));
 
-  beforeEach(angular.mock.inject(function ($controller) {
-    createController = function () {
+  beforeEach(angular.mock.inject(($controller) => {
+    createController = () => {
       %CONTROLLER_VAR_NAME% = $controller('%CONTROLLER_NAME%');
     };
   }));
 
-  beforeEach(function () {
+  beforeEach(() => {
     createController()
   });
 
-  it('should be true', function () {
+  it('should be true', () => {
     expect(%CONTROLLER_VAR_NAME%.message).toMatch('%CONTROLLER_NAME%');
   });
 });
