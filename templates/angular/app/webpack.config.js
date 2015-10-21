@@ -16,7 +16,7 @@ const config = {
 
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
   },
 
   plugins: [
