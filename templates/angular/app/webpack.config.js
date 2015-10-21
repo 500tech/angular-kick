@@ -108,16 +108,13 @@ if (process.env.NODE_ENV === 'development') {
   config.devtool = '#inline-source-map';
 }
 
-// TODO: Allow karma to run in production environment
-// In order to do this, we should not include CommonsChunkPlugin
-// while running karma-webpack since they are incompatible
 if (process.env.NODE_ENV !== 'test') {
   config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin(
       /* chunkName: */ 'vendor',
       /* filename: */ 'vendor.[hash].js'
     )
-  )
+  );
 }
 
 module.exports = config;
