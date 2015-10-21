@@ -49,9 +49,10 @@
     "sort-vars": 0,
     "max-statements": 0,
     "max-params": 0,
+    "require-jsdoc": 0,
+    "comma-dangle": 0,
 
     // Warning
-    "comma-dangle": [1, "always-multiline"],
     "no-console": 1,
     "no-control-regex": 1,
     "no-empty": 1,
@@ -74,6 +75,7 @@
     "max-depth": [1, 3],
     "max-len": [1, 80, 4, {"ignoreComments": true, "ignoreUrls": true, "ignorePattern": "^\\s*var\\s.+=\\s*require\\s*\\("}],
     "no-bitwise": 1,
+    "global-require": 1,
 
     // Error
     "linebreak-style": [2, "unix"],
@@ -176,7 +178,7 @@
     "no-unneeded-ternary": 2,
     "object-curly-spacing": [2, "always"],
     "operator-assignment": [2, "always"],
-    "quote-props": [2, "consistent-as-needed", { "keywords": true, "unnecessary": false }],
+    "quote-props": [2, "consistent-as-needed", { "keywords": false, "unnecessary": false }],
     "semi-spacing": [2, { "before": false, "after": true }],
     "semi": [2, "always"],
     "space-after-keywords": [2, "always"],
@@ -211,12 +213,16 @@
     "no-this-before-super": 2,
     "require-yield": 2,
     "valid-jsdoc": [2, { "prefer": { "return": "returns" }, "requireReturn": false }],
+    "space-before-keywords": [2, "always"],
+    "no-restricted-syntax": [2, "WithStatement"],
+    "no-negated-condition": 2,
+    "no-empty-pattern": 2,
+    "no-magic-numbers": 2,
 
     //****************************************************************** Angular
     // Disabled
     "angular/di-order": 0,
     "angular/directive-name": 0,
-    "angular/file-name": 0,
     "angular/filter-name": 0,
     "angular/foreach": 0,
     "angular/function-type": 0,
@@ -229,9 +235,16 @@
     "angular/rest-service": 0,
     "angular/service-name": 0,
     "angular/watchers-execution": 0,
+    "angular/directive-restrict": 0,
+    "angular/file-name": 0,
+    // Disabled because of bug (Module.name not supported)
+    "angular/module-dependency-order": 0,
+    // Disabled because of bug
+    "angular/component-limit": 0,
 
     // Warning
     "angular/deferred": 1,
+    "angular/no-inline-template": 1,
 
     // Error
     "angular/angularelement": 2,
@@ -260,6 +273,7 @@
     "angular/typecheck-object": 2,
     "angular/typecheck-regexp": 2,
     "angular/typecheck-string": 2,
-    "angular/window-service": 2
+    "angular/window-service": 2,
+    "angular/no-http-callback": 2
   }
 }
