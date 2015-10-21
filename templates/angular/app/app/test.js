@@ -1,11 +1,11 @@
-/* global __dirname, path */
+/* global __dirname */
 
 require('angular');
 require('angular-mocks');
 require('app');
 
 const context = require.context(
-  path.join(__dirname,'/../test'),
+  __dirname + '/../test',
   true,
   /\.spec\./
 );
