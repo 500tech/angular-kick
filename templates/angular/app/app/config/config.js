@@ -1,10 +1,8 @@
+/* eslint max-len:0 */
+
+import angular                       from 'angular';
 import { exceptionHandlerDecorator } from 'config/decorators';
 import { constants }                 from 'config/constants';
-
-export default angular.module('%APP_NAME%.config', [])
-  .constant(constants)
-  .config(config)
-  .decorator('$exceptionHandler', exceptionHandlerDecorator);
 
 function config($compileProvider, $httpProvider, $locationProvider, $logProvider, ENV) {
 
@@ -24,3 +22,8 @@ function config($compileProvider, $httpProvider, $locationProvider, $logProvider
 }
 
 config.$inject = ['$compileProvider', '$httpProvider', '$locationProvider', '$logProvider', 'ENV'];
+
+export default angular.module('%APP_NAME%.config', [])
+  .constant(constants)
+  .config(config)
+  .decorator('$exceptionHandler', exceptionHandlerDecorator);

@@ -8,6 +8,6 @@ export function ifEnv(ENV) {
       if (ENV === attrs.ifEnv) {
         $transclude((clone) => element.after(clone));
       }
-    }
-  }
+    },
+  };
 }

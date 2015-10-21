@@ -1,23 +1,26 @@
-var angular = require('angular');
+const angular = require('angular');
 
-describe('ifEnv Directive', function () {
-  var testElement, buildElement;
+describe('ifEnv Directive', () => {
+  let testElement, buildElement;
 
   beforeEach(angular.mock.module('%APP_NAME%.config', '%APP_NAME%.directives'));
 
-  beforeEach(angular.mock.inject(function ($compile, $rootScope) {
-    testElement = angular.element('<div><div if-env="test">Contents</div></div>');
+  beforeEach(angular.mock.inject(($compile, $rootScope) => {
+    const testTemplate  = '<div><div if-env="test">Contents</div></div>';
+    const buildTemplate = '<div><div if-env="production">Contents</div></div>';
+
+    testElement = angular.element(testTemplate);
     testElement = $compile(testElement)($rootScope);
 
-    buildElement = angular.element('<div><div if-env="production">Contents</div></div>');
+    buildElement = angular.element(buildTemplate);
     buildElement = $compile(buildElement)($rootScope);
   }));
 
-  it('should render element under correct environment', function () {
+  it('should render element under correct environment', () => {
     expect(testElement.html()).toContain('Contents');
   });
 
-  it('should not render element under wrong environment', function () {
+  it('should not render element under wrong environment', () => {
     expect(buildElement.html()).not.toContain('Contents');
   });
 });

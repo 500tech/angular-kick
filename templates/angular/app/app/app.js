@@ -1,6 +1,6 @@
-'use strict';
+/* globals __dirname */
 
-import 'angular';
+import angular from 'angular';
 
 import 'assets/stylesheets/application.scss';
 
@@ -17,6 +17,7 @@ import States     from 'states/states';
 // If you need to use lazy loading, you will probably need
 // to remove these two lines and explicitly require htmls
 const templates = require.context(__dirname, true, /\.html$/);
+
 templates.keys().forEach(templates);
 
 angular.module('%APP_NAME%', [
@@ -30,6 +31,5 @@ angular.module('%APP_NAME%', [
   States.name,
 ]);
 
-angular.element(document).ready(function() {
-  angular.bootstrap(document, ['%APP_NAME%']);
-});
+angular.element(document).ready(() =>
+  angular.bootstrap(document, ['%APP_NAME%']));
