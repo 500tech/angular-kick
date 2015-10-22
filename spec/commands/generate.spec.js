@@ -41,7 +41,7 @@ describe('$ kick generate', () => {
     const specFile = TestHelpers.getFile('test/unit/directives/example.spec.js');
 
     expect(file).toMatch("export function example");
-    expect(file).toMatch("templateUrl: require\\('directives/example\\.html'\\)");
+    expect(file).toMatch("const templateUrl = require\\('directives/example\\.html'\\);");
     expect(template).toMatch("<div>example Directive</div>");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
@@ -53,7 +53,7 @@ describe('$ kick generate', () => {
     const specFile = TestHelpers.getFile('test/unit/components/example/example.spec.js');
 
     expect(file).toMatch("export function example");
-    expect(file).toMatch("templateUrl: require\\('components/example/example\\.html'\\)");
+    expect(file).toMatch("const templateUrl = require\\('components/example/example\\.html'\\);");
     expect(template).toMatch("<div>example Component</div>");
     expect(specFile).toMatch("describe\\('example Component'");
   });
@@ -129,7 +129,7 @@ describe('$ kick generate', () => {
     expect(route).toMatch("controller: 'ExampleController'");
     expect(route).toMatch("controllerAs: 'Example'");
     expect(routesFile).toMatch("import { exampleRoutes } from './example';");
-    expect(routesFile).toMatch("\\.config\\(exampleRoutes\\);");
+    expect(routesFile).toMatch("\\.config\\(exampleRoutes\\)");
     expect(statesFile).toMatch("import { ExampleController } from './example/example");
     expect(statesFile).toMatch(".controller\\('ExampleController', ExampleController\\);");
     expect(style).toBeTruthy();
