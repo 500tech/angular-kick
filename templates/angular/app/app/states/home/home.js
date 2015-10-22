@@ -1,4 +1,4 @@
-export class thisController {
+export class HomeController {
 
   // @ngInject
   constructor($scope, $interval) {
