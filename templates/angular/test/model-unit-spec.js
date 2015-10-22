@@ -8,6 +8,6 @@ describe('%MODEL_NAME% Model', () => {
   }));
 
   it('should be true', () => {
-    expect(true).toBeTruthy();
+    expect(%MODEL_NAME%).toBeDefined();
   });
 });

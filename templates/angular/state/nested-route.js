@@ -5,5 +5,5 @@
       abstract: true,
       controller: '%STATE_CONTROLLER_NAME%Controller',
       controllerAs: '%STATE_CONTROLLER_NAME%'
-    })
+    });
 }

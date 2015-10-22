@@ -1,8 +1,8 @@
 class %DIRECTIVE_NAME%Controller {
 
   // @ngInject
-  constructor($element) {
-    console.log($element);
+  constructor($log, $element) {
+    $log.log($element);
   }
 }
 
@@ -13,5 +13,5 @@ export function %DIRECTIVE_NAME%() {
     controller: %DIRECTIVE_NAME%Controller,
     controllerAs: '%DIRECTIVE_NAME%',
     bindToController: true
-  }
+  };
 }

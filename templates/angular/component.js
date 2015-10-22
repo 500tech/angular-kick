@@ -1,8 +1,10 @@
+const templateUrl = require('%COMPONENT_TEMPLATE_URL%');
+
 class %COMPONENT_NAME%Controller {
 
   // @ngInject
-  constructor($element) {
-    console.log($element);
+  constructor($log, $element) {
+    $log.log($element);
   }
 }
 
@@ -10,9 +12,9 @@ export function %COMPONENT_NAME%() {
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: require('%COMPONENT_TEMPLATE_URL%'),
+    templateUrl,
     controller: %COMPONENT_NAME%Controller,
     controllerAs: '%COMPONENT_NAME%',
     bindToController: true
-  }
+  };
 }

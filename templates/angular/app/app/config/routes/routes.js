@@ -4,7 +4,11 @@ import 'angular-ui-router';
 import { homeRoutes } from 'config/routes/home';
 import { staticRoutes } from 'config/routes/static';
 
+const defaultRoute = /* @ngInject */ ($urlRouterProvider) => {
+  $urlRouterProvider.otherwise('/404');
+};
+
 export default angular.module('%APP_NAME%.routes', ['ui.router'])
-  .config(/* @ngInject */ ($urlRouterProvider) => $urlRouterProvider.otherwise('/404'))
+  .config(defaultRoute)
   .config(homeRoutes)
   .config(staticRoutes);

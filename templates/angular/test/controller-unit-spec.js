@@ -10,7 +10,7 @@ describe('%CONTROLLER_NAME%', () => {
   }));
 
   beforeEach(() => {
-    createController()
+    createController();
   });
 
   it('should be true', () => {

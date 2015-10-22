@@ -8,6 +8,6 @@ describe('%SERVICE_NAME% Service', () => {
   }));
 
   it('should be true', () => {
-    expect(true).toBeTruthy();
+    expect(%SERVICE_NAME%).toBeDefined();
   });
 });

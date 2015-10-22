@@ -1,2 +1,5 @@
-angular.module('%APP_NAME%.config')
-  .config(function () {});
+const configFunction = /* @ngInject */ () => {
+
+};
+
+angular.module('%APP_NAME%.config').config(configFunction);

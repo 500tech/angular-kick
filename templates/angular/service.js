@@ -1,7 +1,7 @@
 export class %SERVICE_NAME% {
 
   // @ngInject
-  constructor ($log) {
+  constructor($log) {
     this.$log = $log;
     this.message = '%SERVICE_NAME%';
   }

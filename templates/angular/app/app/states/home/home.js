@@ -1,9 +1,10 @@
-export class HomeController {
+export class thisController {
 
   // @ngInject
-  constructor ($scope, $interval) {
-    const Home = this;
-    let commands = [
+  constructor($scope, $interval) {
+    const ROTATING_INTERVAL = 2000;
+
+    const commands = [
       'state',
       'model',
       'service',
@@ -15,14 +16,14 @@ export class HomeController {
       'environment'
     ];
 
-    Home.command = commands[0];
+    this.command = commands[0];
 
-    let rotateCommands = $interval(function () {
+    const rotateCommands = $interval(() => {
       commands.push(commands.splice(0, 1)[0]);
-      Home.command = commands[0];
-    }, 2000);
+      this.command = commands[0];
+    }, ROTATING_INTERVAL);
 
-    $scope.$on('$destroy', function () {
+    $scope.$on('$destroy', () => {
       $interval.cancel(rotateCommands);
     });
   }

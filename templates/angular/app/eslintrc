@@ -29,6 +29,10 @@
     "regexUFlag": true,
   },
 
+  "globals": {
+    "angular": true
+  },
+
   "rules": {
     // Disabled
     "complexity": 0,
