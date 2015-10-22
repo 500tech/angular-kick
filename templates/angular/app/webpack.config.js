@@ -57,7 +57,7 @@ const config = {
           'ng-annotate',
           'babel'
         ],
-        exclude: exclude
+        exclude
       },
 
       // SCSS
@@ -74,7 +74,8 @@ const config = {
       // JSON
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json',
+        exclude
       },
 
       // Fonts and images
