@@ -8,7 +8,7 @@
   },
   "scripts": {
     "prestart": "npm install",
-    "start": "node_modules/.bin/webpack-dev-server --content-base app --no-inof --hot --progress --colors",
+    "start": "node_modules/.bin/webpack-dev-server --hot --progress",
     "bundle": "node_modules/.bin/webpack -p --progress"
   },
   "repository": {

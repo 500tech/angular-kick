@@ -4,31 +4,39 @@ const webpack           = require('webpack');
 const path              = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const environmentsFile  = path.join(__dirname, '/environments.json');
+const appPath           = path.join(__dirname, '/app');
+const distPath          = path.join(__dirname, '/dist');
+const exclude           = /node_modules/;
 
 const config = {
 
-  // set the context (optional)
-  context: path.join(__dirname, '/app'),
+  // The base directory for resolving `entry` (must be absolute path)
+  context: appPath,
+
   entry: {
     app: 'app.js',
-    vendor: ['angular', 'angular-ui-router'],
+    vendor: [
+      'angular',
+      'angular-ui-router'
+    ]
   },
 
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'bundle.[hash].js',
+    path: distPath,
+    filename: 'bundle.[hash].js'
   },
 
   plugins: [
+    // Render an index.html for the app
     new HtmlWebpackPlugin({
       inject: 'body',
-      template: 'app/index.html',
-    }),
+      template: 'app/index.html'
+    })
   ],
 
-  // enable loading modules relatively (without the ../../ prefix)
+  // Enable loading modules relatively (without the ../../ prefix)
   resolve: {
-    root: [path.join(__dirname, '/app')],
+    root: [appPath]
   },
 
   module: {
@@ -40,33 +48,34 @@ const config = {
         ]
       }
     ],
-    loaders: [
 
+    loaders: [
       // Transpile ES6 and annotate AngularJS dependencies
       {
         test: /\.js$/,
-        exclude: /node_modules/,
         loaders: [
           'ng-annotate',
           'babel'
-        ]
+        ],
+        exclude
       },
 
       // SCSS
       {
-        test: /\.s?css$/,
+        test: /\.(css|scss)$/,
         loaders: [
           'style',
           'css',
           'autoprefixer',
-          `sass?includePaths[]=${path.join(__dirname, '/app')}`
+          `sass?includePaths[]=${appPath}`
         ]
       },
 
       // JSON
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json',
+        exclude
       },
 
       // Fonts and images
@@ -87,17 +96,19 @@ const config = {
       {
         test: /\.html$/,
         loaders: [
-          `ngtemplate?relativeTo=${path.join(__dirname, '/app')}`,
+          `ngtemplate?relativeTo=${appPath}`,
           'html'
         ]
       }
     ]
   },
 
+  // Settings for webpack-dev-server
+  // `--hot` and `--progress` must be set using CLI
   devServer: {
     contentBase: './app',
-    noInfo: false,
-    hot: true,
+    colors: true,
+    noInfo: true,
     inline: true,
     historyApiFallback: true
   }
