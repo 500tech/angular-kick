@@ -1,3 +1,25 @@
+# Version 1.4.0:
+
+* Feature: ESLint
+* Fix: Cache busting for bundle.js
+* Fix: Removed common chunks from tests, now tests run
+* Fix: Changed ncp with cpr, should work better on windows
+* Fix: Running kick with no arguments shows help by default
+* Change: Remove layouts functionality
+* Change: Partials now have own directory
+* Change: Filename convention from snake-case (_) to param-case (-)
+* Change: Replace @Inject decorator with ngAnnotate
+* Change: Add strict-di for the application
+* Change: All files are now in ES6 (incl. webpack, karma)
+
+Every application is now generated with .eslintrc. For now, in
+order to run it, you have to run ```kick lint```. Layouts are
+now removed from core functionality and will be available later
+as a separate npm module.
+
+Partials with controllers are now deprecated in favor of components
+and will be removed in future versions of kick.
+
 # Version 1.3.0:
 
 * Feature: Components
