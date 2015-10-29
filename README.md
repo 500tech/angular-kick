@@ -51,7 +51,7 @@ which will automatically reload the browser when you make changes to files.
 You can also run it in TDD mode, which will run test suit on every file change. 
 
 ```sh
-$ cd application_name
+$ cd application-name
 $ kick tdd
 ```
 
@@ -74,9 +74,9 @@ Check out our [documentation](http://www.angular-kick.com).
 You can find there documentation on using other kick features as generators, destroyers, running local server, testing and building for production.
 
 
-### Updating angular
+### Updating angular-kick
 
-Checking for updates on each command slows down cli apps a lot. Hence, angular won't check for updates automatically.
+Checking for updates on each command slows down cli apps a lot. Hence, angular-kick won't check for updates automatically.
 You can check for a new version by running:
 
 ```sh
