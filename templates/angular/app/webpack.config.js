@@ -3,6 +3,7 @@
 const webpack           = require('webpack');
 const path              = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanPlugin       = require('clean-webpack-plugin');
 const environmentsFile  = path.join(__dirname, '/environments.json');
 const appPath           = path.join(__dirname, '/app');
 const distPath          = path.join(__dirname, '/dist');
@@ -27,11 +28,14 @@ const config = {
   },
 
   plugins: [
-    // Render an index.html for the app
+    // Generate index.html with included script tags
     new HtmlWebpackPlugin({
       inject: 'body',
-      template: 'app/index.html'
-    })
+      template: 'app/index.html',
+    }),
+
+    // Remove build related folders
+    new CleanPlugin(['dist']),
   ],
 
   // Enable loading modules relatively (without the ../../ prefix)
