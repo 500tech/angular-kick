@@ -56,6 +56,7 @@
     "cpr": "0.4.3",
     "fs-extra": "0.24.0",
     "get-folder-size": "0.1.1",
+    "keypress": "0.2.1",
     "opn": "3.0.2",
     "progress": "1.1.8",
     "readline-sync": "1.2.21",
