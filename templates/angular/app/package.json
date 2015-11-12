@@ -9,7 +9,8 @@
   "scripts": {
     "prestart": "npm install",
     "start": "node_modules/.bin/webpack-dev-server --hot --progress",
-    "build": "node_modules/.bin/webpack -p --progress"
+    "build": "node_modules/.bin/webpack -p --progress",
+    "test": "node_modules/.bin/karma start --single-run"
   },
   "repository": {
     "type": "git",
