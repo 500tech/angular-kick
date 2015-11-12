@@ -5,12 +5,15 @@ process.bin = process.title = 'kick';
 
 // Not using ES6 syntax here, so checking for older node versions will work
 
-var child_process = require('child_process');
-var nodeVersion   = child_process.execSync('node -v').toString();
-var colors        = require('colors');
+var nodeVersionRegex = /v(\d)\.\d/;
+var child_process    = require('child_process');
+var nodeVersion      = child_process.execSync('node -v').toString();
+var colors           = require('colors');
 
 function ensureNodeVersion() {
-  if (!nodeVersion.match(/v4\.\d/)) {
+  var version = nodeVersionRegex.exec(nodeVersion)[1];
+
+  if (version < 4) {
     console.log('⚠ '.red + 'You need nodejs '.yellow + '>= 4.0'.white + ' in order to use angular'.yellow);
     process.exit(0);
   }

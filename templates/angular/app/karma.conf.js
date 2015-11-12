@@ -16,7 +16,8 @@ module.exports = (config) => {
       'karma-osx-reporter',
       'karma-clear-screen-reporter',
       'karma-mocha-reporter',
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-sourcemap-loader'
     ],
 
     frameworks: ['jasmine'],
@@ -36,7 +37,7 @@ module.exports = (config) => {
     },
 
     preprocessors: {
-      './app/test.js': ['webpack']
+      './app/test.js': ['webpack', 'sourcemap']
     },
 
     /* global global */
