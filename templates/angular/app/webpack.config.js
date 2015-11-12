@@ -24,6 +24,7 @@ const config = {
 
   output: {
     path: distPath,
+    publicPath: '/',
     filename: 'bundle.[hash].js'
   },
 
@@ -54,6 +55,7 @@ const config = {
     ],
 
     loaders: [
+
       // Transpile ES6 and annotate AngularJS dependencies
       {
         test: /\.js$/,
