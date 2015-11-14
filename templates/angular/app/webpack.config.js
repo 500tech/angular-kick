@@ -37,6 +37,9 @@ const config = {
 
     // Remove build related folders
     new CleanPlugin(['dist']),
+
+    // Do not output to dist if there are errors
+    new webpack.NoErrorsPlugin(),
   ],
 
   // Enable loading modules relatively (without the ../../ prefix)
