@@ -59,6 +59,7 @@
     "get-folder-size": "0.1.1",
     "keypress": "0.2.1",
     "opn": "3.0.2",
+    "portscanner": "1.0.0",
     "progress": "1.1.8",
     "readline-sync": "1.2.21",
     "replace": "0.3.0"
