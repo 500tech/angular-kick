@@ -60,7 +60,8 @@
     "opn": "3.0.2",
     "progress": "1.1.8",
     "readline-sync": "1.2.21",
-    "replace": "0.3.0"
+    "replace": "0.3.0",
+    "which": "^1.2.0"
   },
   "devDependencies": {
     "jasmine": "2.2.1",
