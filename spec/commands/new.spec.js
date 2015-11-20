@@ -1,6 +1,6 @@
 'use strict';
 
-const TestHelpers   = require('../support/helpers');
+const TestHelpers   = require('spec/support/helpers');
 const fs            = require('fs-extra');
 const child_process = require('child_process');
 const kick          = 'node ' + __dirname + '/../../bin/kick ';

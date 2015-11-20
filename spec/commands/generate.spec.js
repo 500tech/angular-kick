@@ -1,7 +1,7 @@
 'use strict';
 
-const Utils       = require('../../lib/utils');
-const TestHelpers = require('../support/helpers');
+const Utils       = require('lib/utils');
+const TestHelpers = require('spec/support/helpers');
 
 const fs            = require('fs-extra');
 const child_process = require('child_process');
