@@ -87,18 +87,16 @@ const config = {
         exclude
       },
 
-      // Fonts and images
+      // Allow `require`ing image/font files (also when included in CSS)
+      // Inline assets under 5kb as Base64 data URI, otherwise uses `file-loader`
       {
-        test: /\.(ttf|eot|svg|otf|png)$/,
-        loader: 'file'
+        test: /\.(eot|woff2?|ttf|otf)(\?.*)?$/i,
+        loader: 'url?limit=5120&name=[path][name].[hash].[ext]'
       },
+
       {
-        test: /\.(png)$/,
-        loader: 'url?mimetype=image/png'
-      },
-      {
-        test: /\.woff(2)?$/,
-        loader: 'url?limit=10000&minetype=application/font-woff'
+        test: /\.(jpe?g|png|gif|svg)(\?.*)?$/i,
+        loader: 'url?limit=5120&name=[path][name].[hash].[ext]'
       },
 
       // Create AngularJS templates from HTMLs
