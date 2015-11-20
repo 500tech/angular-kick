@@ -1,3 +1,5 @@
-export /* @ngInject */ function %FILTER_NAME%(input) {
-  return input;
+export /* @ngInject */ function %FILTER_NAME%() {
+  return function(input) {
+    return input;
+  };
 }
