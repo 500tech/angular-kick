@@ -30,6 +30,8 @@
     "clean-webpack-plugin": "0.1.4",
     "css-loader": "0.21.0",
     "env-replace-loader": "1.0.0",
+    "eslint": "1.10.0",
+    "eslint-plugin-angular": "0.13.0",
     "file-loader": "0.8.4",
     "karma": "0.13.12",
     "karma-chrome-launcher": "0.2.1",
