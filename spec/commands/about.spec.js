@@ -1,6 +1,8 @@
 'use strict';
 
-const TestHelpers   = require('../support/helpers');
+require('app-module-path').addPath(__dirname + '/../../');
+
+const TestHelpers   = require('spec/support/helpers');
 const child_process = require('child_process');
 const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
