@@ -50,7 +50,7 @@
   "license": "MIT",
   "homepage": "http://angular-kick.com",
   "dependencies": {
-    "app-module-path": "^1.0.4",
+    "app-module-path": "1.0.4",
     "change-case": "2.3.0",
     "cli-clear": "1.0.4",
     "colors": "1.1.2",
@@ -63,7 +63,7 @@
     "progress": "1.1.8",
     "readline-sync": "1.2.21",
     "replace": "0.3.0",
-    "which": "^1.2.0"
+    "which": "1.2.0"
   },
   "devDependencies": {
     "jasmine": "2.2.1",
