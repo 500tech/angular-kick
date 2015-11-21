@@ -19,8 +19,8 @@
   "license": "MIT",
   "homepage": "",
   "dependencies": {
-    "angular": "1.4.3",
-    "angular-mocks": "1.4.3",
+    "angular": "1.4.8",
+    "angular-mocks": "1.4.8",
     "angular-ui-router": "0.2.15"
   },
   "devDependencies": {
