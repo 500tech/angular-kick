@@ -4,7 +4,7 @@ const webpack           = require('webpack');
 const path              = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanPlugin       = require('clean-webpack-plugin');
-const environmentsFile  = path.join(__dirname, 'environments.json');
+const environmentsFile  = require(path.join(__dirname, 'environments.json'));
 const appPath           = path.join(__dirname, 'app');
 const distPath          = path.join(__dirname, 'dist');
 const exclude           = /node_modules/;
@@ -40,6 +40,9 @@ const config = {
 
     // Do not output to dist if there are errors
     new webpack.NoErrorsPlugin(),
+
+    // Global replacements for each environment
+    new webpack.DefinePlugin(environmentsFile[process.env.NODE_ENV]),
   ],
 
   // Enable loading modules relatively (without the ../../ prefix)
@@ -48,15 +51,6 @@ const config = {
   },
 
   module: {
-    preLoaders: [
-      {
-        test: /\.*/,
-        loaders: [
-          `env-replace?prefix=@@&file=${environmentsFile}`
-        ]
-      }
-    ],
-
     loaders: [
 
       // Transpile ES6 and annotate AngularJS dependencies

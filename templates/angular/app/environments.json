@@ -1,14 +1,14 @@
 {
   "development": {
-    "ENV": "development",
-    "API_URL": "http://localhost:3000"
+    "$$ENV": "development",
+    "$$API_URL": "http://localhost:3000"
   },
   "test": {
-    "ENV": "test",
-    "API_URL": "http://localhost:3000"
+    "$$ENV": "test",
+    "$$API_URL": "http://localhost:3000"
   },
   "production": {
-    "ENV": "production",
-    "API_URL": "http://example.com"
+    "$$ENV": "production",
+    "$$API_URL": "http://example.com"
   }
 }
