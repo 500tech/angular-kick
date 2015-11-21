@@ -1,4 +1,4 @@
 export const constants = {
-  ENV: '@@ENV',
-  API_URL: '@@API_URL',
+  ENV: $_ENV,
+  API_URL: $_API_URL,
 };
