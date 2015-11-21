@@ -1,6 +1,6 @@
 'use strict';
 
-const Utils       = require('lib/utils');
+const FSUtils     = require('lib/fs-utils');
 const TestHelpers = require('spec/support/helpers');
 
 const fs            = require('fs-extra');
@@ -120,7 +120,7 @@ describe('$ kick generate', () => {
     const route       = TestHelpers.getFile('app/config/routes/example.js');
     const routesFile  = TestHelpers.getFile('app/config/routes/routes.js');
     const statesFile  = TestHelpers.getFile('app/states/states.js');
-    const style       = Utils.exists('app/assets/stylesheets/example.scss');
+    const style       = FSUtils.exists('app/assets/stylesheets/example.scss');
     const mainStyle   = TestHelpers.getFile('app/assets/stylesheets/application.scss');
     const view        = TestHelpers.getFile('app/states/example/example.html');
     const controller  = TestHelpers.getFile('app/states/example/example.js');
@@ -155,7 +155,7 @@ describe('$ kick generate', () => {
 
   it('should generate style', () => {
     child_process.execSync(kick + 'generate style example');
-    const file = Utils.exists('app/assets/stylesheets/example.scss');
+    const file = FSUtils.exists('app/assets/stylesheets/example.scss');
     const mainFile = TestHelpers.getFile('app/assets/stylesheets/application.scss');
 
     expect(file).toBeTruthy();
