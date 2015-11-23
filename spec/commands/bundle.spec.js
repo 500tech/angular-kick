@@ -1,25 +1,27 @@
 'use strict';
 
-const TestHelpers   = require('spec/support/helpers');
-const fs            = require('fs-extra');
-const child_process = require('child_process');
-const kick          = 'node ' + __dirname + '/../../bin/kick ';
+const commands = require('lib/commands/commands');
+const Utils    = require('lib/utils');
+const Logger   = require('lib/logger');
+const message  = require('lib/messages');
 
 describe('$ kick bundle', () => {
 
-  beforeAll(TestHelpers.createApp);
-  afterAll(TestHelpers.cleanup);
-
-  it('should not run without packages', () => {
-    const output = child_process.execSync(kick + 'bundle').toString();
-
-    expect(output).toMatch("Can't start server with missing packages");
+  beforeEach(() => {
+    spyOn(Utils, 'spawnProcess').and.callFake(() => ({ on: () => {} }));
+    spyOn(Utils, 'ensurePackagesExist').and.returnValue(true);
+    spyOn(Logger, 'log');
   });
 
   it('should run npm bundle task', () => {
-    fs.ensureDirSync('node_modules');
-    const output = child_process.execSync(kick + 'bundle', { timeout: 5000 }).toString();
+    const command = 'node_modules/.bin/webpack';
+    const args    = ['-p', '--progress'];
+    const env     = 'production';
 
-    expect(output).toMatch("Building application");
+    commands.bundle();
+
+    expect(Utils.ensurePackagesExist).toHaveBeenCalled();
+    expect(Utils.spawnProcess).toHaveBeenCalledWith(command, args, env);
+    expect(Logger.log).toHaveBeenCalledWith(message.bundle.start);
   });
 });
