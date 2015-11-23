@@ -1,4 +1,3 @@
-'use strict';
 /* global __dirname, process */
 
 const webpack           = require('webpack');
@@ -12,8 +11,9 @@ const exclude           = /node_modules/;
 
 function getENVReplacements() {
   const replacements = environmentsFile[process.env.NODE_ENV];
-  let result         = {};
+  const result       = {};
 
+  /* eslint-disable angular/json-functions */
   Object.keys(replacements)
     .forEach((key) => result[key] = JSON.stringify(replacements[key]));
 
@@ -40,6 +40,7 @@ const config = {
   },
 
   plugins: [
+
     // Generate index.html with included script tags
     new HtmlWebpackPlugin({
       inject: 'body',
