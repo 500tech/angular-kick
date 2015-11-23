@@ -2,6 +2,7 @@
 
 const Logger = require('lib/logger');
 const Utils  = require('lib/utils');
+const which  = require('which');
 
 const child_process = require('child_process');
 
@@ -19,8 +20,10 @@ describe('utils module', () => {
   });
 
   it('should check if provided module is installed with which command', () => {
+    spyOn(which, 'sync');
+
     Utils.ensureGlobalModule('webpack');
-    expect(child_process.execSync).toHaveBeenCalledWith('which webpack');
+    expect(which.sync).toHaveBeenCalledWith('webpack');
   });
 
 });
