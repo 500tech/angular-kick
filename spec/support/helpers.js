@@ -1,20 +1,24 @@
 'use strict';
 
+const path          = require('path');
 const fs            = require('fs-extra');
 const child_process = require('child_process');
 const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 module.exports = class TestHelpers {
 
+  static getAppPath() {
+    return path.resolve('./npm-test');
+  }
+
   static createApp() {
-    fs.removeSync('npm-test');
+    TestHelpers.cleanup();
     child_process.execSync(kick + 'new npmTest -ns');
-    process.chdir('npm-test');
+    process.chdir(TestHelpers.getAppPath());
   }
 
   static cleanup() {
-    process.chdir('..');
-    fs.removeSync('npm-test');
+    fs.removeSync(TestHelpers.getAppPath());
   }
 
   static getFile(filename) {

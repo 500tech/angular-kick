@@ -9,8 +9,8 @@ const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick generate', () => {
 
-  beforeAll(TestHelpers.createApp);
-  afterAll(TestHelpers.cleanup);
+  beforeEach(TestHelpers.createApp);
+  afterEach(TestHelpers.cleanup);
 
   it('should ask what to generate', () => {
     const output = child_process.execSync(kick + 'generate');
