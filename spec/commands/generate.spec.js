@@ -71,7 +71,7 @@ describe('$ kick generate', () => {
     const filters  = TestHelpers.getFile('app/filters/filters.js');
     const specFile = TestHelpers.getFile('test/unit/filters/example.spec.js');
 
-    expect(file).toMatch("export \\/\\* @ngInject \\*\\/ function example\\(input\\)");
+    expect(file).toMatch("export \\/\\* @ngInject \\*\\/ function example\\(\\)");
     expect(filters).toMatch("import { example } from './example'");
     expect(filters).toMatch("\\.filter\\('example', example\\)");
     expect(specFile).toMatch("describe\\('example Filter'");
