@@ -9,8 +9,8 @@ const kick          = 'node ' + __dirname + '/../../bin/kick ';
 
 describe('$ kick generate', () => {
 
-  beforeAll(TestHelpers.createApp);
-  afterAll(TestHelpers.cleanup);
+  beforeEach(TestHelpers.createApp);
+  afterEach(TestHelpers.cleanup);
 
   it('should ask what to generate', () => {
     const output = child_process.execSync(kick + 'generate');
@@ -41,7 +41,7 @@ describe('$ kick generate', () => {
     const specFile = TestHelpers.getFile('test/unit/directives/example.spec.js');
 
     expect(file).toMatch("export function example");
-    expect(file).toMatch("templateUrl: '/directives/example\\.html',");
+    expect(file).toMatch("templateUrl: '\/directives\/example\\.html',");
     expect(template).toMatch("<div>example Directive</div>");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
@@ -71,7 +71,7 @@ describe('$ kick generate', () => {
     const filters  = TestHelpers.getFile('app/filters/filters.js');
     const specFile = TestHelpers.getFile('test/unit/filters/example.spec.js');
 
-    expect(file).toMatch("export \\/\\* @ngInject \\*\\/ function example\\(input\\)");
+    expect(file).toMatch("export \\/\\* @ngInject \\*\\/ function example\\(\\)");
     expect(filters).toMatch("import { example } from './example'");
     expect(filters).toMatch("\\.filter\\('example', example\\)");
     expect(specFile).toMatch("describe\\('example Filter'");
