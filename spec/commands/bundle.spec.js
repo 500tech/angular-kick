@@ -8,10 +8,7 @@ const message  = require('lib/messages');
 describe('$ kick bundle', () => {
 
   beforeEach(() => {
-    spyOn(Utils, 'spawnProcess').and.callFake(() => ({
-      on: () => {
-      }
-    }));
+    spyOn(Utils, 'spawnProcess').and.callFake(() => ({ on: () => {} }));
     spyOn(Utils, 'ensurePackagesExist').and.returnValue(true);
     spyOn(Logger, 'log');
   });
