@@ -1,3 +1,30 @@
+# Version 1.5.0:
+
+* Feature: `npm test` task that can be used without `kick test`
+* Feature: Add hotkeys to open the app in browser and reload server
+* Feature: Code with syntax errors won't output to production bundle
+* Feature: Dynamically set port to webpack-dev-server (allow multiple servers)
+* Feature: Services and models can now be generated as factories (using --factory flag)
+* Fix: Enormously improved Windows support
+* Fix: Test files now have sourcemaps
+* Fix: Generating states with dashes now works
+* Fix: When using generators to create files, ask to override existing ones
+* Fix: Do not use global npm modules (karma, eslint)
+* Fix: Changed the way fonts are loading, fontawesome and glyphicons now work
+* Fix: `npm install --save` now adds the exact version to the package
+* Fix: Webpack output is now visible when running `kick start`
+* Fix: More various minor bug fixes
+* Fix: Improve responsiveness of the setup progress bar
+* Change: Add build command (alias for bundle)
+* Change: Ability to run npm tasks directly (`npm start`, etc.)
+* Change: Remove `npm install` from npm pre-start task
+* Change: Replacements from environments.json are handled by webpack.DefinePlugin
+* Change: Update AngularJS version from 1.4.3 to 1.4.8
+
+When running `kick start`, you now have the ability
+to reload webpack-dev-server (Ctrl + R),
+and open the application in browser (Ctrl + O)
+
 # Version 1.4.0:
 
 * Feature: ESLint
