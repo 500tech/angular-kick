@@ -41,7 +41,7 @@ describe('$ kick generate', () => {
     const specFile = TestHelpers.getFile('test/unit/directives/example.spec.js');
 
     expect(file).toMatch("export function example");
-    expect(file).toMatch("templateUrl: '/directives/example\\.html',");
+    expect(file).toMatch("templateUrl: '\/directives\/example\\.html',");
     expect(template).toMatch("<div>example Directive</div>");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
