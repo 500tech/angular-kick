@@ -1,3 +1,8 @@
+# Version 1.5.1:
+
+* Fix: Resolving paths for windows
+* Fix: Version not updated in success message after upgrade
+
 # Version 1.5.0:
 
 * Feature: `npm test` task that can be used without `kick test`
