@@ -16,6 +16,6 @@ describe('$ kick about', () => {
 
     expect(output).toMatch("NpmTest");
     expect(output).toMatch("1.0.0");
-    expect(output).toMatch("1.4.3");
+    expect(output).toMatch("1.4.8");
   });
 });
