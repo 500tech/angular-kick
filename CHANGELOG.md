@@ -1,3 +1,7 @@
+# Version 1.5.2:
+
+* Fix: Uh, resolving paths for windows. Again.
+
 # Version 1.5.1:
 
 * Fix: Resolving paths for windows
