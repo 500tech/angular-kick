@@ -1,9 +1,9 @@
 'use strict';
 
-const commands = require('lib/commands/commands');
-const Utils    = require('lib/utils');
-const Logger   = require('lib/logger');
-const message  = require('lib/messages');
+const commands = require('../../lib/commands/commands');
+const Utils    = require('../../lib/utils');
+const Logger   = require('../../lib/logger');
+const message  = require('../../lib/messages');
 
 describe('$ kick bundle', () => {
 

@@ -9,9 +9,6 @@ var nodeVersionRegex = /v(\d)\.\d/;
 var child_process    = require('child_process');
 var nodeVersion      = child_process.execSync('node -v').toString();
 var colors           = require('colors');
-var path             = require('path');
-
-require('app-module-path').addPath(path.resolve(__dirname, '..'));
 
 function ensureNodeVersion() {
   var version = nodeVersionRegex.exec(nodeVersion)[1];

@@ -1,4 +1,4 @@
-const Format = require('lib/format');
+const Format = require('../lib/format');
 
 describe('formatters module', () => {
 

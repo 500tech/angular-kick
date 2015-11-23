@@ -1,7 +1,7 @@
 'use strict';
 
-const Logger = require('lib/logger');
-const Utils  = require('lib/utils');
+const Logger = require('../lib/logger');
+const Utils  = require('../lib/utils');
 const which  = require('which');
 
 const child_process = require('child_process');

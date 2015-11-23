@@ -1,7 +1,7 @@
 'use strict';
 
-const FSUtils     = require('lib/fs-utils');
-const TestHelpers = require('spec/support/helpers');
+const FSUtils     = require('../../lib/fs-utils');
+const TestHelpers = require('../support/helpers');
 
 const child_process = require('child_process');
 const kick          = 'node ' + __dirname + '/../../bin/kick ';
