@@ -1,6 +1,8 @@
 'use strict';
 
-require('app-module-path').addPath(__dirname + '/../../');
+const path = require('path');
+
+require('app-module-path').addPath(path.resolve(__dirname, '..', '..'));
 
 const TestHelpers   = require('spec/support/helpers');
 const child_process = require('child_process');
