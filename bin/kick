@@ -9,6 +9,7 @@ var nodeVersionRegex = /v(\d)\.\d/;
 var child_process    = require('child_process');
 var nodeVersion      = child_process.execSync('node -v').toString();
 var colors           = require('colors');
+var Matcher          = require('did-you-mean');
 
 function ensureNodeVersion() {
   var version = nodeVersionRegex.exec(nodeVersion)[1];
@@ -21,78 +22,111 @@ function ensureNodeVersion() {
 
 ensureNodeVersion();
 
-const Logger = require('../lib/logger');
-const Utils  = require('../lib/utils');
+// Start using ES6 from here, as the node version was ensured
 
-const fs          = require('fs-extra');
-const open        = require('opn');
-const message     = require('../lib/messages');
-const commands    = require('../lib/commands/commands');
-const command     = process.argv[2];
-const ROOT        = __dirname + '/..';
-const kickVersion = fs.readJSONSync(ROOT + '/package.json').version;
+const fs              = require('fs-extra');
+const open            = require('opn');
+const Logger          = require('../lib/logger');
+const prompt          = require('readline-sync').question;
+const commands        = require('../lib/commands/commands');
+const message         = require('../lib/messages');
+const correctCommands = require('../lib/correct-commands');
+const command         = process.argv[2];
+const ROOT            = __dirname + '/..';
+const kickVersion     = fs.readJSONSync(ROOT + '/package.json').version;
 
-switch (command) {
-  case '--version':
-  case '-v':
-    Logger.log(kickVersion);
-    break;
-  case 'help':
-  case '--help':
-  case 'h':
-  case '-h':
-    commands.help();
-    break;
-  case 'about':
-  case 'a':
-    commands.about();
-    break;
-  case 'new':
-  case 'n':
-    commands.new();
-    break;
-  case 'generate':
-  case 'g':
-    commands.generate();
-    break;
-  case 'destroy':
-  case 'd':
-    commands.destroy();
-    break;
-  case 'setup':
-  case 'set':
-    commands.setup();
-    break;
-  case 'start':
-  case 's':
-    commands.start();
-    break;
-  case 'tdd':
-  case 'ass':
-    commands.tdd();
-    break;
-  case 'bundle':
-  case 'build':
-  case 'b':
-    commands.bundle();
-    break;
-  case 'test':
-  case 't':
-    commands.test();
-    break;
-  case 'lint':
-    commands.lint();
-    break;
-  case 'upgrade':
-  case 'u':
-    commands.upgrade();
-    break;
-  case 'docs':
-    open('http://www.angular-kick.com');
-    break;
-  case 'karma-debug':
-    open('http://localhost:9876/debug.html');
-    break;
-  default:
-    commands.help();
+function didYouMean() {
+  const matcher = new Matcher(correctCommands);
+  var intention;
+
+  intention = process.argv[3]
+    ? matcher.get(process.argv[2] + ' ' + process.argv[3])
+    : matcher.get(process.argv[2]);
+
+  if (intention) {
+    const answer = prompt(`${message.didYouMean(intention)} ${message.yesNo}`);
+
+    Logger.blankLine();
+    switch (answer) {
+      case 'Y':
+      case 'y':
+      case 'Yes':
+      case 'yes':
+        process.argv[2] = intention.split(' ')[0];
+        process.argv[3] = intention.split(' ')[1];
+        runCommand(process.argv[2]);
+        return true;
+      default:
+        return false;
+    }
+  }
 }
+
+function runCommand(command) {
+  switch (command) {
+    case '--version':
+    case '-v':
+      Logger.log(kickVersion);
+      break;
+    case 'help':
+    case '--help':
+    case 'h':
+    case '-h':
+      commands.help();
+      break;
+    case 'about':
+    case 'a':
+      commands.about();
+      break;
+    case 'new':
+    case 'n':
+      commands.new();
+      break;
+    case 'generate':
+    case 'g':
+      commands.generate();
+      break;
+    case 'destroy':
+    case 'd':
+      commands.destroy();
+      break;
+    case 'setup':
+    case 'set':
+      commands.setup();
+      break;
+    case 'start':
+    case 's':
+      commands.start();
+      break;
+    case 'tdd':
+    case 'ass':
+      commands.tdd();
+      break;
+    case 'bundle':
+    case 'build':
+    case 'b':
+      commands.bundle();
+      break;
+    case 'test':
+    case 't':
+      commands.test();
+      break;
+    case 'lint':
+      commands.lint();
+      break;
+    case 'upgrade':
+    case 'u':
+      commands.upgrade();
+      break;
+    case 'docs':
+      open('http://www.angular-kick.com');
+      break;
+    case 'karma-debug':
+      open('http://localhost:9876/debug.html');
+      break;
+    default:
+      didYouMean() || commands.help();
+  }
+}
+
+runCommand(command);
