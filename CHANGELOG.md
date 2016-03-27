@@ -1,3 +1,9 @@
+# Version 1.6.0:
+
+* Feature: Did you mean functionality. Kick will now try to correct your typos.
+* Upgraded Angular version to 1.5.3
+* Using new component syntax to register components
+
 # Version 1.5.2:
 
 * Fix: Uh, resolving paths for windows. Again.
