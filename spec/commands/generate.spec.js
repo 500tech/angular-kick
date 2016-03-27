@@ -38,11 +38,13 @@ describe('$ kick generate', () => {
     child_process.execSync(kick + 'generate directive example --template');
     const file = TestHelpers.getFile('app/directives/example.js');
     const template = TestHelpers.getFile('app/directives/example.html');
+    const directivesFile = TestHelpers.getFile('app/directives/directives.js');
     const specFile = TestHelpers.getFile('test/unit/directives/example.spec.js');
 
     expect(file).toMatch("export function example");
     expect(file).toMatch("templateUrl: '\/directives\/example\\.html',");
     expect(template).toMatch("<div>example Directive</div>");
+    expect(directivesFile).toMatch(".directive\\('example', example\\);");
     expect(specFile).toMatch("describe\\('example Directive'");
   });
 
@@ -50,11 +52,13 @@ describe('$ kick generate', () => {
     child_process.execSync(kick + 'generate component example --template');
     const file = TestHelpers.getFile('app/components/example/example.js');
     const template = TestHelpers.getFile('app/components/example/example.html');
+    const componentsFile  = TestHelpers.getFile('app/components/components.js');
     const specFile = TestHelpers.getFile('test/unit/components/example/example.spec.js');
 
-    expect(file).toMatch("export function example");
+    expect(file).toMatch("export const example");
     expect(file).toMatch("templateUrl: '/components/example/example\\.html',");
     expect(template).toMatch("<div>example Component</div>");
+    expect(componentsFile).toMatch(".component\\('example', example\\);");
     expect(specFile).toMatch("describe\\('example Component'");
   });
 
