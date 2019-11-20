@@ -19,7 +19,7 @@
   "license": "MIT",
   "homepage": "",
   "dependencies": {
-    "angular": "1.5.3",
+    "angular": "1.7.9",
     "angular-mocks": "1.5.3",
     "angular-ui-router": "0.2.15"
   },
