@@ -5,7 +5,7 @@ process.bin = process.title = 'kick';
 
 // Not using ES6 syntax here, so checking for older node versions will work
 
-var nodeVersionRegex = /v(\d)\.\d/;
+var nodeVersionRegex = /v(\d+)\.\d/;
 var child_process    = require('child_process');
 var nodeVersion      = child_process.execSync('node -v').toString();
 var colors           = require('colors');

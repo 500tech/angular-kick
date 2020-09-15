@@ -5,13 +5,9 @@ class %COMPONENT_NAME%Controller {
   }
 }
 
-export function %COMPONENT_NAME%() {
-  return {
-    restrict: 'E',
-    scope: {},
-    templateUrl: '/%COMPONENT_TEMPLATE_URL%',
-    controller: %COMPONENT_NAME%Controller,
-    controllerAs: '%COMPONENT_NAME%',
-    bindToController: true
-  };
-}
+export const %COMPONENT_NAME% = {
+  bindings: {},
+  templateUrl: '/%COMPONENT_TEMPLATE_URL%',
+  controller: %COMPONENT_NAME%Controller,
+  controllerAs: '%COMPONENT_NAME%'
+};
