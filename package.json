@@ -63,11 +63,11 @@
     "portscanner": "1.0.0",
     "progress": "1.1.8",
     "readline-sync": "1.2.21",
-    "replace": "0.3.0",
+    "replace": "1.2.2",
     "which": "1.2.0"
   },
   "devDependencies": {
-    "jasmine": "2.2.1",
+    "jasmine": "2.99.0",
     "webpack": "1.12.1"
   },
   "scripts": {
